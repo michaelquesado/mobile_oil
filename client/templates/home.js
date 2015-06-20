@@ -1,11 +1,3 @@
-var url_s = "http://places.api.here.com/places/v1/discover/search?at=-7.3063696,-39.2946653&q=petrol-station&app_id=hG4gnJyrmlbNgGscL7Ki&app_code=h3XG36Nr4RgQOjymUTblJQ&pretty";
-    
-     HTTP.call("GET", url_s,function (err,result){
-
-        console.log(JSON.parse(result.content).results.items);
-        Session.set('places', JSON.parse(result.content).results.items);
-        
-});
 
 Template.home.helpers({
  
@@ -13,8 +5,13 @@ Template.home.helpers({
   lng: function(){ return Geolocation.latLng().lng;  },
 
     ListaTodosPostos: function(){
+      Meteor.call('getPostos',Geolocation.latLng().lat,Geolocation.latLng().lng, function(err, result){
 
-         return Session.get('places');
+          Session.set('places', JSON.parse(result.content).results.items);  
+
+        });
+
+        return Session.get('places');
     }
 	 
 });
