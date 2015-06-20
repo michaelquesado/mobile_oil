@@ -16,12 +16,12 @@ Template.logar.events({
 				if(err){
 					alert(err.reason);
 				}else{
+					var person = (JSON.parse(result.content));
 					Session.set('person',JSON.parse(result.content));
-				
+
+					(person.id)? Router.go('/home') : alert(person);
 				}
 			});
-
-
 	}
 
 

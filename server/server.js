@@ -12,7 +12,5 @@ Meteor.methods({
 			{params: {email: email, pass: pass}} 
 		);
 	}
-
 	
-
 });
