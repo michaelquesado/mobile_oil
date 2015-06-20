@@ -4,5 +4,15 @@ Meteor.methods({
 
 		return Meteor.http.call("GET", url_s);
 
+	},
+
+	'Logar': function(email, pass){
+		return HTTP.call(
+			"POST","http://192.168.0.107/ws_mobile_oil/Login/logar",
+			{params: {email: email, pass: pass}} 
+		);
 	}
-})
+
+	
+
+});
