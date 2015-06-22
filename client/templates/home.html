@@ -1,13 +1,13 @@
 <template name="home">
-	<p>Latitude:  {{lat}}</p>
-	<p>Longitude:  {{lng}}</p>
-	<p>Person: {{person.username}}</p>
 
+<div class='content' >
 
-	<ul>
+	<ul class="table-view">
 		{{#each ListaTodosPostos}}
-				<li>{{title}}</li>
+				<li class="table-view-cell media" >{{title}}</li>
 		{{/each }}
 	</ul>
-	
+
+</div>
+
 </template>
