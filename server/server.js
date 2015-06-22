@@ -8,7 +8,7 @@ Meteor.methods({
 
 	'Logar': function(email, pass){
 		return HTTP.call(
-			"POST","http://192.168.0.107/ws_mobile_oil/Login/logar",
+			"POST","http://192.168.1.48/ws_mobile_oil/Login/logar",
 			{params: {email: email, pass: pass}} 
 		);
 	}

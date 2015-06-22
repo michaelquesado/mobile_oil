@@ -1,13 +1,53 @@
 <template name="home">
 
-<div class='content' >
+	{{>nav  title='Mobile Oil' preco='Novo Preço'}}
 
-	<ul class="table-view">
-		{{#each ListaTodosPostos}}
-				<li class="table-view-cell media" >{{title}}</li>
-		{{/each }}
-	</ul>
+	<div class='content' >
+		<div class="content-padded">
 
-</div>
+		<div class="segmented-control">
+			<a class="control-item active" href="#item1mobile">
+				Gasolina
+			</a>
+			<a class="control-item" href="#item2mobile">
+				Alcool
+			</a>
+			<a class="control-item" href="#item3mobile">
+				Diesel
+			</a>
+		</div>
+
+
+		<div class="card">
+			<div id="item1mobile" class="control-content active">
+				
+				<ul class="table-view">
+					{{#each ListaTodosPostos}}
+					<li class="table-view-cell media" >{{title}}</li>
+					{{/each }}
+				</ul>
+
+			</div>
+
+			<div id="item2mobile" class="control-content">
+				<ul class="table-view">
+					{{#each ListaTodosPostos}}
+					<li class="table-view-cell media" >{{title}}</li>
+					{{/each }}
+				</ul>		
+			</div>
+
+			<div id="item3mobile" class="control-content">
+				<ul class="table-view">
+					{{#each ListaTodosPostos}}
+					<li class="table-view-cell media" >{{title}}</li>
+					{{/each }}
+				</ul>	
+			</div>
+		</div>
+		
+
+		</div>
+	</div>
 
 </template>
