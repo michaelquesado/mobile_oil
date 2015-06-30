@@ -8,9 +8,18 @@ Meteor.methods({
 
 	'Logar': function(email, pass){
 		return HTTP.call(
-			"POST","http://192.168.1.48/ws_mobile_oil/Login/logar",
+			"POST","http://localhost/ws_mobile_oil/Login/logar",
 			{params: {email: email, pass: pass}} 
 		);
+	},
+
+	'CadastrarPreferenciasDeCombustivel' : function(user_id){
+		var url = "http://localhost/ws_mobile_oil/Preferencias/getPreferenciasUsuarioId/" + user_id;
+		return Meteor.http.call('GET', url);
+	},
+
+	'getCombustiveis': function(){
+		return Meteor.http.call("GET", "http://localhost/ws_mobile_oil/Combustiveis/getCombustiveis");
 	}
 	
 });

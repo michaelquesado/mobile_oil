@@ -1,0 +1,20 @@
+<template name="preferencias">
+	
+	<div class="content">
+		<div class="content-padded">
+			<ul class="table-view">
+			{{#each Combustiveis}}
+				<li class="table-view-cell">
+					{{nome}} 
+						<div id="{{id}}" class="toggle ">
+
+						<div class="toggle-handle"></div>
+					</div>
+				</li>
+			{{/each}}
+			</ul>
+			<button  class="btn btn-positive btn-block">Salvar</button>
+		</div>
+	</div>
+
+</template>

@@ -19,7 +19,7 @@ Template.logar.events({
 					var person = (JSON.parse(result.content));
 					Session.set('person',JSON.parse(result.content));
 
-					(person.id)? Router.go('/home') : alert(person);
+					(person.id)? Router.go('/preferencias') : alert(person);
 				}
 			});
 	}
