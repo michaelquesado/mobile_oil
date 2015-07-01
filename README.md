@@ -14,6 +14,5 @@ na localização do usuario.
 
 ### Realizando Testes
 
-Clone o repositorio, clone o ws_mobile_oil, navege ate o projeto, rode o meteor, no arquivo 
-de configuração de server, altere o ip, roteando para o ws.
+Clone o repositorio, clone o ws_mobile_oil, navege ate o projeto, rode o meteor.
 
