@@ -13,9 +13,20 @@ Meteor.methods({
 		);
 	},
 
-	'CadastrarPreferenciasDeCombustivel' : function(user_id){
-		var url = "http://localhost/ws_mobile_oil/Preferencias/getPreferenciasUsuarioId/" + user_id;
-		return Meteor.http.call('GET', url);
+	'CadastrarPreferenciasDeCombustivel' : function(user_id, combustiveis){
+		
+		var url = "http://localhost/ws_mobile_oil/Preferencias/cadastrar";
+		return HTTP.call(
+			'POST', url,
+			{
+				params: {
+
+					user_id: user_id,
+					combustiveis_id: combustiveis
+
+					}
+				}
+			);
 	},
 
 	'getCombustiveis': function(){

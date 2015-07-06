@@ -14,31 +14,55 @@ Template.preferencias.helpers({
 
 });
 
-var toggle = 0;
-var preferencias = Array();
+var toggle = 1;
+var i = 0;
+var preferencias = new Array();
 
 Template.preferencias.events({
-	
-	'click  .toggle': function(event){
-		var active_class = 'toggle ';
+
+	'click  li': function(event){
+
+		var active_class = ' active ';
+		
+		toggle++;
+		var id =  event.target.id;
 
 		if(toggle % 2 == 0){
-			active_class +=  ' active';
-			console.log(event.target);
-			preferencias[toggle] = event.current;
-		}
-		//console.log(preferencias);
- 		toggle++;
 
- 		
-		event.currentTarget.className = active_class;
-		Session.set('preferencias',preferencias);
+			$(event.target).find('#toggle'+ event.target.id).addClass(active_class);					
+			
+			
+			if(preferencias.indexOf(id) == -1){
+				preferencias[i] = id;
+				i++;
+			}
+
+		}else{
+
+			$(event.target).find('#toggle'+ event.target.id).removeClass(active_class);
+			$.each(preferencias, function(k,v){
+				if(v == id){
+					delete preferencias[k];
+				}
+			});
+		}
+
+		Session.set('preferencias', preferencias);
 		return false;
 	},
 
 	'click button ': function(event){
-		//console.log(Session.get('preferencias'));
 
+		$preferencias = Session.get('preferencias');
+		$person = Session.get('person');
+
+		Meteor.call('CadastrarPreferenciasDeCombustivel',
+			$person.id,
+			$preferencias,
+			function(err,result){
+				console.log(result);
+			}
+		);
 	}
 
 	
