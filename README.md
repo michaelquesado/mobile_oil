@@ -1,7 +1,7 @@
 # Mobile Oil
 
-Projeto em desenvolvimento nas cadeiras de Engenharia de Software, da faculdade
-juazeiro do norte - CE, com o intuito de compartilhar os postos de combustiveis com base 
+Projeto em desenvolvimento nas cadeiras de Engenharia de Software da Faculdade
+de Juazeiro do Norte - FJN, com o intuito de compartilhar os postos de combustiveis com base 
 na localização do usuario.
 
 ### Configurações
