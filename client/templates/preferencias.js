@@ -47,20 +47,23 @@ Template.preferencias.events({
 			});
 		}
 
+
+		console.log(preferencias);
 		Session.set('preferencias', preferencias);
 		return false;
 	},
 
 	'click button ': function(event){
 
-		$preferencias = Session.get('preferencias');
-		$person = Session.get('person');
+		var preferencias = Session.get('preferencias');
+		var person = Session.get('person');
+
 
 		Meteor.call('CadastrarPreferenciasDeCombustivel',
-			$person.id,
-			$preferencias,
+			person.id,
+			preferencias,
 			function(err,result){
-				console.log(result);
+				console.log(result.content);
 			}
 		);
 	}
