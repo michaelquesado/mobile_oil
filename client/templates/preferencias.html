@@ -2,18 +2,17 @@
 	
 	<div class="content">
 		<div class="content-padded">
-			<ul class="table-view">
+			<form id="form_pre" >
 			{{#each Combustiveis}}
-				<li id="{{id}}" class="table-view-cell">
+					<label>
 					{{nome}} 
-						<div id="toggle{{id}}" class="toggle ">
-
-						<div class="toggle-handle"></div>
-					</div>
-				</li>
+						<input type="checkbox" value="{{id}}" />
+					</label>
+					<br>
 			{{/each}}
-			</ul>
-			<button  class="btn btn-positive btn-block">Salvar</button>
+			
+				<input type="submit"  class="btn btn-positive btn-block" value="Salvar" />
+			</form>
 		</div>
 	</div>
 
