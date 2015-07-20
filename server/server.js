@@ -8,14 +8,14 @@ Meteor.methods({
 
 	'Logar': function(email, pass){
 		return HTTP.call(
-			"POST","http://localhost/ws_mobile_oil/Login/logar",
+			"POST","http://localhost/www.dakinialencar.com/Login/logar",
 			{params: {email: email, pass: pass}} 
 		);
 	},
 
 	'CadastrarPreferenciasDeCombustivel' : function(user_id, combustiveis){
 		console.log(combustiveis);
-		var url = "http://localhost/ws_mobile_oil/Preferencias/cadastrar";
+		var url = "http://localhost/www.dakinialencar.com/Preferencias/cadastrar";
 		return HTTP.call(
 			'POST', url,
 			{
@@ -30,7 +30,7 @@ Meteor.methods({
 	},
 
 	'getCombustiveis': function(){
-		return Meteor.http.call("GET", "http://localhost/ws_mobile_oil/Combustiveis/getCombustiveis");
+		return Meteor.http.call("GET", "http://www.dakinialencar.com/ws_mobile_oil/Combustiveis/getCombustiveis");
 	}
 	
 });
