@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="mobileoil.uelionobre.com.br.mobileoil.adapters.ListViewAdapterCombustivel">
+
+    <ImageView
+        android:id="@+id/iconeLocalizacao"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="4dp"
+        android:src="@mipmap/ic_place_black_48dp" />
+
+    <TextView
+        android:id="@+id/nomePosto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="4dp"
+        android:layout_toLeftOf="@+id/linearLayout"
+        android:layout_toRightOf="@+id/iconeLocalizacao"
+        android:layout_toStartOf="@+id/linearLayout"
+        android:text="Auto Posto Raimundo Neto"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/enderecoPosto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nomePosto"
+        android:layout_alignStart="@+id/nomePosto"
+        android:layout_below="@+id/nomePosto"
+        android:layout_marginRight="4dp"
+        android:layout_toLeftOf="@+id/linearLayout"
+        android:layout_toStartOf="@+id/linearLayout"
+        android:text="Av. José Silva Santo, 15, Parque Recreio, Crato, CE" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dataAtualizacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hoje" />
+
+        <TextView
+            android:id="@+id/valorCombustivel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/iconeLocalizacao"
+            android:layout_toRightOf="@+id/iconeLocalizacao"
+            android:text="3,490"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/distanciaPosto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1km" />
+
+    </LinearLayout>
+
+</RelativeLayout>
