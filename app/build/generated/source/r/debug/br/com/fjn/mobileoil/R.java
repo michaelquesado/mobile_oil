@@ -725,6 +725,7 @@ containing a value of this type.
         public static final int abs__textfield_searchview_right_holo_light=0x7f02006e;
         public static final int abs__toast_frame=0x7f02006f;
         public static final int logo2=0x7f020070;
+        public static final int mapa=0x7f020071;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f0a0020;
@@ -766,8 +767,8 @@ containing a value of this type.
         public static final int abs__textButton=0x7f0a0013;
         public static final int abs__title=0x7f0a001b;
         public static final int abs__up=0x7f0a0005;
-        public static final int action_settings=0x7f0a0040;
-        public static final int continuar_preferencias=0x7f0a003f;
+        public static final int action_settings=0x7f0a0045;
+        public static final int continuar_preferencias=0x7f0a0044;
         public static final int dataAtualizacao=0x7f0a0037;
         public static final int disableHome=0x7f0a0009;
         public static final int distanciaPosto=0x7f0a0039;
@@ -785,10 +786,15 @@ containing a value of this type.
         public static final int nomePosto=0x7f0a0034;
         public static final int normal=0x7f0a0007;
         public static final int pager=0x7f0a0032;
+        public static final int postoLocalizacao=0x7f0a0042;
+        public static final int postoOutrosPostos=0x7f0a0043;
         public static final int showCustom=0x7f0a000b;
         public static final int showHome=0x7f0a000c;
         public static final int showTitle=0x7f0a000d;
         public static final int tabMode=0x7f0a0008;
+        public static final int textView=0x7f0a003f;
+        public static final int textView2=0x7f0a0040;
+        public static final int tipoCombustivel=0x7f0a0041;
         public static final int useLogo=0x7f0a000e;
         public static final int valorCombustivel=0x7f0a0038;
         public static final int wrap_content=0x7f0a000f;
@@ -824,9 +830,10 @@ containing a value of this type.
         public static final int activity_listar_diesel=0x7f040018;
         public static final int activity_listar_gasolina=0x7f040019;
         public static final int activity_main=0x7f04001a;
-        public static final int activity_preferencias=0x7f04001b;
-        public static final int sherlock_spinner_dropdown_item=0x7f04001c;
-        public static final int sherlock_spinner_item=0x7f04001d;
+        public static final int activity_posto_combustivel_detalhes=0x7f04001b;
+        public static final int activity_preferencias=0x7f04001c;
+        public static final int sherlock_spinner_dropdown_item=0x7f04001d;
+        public static final int sherlock_spinner_item=0x7f04001e;
     }
     public static final class menu {
         public static final int menu_aba_gasolina=0x7f0c0000;
@@ -834,8 +841,9 @@ containing a value of this type.
         public static final int menu_list_view_adapter_combustivel=0x7f0c0002;
         public static final int menu_main=0x7f0c0003;
         public static final int menu_novo_preco=0x7f0c0004;
-        public static final int menu_preferencias=0x7f0c0005;
-        public static final int menu_sobre=0x7f0c0006;
+        public static final int menu_posto_combustivel_detalhes=0x7f0c0005;
+        public static final int menu_preferencias=0x7f0c0006;
+        public static final int menu_sobre=0x7f0c0007;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
@@ -860,8 +868,9 @@ containing a value of this type.
         public static final int hello_world=0x7f0b000f;
         public static final int title_activity_combustivel=0x7f0b0010;
         public static final int title_activity_novo_preco=0x7f0b0011;
-        public static final int title_activity_preferencias=0x7f0b0012;
-        public static final int title_activity_sobre=0x7f0b0013;
+        public static final int title_activity_posto_combustivel_detalhes=0x7f0b0012;
+        public static final int title_activity_preferencias=0x7f0b0013;
+        public static final int title_activity_sobre=0x7f0b0014;
     }
     public static final class style {
         /**  Customize your theme here. 

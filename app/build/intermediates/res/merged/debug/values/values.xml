@@ -77,6 +77,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_combustivel">CombustivelActivity</string>
     <string name="title_activity_novo_preco">NovoPrecoActivity</string>
+    <string name="title_activity_posto_combustivel_detalhes">PostoCombustivelDetalhes</string>
     <string name="title_activity_preferencias">PreferenciasActivity</string>
     <string name="title_activity_sobre">SobreActivity</string>
     <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobile_oil/app/src/main/res/values/styles.xml -->
