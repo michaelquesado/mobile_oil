@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\ibyte\AndroidStudioProjects\GIT\app\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="af64527b748983a75de9c0756e9768b56b240a49">
-        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\app\build\intermediates\pre-dexed\debug\classes-5bc89d2a2dc38a6592f6194b92f29804e4296309.jar" />
-    </item>
-    <item
         jar="C:\androidsdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-8a02dae1edea097db27d00feed3624aa1a9d5fe9.jar" />
+        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-8a02dae1edea097db27d00feed3624aa1a9d5fe9.jar" />
+    </item>
+    <item
+        jar="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="af64527b748983a75de9c0756e9768b56b240a49">
+        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\pre-dexed\debug\classes-41ac7be4a804b5039cd8c93a00ab6dbcc84fcab5.jar" />
     </item>
 
 </items>

@@ -13,6 +13,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY.AIzaSyA1VM7lDVrcc06wgM6EQRr1c_DLMHjO4os"
+            android:value="AIzaSyA1VM7lDVrcc06wgM6EQRr1c_DLMHjO4os" />
+
         <activity
             android:name="br.com.fjn.mobileoil.MainActivity"
             android:label="@string/app_name" >
