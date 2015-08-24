@@ -5,4 +5,4 @@
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" />
 </menu>
-<!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/app/src/main/res/menu/menu_preferencias.xml -->
+<!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobile_oil/app/src/main/res/menu/menu_preferencias.xml -->
