@@ -767,39 +767,42 @@ containing a value of this type.
         public static final int abs__textButton=0x7f0a0013;
         public static final int abs__title=0x7f0a001b;
         public static final int abs__up=0x7f0a0005;
-        public static final int action_settings=0x7f0a0048;
-        public static final int continuar_preferencias=0x7f0a0047;
-        public static final int dataAtualizacao=0x7f0a0037;
+        public static final int action_settings=0x7f0a004b;
+        public static final int continuar_preferencias=0x7f0a0049;
+        public static final int dataAtualizacao=0x7f0a0036;
         public static final int disableHome=0x7f0a0009;
         public static final int distanciaPosto=0x7f0a0039;
         public static final int edit_query=0x7f0a0026;
-        public static final int enderecoPosto=0x7f0a0036;
+        public static final int enderecoPosto=0x7f0a0035;
         public static final int entrar_com_facebook=0x7f0a003c;
         public static final int entrar_com_google=0x7f0a003d;
         public static final int entrar_sem_cadastro=0x7f0a003e;
         public static final int homeAsUp=0x7f0a000a;
-        public static final int iconeLocalizacao=0x7f0a0033;
+        public static final int iconeLocalizacao=0x7f0a0038;
         public static final int imageView=0x7f0a003b;
-        public static final int linearLayout=0x7f0a0035;
+        public static final int linearLayout=0x7f0a0034;
         public static final int listMode=0x7f0a0006;
+        public static final int listView=0x7f0a004a;
         public static final int listaPostos=0x7f0a003a;
-        public static final int nomePosto=0x7f0a0034;
+        public static final int nomePosto=0x7f0a0033;
         public static final int normal=0x7f0a0007;
         public static final int pager=0x7f0a0032;
-        public static final int postoLocalizacao=0x7f0a0042;
-        public static final int postoOutrosPostos=0x7f0a0043;
-        public static final int preferenciaAlcool=0x7f0a0044;
-        public static final int preferenciaDiesel=0x7f0a0045;
-        public static final int preferenciaGasolina=0x7f0a0046;
+        public static final int postoLocalizacao=0x7f0a0044;
+        public static final int postoOutrosPostos=0x7f0a0045;
+        public static final int preferenciaAlcool=0x7f0a0046;
+        public static final int preferenciaDiesel=0x7f0a0047;
+        public static final int preferenciaGasolina=0x7f0a0048;
         public static final int showCustom=0x7f0a000b;
         public static final int showHome=0x7f0a000c;
         public static final int showTitle=0x7f0a000d;
         public static final int tabMode=0x7f0a0008;
         public static final int textView=0x7f0a003f;
         public static final int textView2=0x7f0a0040;
-        public static final int tipoCombustivel=0x7f0a0041;
+        public static final int textView3=0x7f0a0041;
+        public static final int textView4=0x7f0a0042;
+        public static final int tipoCombustivel=0x7f0a0043;
         public static final int useLogo=0x7f0a000e;
-        public static final int valorCombustivel=0x7f0a0038;
+        public static final int valorCombustivel=0x7f0a0037;
         public static final int wrap_content=0x7f0a000f;
     }
     public static final class integer {
@@ -837,6 +840,7 @@ containing a value of this type.
         public static final int activity_preferencias=0x7f04001c;
         public static final int sherlock_spinner_dropdown_item=0x7f04001d;
         public static final int sherlock_spinner_item=0x7f04001e;
+        public static final int teste=0x7f04001f;
     }
     public static final class menu {
         public static final int menu_aba_gasolina=0x7f0c0000;

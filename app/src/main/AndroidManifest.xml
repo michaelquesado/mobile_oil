@@ -11,11 +11,12 @@
 
         <meta-data
             android:name="com.google.android.geo.AIzaSyDBY5thaT91z7Lc8fnz9Bzhgvc_kTmY-Vg"
-            android:value="AIzaSyDBY5thaT91z7Lc8fnz9Bzhgvc_kTmY-Vg"/>
+            android:value="AIzaSyDBY5thaT91z7Lc8fnz9Bzhgvc_kTmY-Vg" />
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,13 +24,16 @@
         </activity>
         <activity
             android:name=".PreferenciasActivity"
-            android:label="@string/title_activity_preferencias" />
+            android:label="@string/title_activity_preferencias"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CombustivelActivity"
-            android:label="@string/title_activity_combustivel" />
+            android:label="@string/title_activity_combustivel"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PostoCombustivelDetalhes"
-            android:label="@string/title_activity_posto_combustivel_detalhes"></activity>
+            android:label="@string/title_activity_posto_combustivel_detalhes"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -56,7 +55,6 @@ public class ListViewAdapterCombustivel extends BaseAdapter {
 
             // Instanciando e inicializando o Holder desta classe.
             vhac = new ViewHolderAdapterCategoria();
-            vhac.postoIcone = (ImageView) convertView.findViewById(R.id.iconeLocalizacao);
             vhac.postoNome = (TextView) convertView.findViewById(R.id.nomePosto);
             vhac.postoEndereco = (TextView) convertView.findViewById(R.id.enderecoPosto);
             vhac.postoValorCombustivel = (TextView) convertView.findViewById(R.id.dataAtualizacao);
@@ -65,7 +63,6 @@ public class ListViewAdapterCombustivel extends BaseAdapter {
             vhac.postoDataAtualizacao = (TextView) convertView.findViewById(R.id.distanciaPosto);
 
             // Setando os valores para os elementos da view xml.
-            vhac.postoIcone.setImageResource(R.mipmap.ic_place_black_48dp);
             vhac.postoNome.setText(postoCombustivel.getNomePosto());
             vhac.postoEndereco.setText(postoCombustivel.getEndereco());
             vhac.postoValorCombustivel.setText(postoCombustivel.getValorCombustivel());
@@ -88,7 +85,6 @@ public class ListViewAdapterCombustivel extends BaseAdapter {
     // estou reaproveitando os elementos de view internos.
 
     static class ViewHolderAdapterCategoria {
-        ImageView postoIcone;
         TextView postoNome;
         TextView postoEndereco;
         TextView postoDataAtualizacao;

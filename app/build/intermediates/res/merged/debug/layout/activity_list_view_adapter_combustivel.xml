@@ -5,16 +5,6 @@
     android:padding="16dp"
     tools:context="mobileoil.uelionobre.com.br.mobileoil.adapters.ListViewAdapterCombustivel">
 
-    <ImageView
-        android:id="@+id/iconeLocalizacao"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="4dp"
-        android:src="@mipmap/ic_place_black_48dp" />
-
     <TextView
         android:id="@+id/nomePosto"
         android:layout_width="wrap_content"
@@ -22,10 +12,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="4dp"
         android:layout_toLeftOf="@+id/linearLayout"
-        android:layout_toRightOf="@+id/iconeLocalizacao"
-        android:layout_toStartOf="@+id/linearLayout"
         android:text="Auto Posto Raimundo Neto"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/enderecoPosto"

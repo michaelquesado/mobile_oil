@@ -129,6 +129,7 @@ public class PostoCombustivelDetalhes extends Activity implements AdapterView.On
         it.putExtra("postoDistancia", posto.getDistanciaPosto());
         it.putExtra("postoTipoCombustivel", "Alcool");
         startActivity(it);
+        finish();
     }
 }
 
