@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MobileOil</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_preferencias">PreferenciasActivity</string>
+    <string name="title_activity_sobre">SobreActivity</string>
+    <string name="title_activity_novo_preco">NovoPrecoActivity</string>
+    <string name="title_activity_combustivel">CombustivelActivity</string>
+    <string name="title_activity_posto_combustivel_detalhes">PostoCombustivelDetalhes</string>
+</resources>
