@@ -767,8 +767,8 @@ containing a value of this type.
         public static final int abs__textButton=0x7f0a0013;
         public static final int abs__title=0x7f0a001b;
         public static final int abs__up=0x7f0a0005;
-        public static final int action_settings=0x7f0a0045;
-        public static final int continuar_preferencias=0x7f0a0044;
+        public static final int action_settings=0x7f0a0048;
+        public static final int continuar_preferencias=0x7f0a0047;
         public static final int dataAtualizacao=0x7f0a0037;
         public static final int disableHome=0x7f0a0009;
         public static final int distanciaPosto=0x7f0a0039;
@@ -788,6 +788,9 @@ containing a value of this type.
         public static final int pager=0x7f0a0032;
         public static final int postoLocalizacao=0x7f0a0042;
         public static final int postoOutrosPostos=0x7f0a0043;
+        public static final int preferenciaAlcool=0x7f0a0044;
+        public static final int preferenciaDiesel=0x7f0a0045;
+        public static final int preferenciaGasolina=0x7f0a0046;
         public static final int showCustom=0x7f0a000b;
         public static final int showHome=0x7f0a000c;
         public static final int showTitle=0x7f0a000d;
