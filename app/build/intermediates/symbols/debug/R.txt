@@ -379,10 +379,8 @@ int string action_settings 0x7f0b000d
 int string app_name 0x7f0b000e
 int string hello_world 0x7f0b000f
 int string title_activity_combustivel 0x7f0b0010
-int string title_activity_novo_preco 0x7f0b0011
-int string title_activity_posto_combustivel_detalhes 0x7f0b0012
-int string title_activity_preferencias 0x7f0b0013
-int string title_activity_sobre 0x7f0b0014
+int string title_activity_posto_combustivel_detalhes 0x7f0b0011
+int string title_activity_preferencias 0x7f0b0012
 int style AppTheme 0x7f080038
 int style Sherlock___TextAppearance_Small 0x7f080039
 int style Sherlock___Theme 0x7f080000

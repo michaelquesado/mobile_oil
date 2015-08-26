@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference|color" name="background"/>
     <attr format="reference|color" name="backgroundSplit"/>
@@ -44,11 +44,11 @@
     <dimen name="abs__dropdownitem_text_padding_right">8dip</dimen>
     <dimen name="abs__search_view_preferred_width">320dip</dimen>
     <dimen name="abs__search_view_text_min_width">160dip</dimen>
-    <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobile_oil/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
     <eat-comment/>
     <item name="abs__action_menu_divider" type="id"/>
     <item name="abs__action_menu_presenter" type="id"/>
@@ -70,22 +70,20 @@
     <string name="abs__searchview_description_voice">Voice search</string>
     <string name="abs__shareactionprovider_share_with">Share with</string>
     <string name="abs__shareactionprovider_share_with_application">Share with <ns1:g example="Bluetooth" id="application_name">%s</ns1:g></string>
-    <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobile_oil/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="app_name">MobileOil</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_combustivel">CombustivelActivity</string>
-    <string name="title_activity_novo_preco">NovoPrecoActivity</string>
-    <string name="title_activity_posto_combustivel_detalhes">PostoCombustivelDetalhes</string>
-    <string name="title_activity_preferencias">PreferenciasActivity</string>
-    <string name="title_activity_sobre">SobreActivity</string>
-    <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobile_oil/app/src/main/res/values/styles.xml -->
+    <string name="title_activity_combustivel">Lista</string>
+    <string name="title_activity_posto_combustivel_detalhes">Detalhes</string>
+    <string name="title_activity_preferencias">Preferências</string>
+    <!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
-    <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Sherlock.__TextAppearance.Small" parent="Widget">
         <item name="android:textSize">14sp</item>
