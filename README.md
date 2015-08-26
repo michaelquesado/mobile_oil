@@ -14,7 +14,7 @@ WS contruido com o intuito de servir aplicação movel Mobile Oil.
 
 ## Exemplo de requisição get
 
-'''javascript
+```javascript
  	$.ajax({ 
         type: 'get',
         url: 'http://localhost/ws_mobile_oil/Combustiveis/getCombustiveis',
@@ -27,13 +27,13 @@ WS contruido com o intuito de servir aplicação movel Mobile Oil.
         url: 'http://localhost/ws_mobile_oil/Preferencias/getPreferenciasUsuarioId/1',
     });
 
-'''
+```
 
 
 
 ## Exemplo de requisição post
 
-'''javascript
+```javascript
 	>cadastrar usuario
 
 	$.ajax({
@@ -109,11 +109,10 @@ WS contruido com o intuito de servir aplicação movel Mobile Oil.
         }
     });
     
-
-'''
+```
 ### SQL Banco
 
-'''sql
+```sql
 create table users(
 	id serial not null primary key,
 	username varchar(50),
@@ -144,7 +143,7 @@ create table postos(
 	endereco varchar(255)
 );
 
-'''
+```
 
 ## Padrões
 
