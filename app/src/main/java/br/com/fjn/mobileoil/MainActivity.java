@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -16,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener,LocationListener {
@@ -26,7 +23,6 @@ public class MainActivity extends Activity implements View.OnClickListener,Locat
 
     private String TAG = "-----------------------------------";
     private LocationManager locationManager;
-    private String provider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +37,6 @@ public class MainActivity extends Activity implements View.OnClickListener,Locat
         mEntrarGooglePlus.setOnClickListener(this);
         mEntrarSemCadastro.setOnClickListener(this);
 
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
-        provider = locationManager.getBestProvider(criteria, true);
-        Log.i(TAG, "-------------------------------------"+ provider);
-        Location location = locationManager.getLastKnownLocation(provider);
-        Log.i(TAG, "-------------------------------------"+ location);
-        if(location !=null){
-            Log.i(TAG, "------------------------------------------------- Entrou no If");
-            Log.i(TAG, "Provider :" + provider + " foi selecionado ");
-        }else{
-            Log.i(TAG, "------------------------------------------------- ENtrou no else");
-            onProviderDisabled(provider);
-        }
     }
 
     @Override
@@ -91,11 +74,16 @@ public class MainActivity extends Activity implements View.OnClickListener,Locat
 
 
     @Override
-    public void onResume(){
-        super.onResume();
+    public void onResume() {
         Log.i(TAG, "Chamou o metodo onResume");
         super.onResume();
-        locationManager.requestLocationUpdates(provider, 0, 0, this);
+
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        }else{
+            onProviderDisabled(LocationManager.GPS_PROVIDER);
+        }
     }
 
     @Override
@@ -140,7 +128,6 @@ public class MainActivity extends Activity implements View.OnClickListener,Locat
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
                 Toast.makeText(getApplicationContext(), "Para usar o APP é preciso ativar GPS!!!", Toast.LENGTH_LONG).show();
-                finish();
             }
         });
         AlertDialog alert = alertDialogBuilder.create();
