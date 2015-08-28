@@ -15,13 +15,12 @@ WS contruido com o intuito de servir aplicação movel Mobile Oil.
 ## Exemplo de requisição get
 
 ```javascript
+    
+    >Buscando tipos de combustiveis.
 
     GET /ws_mobile_oil/Combustiveis/getCombustiveis HTTP/1.1
     Host: localhost
 
-    HTTP/1.1 200 OK
-    Content-Type: text/xml; charset=utf-8
-    Content-Length: length
 
     [{"id":1,"nome":"Gasolina","subcategoria_id":0},{"id":2,"nome":"Gasolina Aditivada","subcategoria_id":1},{"id":3,"nome":"Diesel","subcategoria_id":0},{"id":4,"nome":"Etanol","subcategoria_id":0}]
 
@@ -31,9 +30,6 @@ WS contruido com o intuito de servir aplicação movel Mobile Oil.
     GET /ws_mobile_oil/Preferencias/getPreferenciasUsuarioId/1 HTTP/1.1
     Host: localhost
 
-    HTTP/1.1 200 OK
-    Content-Type: text/xml; charset=utf-8
-    Content-Length: length
 
     [{"id":1,"combustivel_id":1,"user_id":1},{"id":2,"combustivel_id":2,"user_id":1}]
 
