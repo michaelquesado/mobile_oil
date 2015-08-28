@@ -97,11 +97,10 @@
                 android:text="Como Chegar"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <ImageView
-                android:id="@+id/postoLocalizacao"
+            <fragment android:id="@+id/postoLocalizacao"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:src="@drawable/mapa" />
+                class="com.google.android.gms.maps.SupportMapFragment" />
 
             <TextView
                 android:layout_width="match_parent"

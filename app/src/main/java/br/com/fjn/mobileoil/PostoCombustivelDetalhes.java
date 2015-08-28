@@ -3,7 +3,10 @@ package br.com.fjn.mobileoil;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +16,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -21,7 +30,7 @@ import java.util.List;
 import br.com.fjn.mobileoil.adapters.ListViewAdapterCombustivel;
 import br.com.fjn.mobileoil.models.PostosCombustivel;
 
-public class PostoCombustivelDetalhes extends Activity implements AdapterView.OnItemClickListener {
+public class PostoCombustivelDetalhes extends FragmentActivity implements AdapterView.OnItemClickListener {
 
     private List<PostosCombustivel> list;
 
@@ -38,6 +47,8 @@ public class PostoCombustivelDetalhes extends Activity implements AdapterView.On
     private String postoDistancia;
 
     private Intent it;
+
+    private GoogleMap googleMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +89,38 @@ public class PostoCombustivelDetalhes extends Activity implements AdapterView.On
         ListViewAdapterCombustivel adapterCombustivel = new ListViewAdapterCombustivel(context, list);
         mOutrosValoresProximos.setAdapter(adapterCombustivel);
         mOutrosValoresProximos.setOnItemClickListener(this);
+
+        setUpMapIfNeeded();
+    }
+
+
+    private void setUpMapIfNeeded() {
+        //Faça uma verificação nula para verificar se já  temos  o mapa instanciado
+        if(googleMap == null){
+            //Tentar obter o mapa do SupportMapFragment
+            googleMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.postoLocalizacao)).getMap();
+        }
+        //Verificar se fomos bem sucedidos na obtenção do mapa
+        if(googleMap != null){
+            setUpMap();
+        }
+    }
+
+    private void setUpMap() {
+        googleMap.setMyLocationEnabled(true);
+
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        locationManager.isProviderEnabled(locationManager.GPS_PROVIDER);
+        Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
+
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+
+        LatLng latLng = new LatLng(latitude,longitude);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)).title("Você está aqui!"));
     }
 
 

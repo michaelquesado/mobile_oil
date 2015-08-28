@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:2:1-41:12
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:2:1-58:12
 	package
 		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:3:5-35
 		INJECTED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml
@@ -13,83 +13,131 @@ ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidM
 	android:versionCode
 		INJECTED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml
-uses-permission#android.permission.INTERNET
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:5:5-66
+permission#br.com.fjn.mobileoil.MAPS_RECEIVE
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:5:5-103
+	android:protectionLevel
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:5:66-101
 	android:name
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:5:22-64
-uses-permission#android.permission.ACCESS_FINE_LOCATION
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:5:17-65
+uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:6:5-79
 	android:name
 		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:6:22-76
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:7:5-66
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:7:22-64
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:8:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:7:5-80
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:9:5-80
 	android:name
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:7:22-78
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:9:22-78
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:10:5-80
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:10:22-78
+uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:11:5-97
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:11:22-95
+uses-permission#MAPS_RECEIVE
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:12:5-51
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:12:22-49
+uses-feature#0x00020000
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:14:5-17:11
+	android:glEsVersion
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:15:9-41
+	android:required
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:16:9-32
 application
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:8:5-39:19
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:20:5-56:19
 MERGED from [com.actionbarsherlock:actionbarsherlock:4.4.0] C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\AndroidManifest.xml:4:3-17
+MERGED from [com.google.android.gms:play-services:6.5.87] C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:21.0.0] C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\AndroidManifest.xml:16:5-19
 	android:label
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:11:9-41
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:23:9-41
 	android:allowBackup
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:9:9-35
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:21:9-35
 	android:icon
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:10:9-43
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:22:9-43
 	android:theme
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:12:9-40
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:24:9-40
+uses-library#com.google.android.maps
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:25:9-64
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:25:23-61
 meta-data#com.google.android.geo.AIzaSyDBY5thaT91z7Lc8fnz9Bzhgvc_kTmY-Vg
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:14:9-16:71
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:27:9-29:71
 	android:value
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:16:13-68
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:29:13-68
 	android:name
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:15:13-90
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:28:13-90
 activity#br.com.fjn.mobileoil.MainActivity
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:18:9-26:20
-	android:screenOrientation
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:21:13-49
-	android:label
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:20:13-45
-	android:name
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:19:13-41
-intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:22:13-25:29
-action#android.intent.action.MAIN
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:23:17-69
-	android:name
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:23:25-66
-category#android.intent.category.LAUNCHER
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:24:17-77
-	android:name
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:24:27-74
-activity#br.com.fjn.mobileoil.PreferenciasActivity
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:27:9-30:52
-	android:screenOrientation
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:30:13-49
-	android:label
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:29:13-64
-	android:name
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:28:13-49
-activity#br.com.fjn.mobileoil.CombustivelActivity
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:31:9-34:52
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:31:9-39:20
 	android:screenOrientation
 		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:34:13-49
 	android:label
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:33:13-63
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:33:13-45
 	android:name
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:32:13-48
-activity#br.com.fjn.mobileoil.PostoCombustivelDetalhes
-ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:35:9-38:61
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:32:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:35:13-38:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:36:17-69
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:36:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:37:17-77
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:37:27-74
+activity#br.com.fjn.mobileoil.PreferenciasActivity
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:40:9-43:52
 	android:screenOrientation
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:38:13-49
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:43:13-49
 	android:label
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:37:13-78
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:42:13-64
 	android:name
-		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:36:13-53
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:41:13-49
+activity#br.com.fjn.mobileoil.CombustivelActivity
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:44:9-47:52
+	android:screenOrientation
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:47:13-49
+	android:label
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:46:13-63
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:45:13-48
+activity#br.com.fjn.mobileoil.PostoCombustivelDetalhes
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:48:9-51:61
+	android:screenOrientation
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:51:13-49
+	android:label
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:50:13-78
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:49:13-53
+meta-data#com.google.android.maps.v2.API_KEY
+ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:53:9-54:70
+	android:value
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:54:13-68
+	android:name
+		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:53:20-69
 uses-sdk
 INJECTED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.actionbarsherlock:actionbarsherlock:4.4.0] C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\AndroidManifest.xml:3:3-70
+MERGED from [com.google.android.gms:play-services:6.5.87] C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:21.0.0] C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\AndroidManifest.xml:15:5-42
 	android:targetSdkVersion
 		INJECTED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services:6.5.87] C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services:6.5.87] C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services:6.5.87] C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\AndroidManifest.xml:22:13-58
