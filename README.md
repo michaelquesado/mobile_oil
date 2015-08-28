@@ -5,33 +5,31 @@ WS contruido com o intuito de servir aplicação movel Mobile Oil.
 
 ## Configuraçoes
 <ul>
-<li>MOD_REWRITE</li>
-<li>PDO</li>
-<li>PDO_PGSQL</li>
-<li>DISPLAY_ERROS</li>
-<li>JQUERY</li>
+    <li>MOD_REWRITE</li>
+    <li>PDO</li>
+    <li>PDO_PGSQL</li>
+    <li>DISPLAY_ERROS</li>
+    <li>JQUERY</li>
 </ul>
 
 ## Exemplo de requisição get
 
 ```javascript
-    
-    >Buscando tipos de combustiveis.
 
-    GET /ws_mobile_oil/Combustiveis/getCombustiveis HTTP/1.1
-    Host: localhost
+>Buscando tipos de combustiveis.
 
+GET /ws_mobile_oil/Combustiveis/getCombustiveis HTTP/1.1
+Host: localhost
 
-    [{"id":1,"nome":"Gasolina","subcategoria_id":0},{"id":2,"nome":"Gasolina Aditivada","subcategoria_id":1},{"id":3,"nome":"Diesel","subcategoria_id":0},{"id":4,"nome":"Etanol","subcategoria_id":0}]
+[{"id":1,"nome":"Gasolina","subcategoria_id":0},{"id":2,"nome":"Gasolina Aditivada","subcategoria_id":1},{"id":3,"nome":"Diesel","subcategoria_id":0},{"id":4,"nome":"Etanol","subcategoria_id":0}]
 
-	>Buscar preferencia de combustivel usuario
-     
-
-    GET /ws_mobile_oil/Preferencias/getPreferenciasUsuarioId/1 HTTP/1.1
-    Host: localhost
+>Buscar preferencia de combustivel usuario
 
 
-    [{"id":1,"combustivel_id":1,"user_id":1},{"id":2,"combustivel_id":2,"user_id":1}]
+GET /ws_mobile_oil/Preferencias/getPreferenciasUsuarioId/1 HTTP/1.1
+Host: localhost
+
+[{"id":1,"combustivel_id":1,"user_id":1},{"id":2,"combustivel_id":2,"user_id":1}]
 
 ```
 
@@ -40,121 +38,71 @@ WS contruido com o intuito de servir aplicação movel Mobile Oil.
 ## Exemplo de requisição post
 
 ```javascript
-	>cadastrar usuario
+>cadastrar usuario
 
-	$.ajax({
-		type: 'post',
-		url: 'http://localhost/ws_mobile_oil/Login/cadastro',
-		data: {
-			username: 'coldpegasus',
-			pass: '123456',
-			email: 'aguaiMaxima@mail.com', 
-			created: '2015-10-15 11:40:16.242511-03' 
-		}
-	});
+POST /ws_mobile_oil/Login/cadastro HTTP/1.1
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: length
+
+username=coldpegasusTemUmFa&pass=123456&email=aguaiMaxima%40mail.com&created=2015-10-15+11%3A40%3A16
+.242511-03
 
 
-	>logar usuario
+>logar usuario
 
-	$.ajax({ 
-        type: 'post',
-        url: 'http://localhost/ws_mobile_oil/Login/logar',
-        data:{
-        	
-        	pass: '123456',
-			email: 'aguaiMaxima@mail.com', 
-        }
+POST /ws_mobile_oil/Login/logar HTTP/1.1
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: length
 
-	});
-
-	>adicionar preferencia
-	
-	 $.ajax({ 
-        type: 'post',
-        url: 'http://localhost/ws_mobile_oil/Preferencias/cadastrar',
-        data:{
-            user_id: 1,
-            combustivel_id: 2 
-        }
-    });
-
-    >adicionar combustivel
-
-      $.ajax({ 
-        type: 'post',
-        url: 'http://localhost/ws_mobile_oil/Combustiveis/cadastrar',
-        data:{
-            nome: 'Etanol',
-            subcategoria_id: 0 
-        }
-    });
-
-    >adicionar posto de combustivel
-
-      $.ajax({ 
-        type: 'POST',
-        url: 'http://localhost/ws_mobile_oil/Postos/cadastrar',
-        data:{
-            nome : 'AutoPosto La em Casa',
-            latitude: '19.9000999000',
-            longitude: '78.0000999000'
-        }
-    });
+pass=123456&email=aguaiMaxima%40mail.com
 
 
-     >adicionar preco a um posto
+>adicionar preferencia
 
-      $.ajax({ 
-        type: 'POST',
-        url: 'http://localhost/ws_mobile_oil/Precos/cadastrar',
-        data:{
-            posto_id: 1,
-            valor: 3.50,
-            combustivel_id: 1,
-            usuario_id: 1
-        }
-    });
-    
-```
-### SQL Banco
+POST /ws_mobile_oil/Preferencias/cadastrar HTTP/1.1
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: length
 
-```sql
-create table users(
-	id serial not null primary key,
-	username varchar(50),
-	pass varchar(60),
-	email varchar(30),
-	created timestamp with time zone DEFAULT now()
-);
+user_id=1&combustivel_id=2
 
-create table combustiveis(
-	 id serial not null primary key,
-	 nome varchar(20),
- 	 subcategoria_id integer
-);
+>adicionar combustivel
 
-create table preferencias(
- 	id serial not null,
- 	combustivel_id integer not null,
- 	user_id integer not null,
- 	foreign key (combustivel_id) references combustiveis (id),
- 	foreign key (user_id) references users(id)
-);
+POST /ws_mobile_oil/Combustiveis/cadastrar HTTP/1.1
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: length
 
-create table postos(
-	id serial not null,
-	nome varchar(80),
-	latitude varchar(25),
-	longitude varchar(25),
-	endereco varchar(255)
-);
+nome=Etanol&subcategoria_id=0
+
+
+>adicionar posto de combustivel
+
+POST /ws_mobile_oil/Postos/cadastrar HTTP/1.1
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: length
+
+nome=AutoPosto la em casa de coldpegasus&latitude=19.909090909&longitude=78.0000000
+
+
+>adicionar preco a um posto
+
+POST /ws_mobile_oil/Precos/cadastrar HTTP/1.1
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: length
+
+posto_id=1&valor=3.50&combustivel_id=1&usuario_id=1
 
 ```
 
 ## Padrões
 
 <ul>
-<li>MVC</li>
-<li>REST</li>
+    <li>MVC</li>
+    <li>REST</li>
 </ul>
 
