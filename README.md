@@ -9,7 +9,6 @@ WS contruido com o intuito de servir aplicação movel Mobile Oil.
     <li>PDO</li>
     <li>PDO_PGSQL</li>
     <li>DISPLAY_ERROS</li>
-    <li>JQUERY</li>
 </ul>
 
 ## Exemplo de requisição get
