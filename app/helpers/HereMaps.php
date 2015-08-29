@@ -3,12 +3,13 @@ class HereMaps {
 	
 	private $link = "http://places.api.here.com/places/v1/discover/search?at=latitude,longitude&q=petrol-station&app_id=hG4gnJyrmlbNgGscL7Ki&app_code=h3XG36Nr4RgQOjymUTblJQ&pretty";
 	private $postos;
+	private $precosPostos = array();
 
 	public function __construct($lat, $long){
 
 		$this->changeLink($lat, $long);
 		$this->buscaPostos();
-		$this->novosPostos();
+		$this->verificaPostos();
 
 	}
 
@@ -27,26 +28,41 @@ class HereMaps {
 	}
 
 
-	private function novosPostos(){
+	private function verificaPostos(){
 
 		$posto = new Posto();
+		$preco = new Preco();
+		$combustiveis = new Combustivel();
 
 		foreach($this->postos->results->items as $p){
 
 			try {
 
 				$posto->cadastrar(
-					  [  
-						'nome' 		 =>  $p->title,
-						'latitude'   =>	 $p->position[0],
-						'longitude'  =>	 $p->position[1],
-						'maps_id'	 =>  $p->id
-					  ]
-					);	
+					[  
+					'nome' 		 =>  $p->title,
+					'latitude'   =>	 $p->position[0],
+					'longitude'  =>	 $p->position[1],
+					'maps_id'	 =>  $p->id
+					]
+					);
+
+				foreach($combustiveis->getTodosCombustiveis() as $c){
+					$preco->addPreco(
+						[	
+						'valor'            => -1,
+						'combustivel_id'   => $c['id'],
+						'usuario_id'	   => 0,
+						'posto_id'		   => $p->id
+						]
+						);
+				}
 
 			} catch (Exception $e) {
 				continue;
 			}
+
+			
 		}
 
 		$posto = null;
