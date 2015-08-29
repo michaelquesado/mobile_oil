@@ -6,13 +6,19 @@ require_once('system/System.php');
 define('DS', '/');
 define('CONTROLLER','app/Controller/');
 define('MODEL', 'app/Model/');
-
+define('HELPERS', 'app/helpers/');
 
 function __autoload($file) {
     $file .= ".php";
     if (file_exists(MODEL . $file)) {
+    	
         require_once(MODEL . $file);
-    } else {
+
+    }elseif(file_exists(HELPERS . $file)){
+
+		require_once(HELPERS.$file);
+
+	} else {
         die('Erro ao tentar carregar arquivo ' . $file);
     }
 }

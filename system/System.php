@@ -52,21 +52,41 @@ Class System {
        /**
      * Os parametros passados seram setados dentro de _params
      */
-    private function setParams() {
+       private function setParams() {
+
+
         if(count($_POST) > 0)
-         return $this->params = $_POST;
+           return $this->params = $_POST;
 
-        $explode_aux = $this->explode;
-        /* removendo o controller e a action, aqui so trabalhamos com os parametros */
-        unset($explode_aux[0], $explode_aux[1]);
+       $explode_aux = $this->explode;
+       /* removendo o controller e a action, aqui so trabalhamos com os parametros */
+       unset($explode_aux[0], $explode_aux[1]);
 
-        if (end($explode_aux) == null) {
-            array_pop($explode_aux);
-        }
-        
-       return $this->params = $explode_aux;
+       if (end($explode_aux) == null) {
+        array_pop($explode_aux);
     }
 
+    return $this->params = $explode_aux;
+
+    }
+
+    private function getParams(){
+        if(empty($this->params)) return null;
+        if(count($_POST) > 0) return $this->params;
+
+        $aux = array();
+        foreach($this->params as $k => $v){
+            if($k % 2 == 0 )            
+                $key = $v;
+            else
+                $aux[$key] = $v;
+        }
+
+        return $aux;
+
+
+    }
+    
     private function getURL() {
         return $this->url;
     }
@@ -76,7 +96,6 @@ Class System {
      */
     public function Run() {
 
-        
         $controller_path = CONTROLLER . $this->controller . '.php';
 
         if(!file_exists($controller_path)){
@@ -87,24 +106,16 @@ Class System {
         $app = new $this->controller(); 
 
         $action = $this->action;
+        
 
         if(!method_exists($app,$action)){
-            die($this->controller);
+            die('Metodo não existe em ' . $this->controller);
         }
         try {
-            return json_encode($app->$action((!empty($this->params)? $this->params : NULL)));    
+            return json_encode($app->$action( (!empty($this->getParams()  ))? $this->getParams() : NULL  ) );    
         } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-    }
 
-    /**
-     * Metodo reponsavel por debug uma variavel.
-     */
-    public function pre($pre) {
-        print"<pre>";
-        print_r($pre);
-        print"</pre>";
+        }
     }
 
 }
