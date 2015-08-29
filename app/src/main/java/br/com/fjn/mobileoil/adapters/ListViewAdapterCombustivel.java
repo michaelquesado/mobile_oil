@@ -19,9 +19,15 @@ public class ListViewAdapterCombustivel extends BaseAdapter {
     private LayoutInflater inflater;
     private List<PostosCombustivel> postosCombustivelList;
 
-    public ListViewAdapterCombustivel(Context context, List<PostosCombustivel> postosCombustivelList) {
+    public ListViewAdapterCombustivel() {
+    }
+
+    public void setContext(Context context) {
         this.context = context;
-        this.postosCombustivelList = postosCombustivelList;
+    }
+
+    public void setPostosCombustivelList(List<PostosCombustivel> list) {
+        postosCombustivelList = list;
     }
 
     @Override
@@ -42,18 +48,16 @@ public class ListViewAdapterCombustivel extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        // Obtem o objetivo de acordo com sua posição.
-        // Observe que tenho que fazer um cast porque o método desta classe me retorna commo objeto.
         PostosCombustivel postoCombustivel = (PostosCombustivel) getItem(position);
 
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ViewHolderAdapterCategoria vhac;
 
-        // Agora vou reaproveitar algumas view para que o android não fique só criando.
+        // Reciclando view.
         if (convertView == null) {
+            inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.activity_list_view_adapter_combustivel, null, false);
 
-            // Instanciando e inicializando o Holder desta classe.
+            // Criando HolderView
             vhac = new ViewHolderAdapterCategoria();
             vhac.postoNome = (TextView) convertView.findViewById(R.id.nomePosto);
             vhac.postoEndereco = (TextView) convertView.findViewById(R.id.enderecoPosto);
@@ -61,28 +65,19 @@ public class ListViewAdapterCombustivel extends BaseAdapter {
             vhac.postoDataAtualizacao = (TextView) convertView.findViewById(R.id.valorCombustivel);
             vhac.postoDistancia = (TextView) convertView.findViewById(R.id.dataAtualizacao);
             vhac.postoDataAtualizacao = (TextView) convertView.findViewById(R.id.distanciaPosto);
-
-            // Setando os valores para os elementos da view xml.
-            vhac.postoNome.setText(postoCombustivel.getNomePosto());
-            vhac.postoEndereco.setText(postoCombustivel.getEndereco());
-            vhac.postoValorCombustivel.setText(postoCombustivel.getValorCombustivel());
-            vhac.postoDataAtualizacao.setText(postoCombustivel.getDataAtualizacao());
-            vhac.postoDistancia.setText(postoCombustivel.getDistanciaPosto());
             convertView.setTag(vhac);
         } else {
             vhac = (ViewHolderAdapterCategoria) convertView.getTag();
         }
+
+        // Setando os valores para os elementos da view xml.
+        vhac.postoNome.setText(postoCombustivel.getNomePosto());
+        vhac.postoEndereco.setText(postoCombustivel.getEndereco());
+        vhac.postoValorCombustivel.setText(postoCombustivel.getValorCombustivel());
+        vhac.postoDataAtualizacao.setText(postoCombustivel.getDataAtualizacao());
+        vhac.postoDistancia.setText(postoCombustivel.getDistanciaPosto());
         return convertView;
     }
-
-    // Esta técnica obtem um maior desempenho sobre os elementos
-    // que o método getView retorna.
-    // Se eu não utilizasse esta técnica, a cada item da lista o
-    // método cria novas instancias dos itens contidas nela.
-    // Com esta técnica, os componentes de view São criados e
-    // depois reutilizados.
-    // Ou seja, alem de reutilizar as vies da propria lista,
-    // estou reaproveitando os elementos de view internos.
 
     static class ViewHolderAdapterCategoria {
         TextView postoNome;

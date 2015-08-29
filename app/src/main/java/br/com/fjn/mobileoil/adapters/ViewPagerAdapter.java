@@ -11,7 +11,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 3;
 
-    public ViewPagerAdapter(FragmentManager fm) {
+    public ViewPagerAdapter(FragmentManager fm, String coordenadas) {
         super(fm);
     }
 

@@ -16,7 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements View.OnClickListener,LocationListener {
+public class MainActivity extends Activity implements View.OnClickListener, LocationListener {
+
     private Button mEntrarFacebook;
     private Button mEntrarGooglePlus;
     private Button mEntrarSemCadastro;
@@ -79,15 +80,15 @@ public class MainActivity extends Activity implements View.OnClickListener,Locat
         super.onResume();
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        }else{
+        } else {
             onProviderDisabled(LocationManager.GPS_PROVIDER);
         }
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
         Log.i(TAG, "Chamou o metodo onPause");
         locationManager.removeUpdates(this);
@@ -98,8 +99,8 @@ public class MainActivity extends Activity implements View.OnClickListener,Locat
         Log.i(TAG, "Chamou o metodo onLocationChange");
         double lat = location.getLatitude();
         double lng = location.getLongitude();
-        Log.i(TAG, "----------------------------------------------"+lat);
-        Log.i(TAG, "----------------------------------------------"+lng);
+        Log.i(TAG, "----------------------------------------------" + lat);
+        Log.i(TAG, "----------------------------------------------" + lng);
     }
 
     @Override

@@ -1,28 +1,24 @@
 package br.com.fjn.mobileoil;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.w3c.dom.Text;
+import com.google.android.gms.maps.model.l;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +82,9 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
             list.add(p);
         }
 
-        ListViewAdapterCombustivel adapterCombustivel = new ListViewAdapterCombustivel(context, list);
+        ListViewAdapterCombustivel adapterCombustivel = new ListViewAdapterCombustivel();
+        adapterCombustivel.setContext(this);
+        adapterCombustivel.setPostosCombustivelList(list);
         mOutrosValoresProximos.setAdapter(adapterCombustivel);
         mOutrosValoresProximos.setOnItemClickListener(this);
 
@@ -96,12 +94,12 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
 
     private void setUpMapIfNeeded() {
         //Faça uma verificação nula para verificar se já  temos  o mapa instanciado
-        if(googleMap == null){
+        if (googleMap == null) {
             //Tentar obter o mapa do SupportMapFragment
             googleMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.postoLocalizacao)).getMap();
         }
         //Verificar se fomos bem sucedidos na obtenção do mapa
-        if(googleMap != null){
+        if (googleMap != null) {
             setUpMap();
         }
     }
@@ -117,10 +115,10 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
 
-        LatLng latLng = new LatLng(latitude,longitude);
+        LatLng latLng = new LatLng(latitude, longitude);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)).title("Você está aqui!"));
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("Você está aqui!"));
     }
 
 

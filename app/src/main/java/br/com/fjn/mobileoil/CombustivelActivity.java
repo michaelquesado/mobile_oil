@@ -1,21 +1,26 @@
 package br.com.fjn.mobileoil;
 
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 import br.com.fjn.mobileoil.adapters.ViewPagerAdapter;
+import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
 public class CombustivelActivity extends SherlockFragmentActivity {
 
-    ActionBar mActionBar;
-    ViewPager mPager;
-    Tab tab;
+    private ActionBar mActionBar;
+    private ViewPager mPager;
+    private Tab tab;
+    private LocationManager locationManager;
+    private final String TAG = "POSICAO_ACT_COMBUSTIVEL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +51,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         mPager.setOnPageChangeListener(ViewPagerListener);
         // Localiza a classe de adapter (ViewPager.java) e coloca como o adapter do ViewPager
         // TODO fazer com que a localização do usuário vá para as activites de viewPagerAdapter
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(fm);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(fm, "");
         // Seta o ViewPagerAdapter para o ViewPager
         mPager.setAdapter(viewPagerAdapter);
 
@@ -85,6 +90,21 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         tab = mActionBar.newTab().setText("Gasolina").setTabListener(tabListener);
         mActionBar.addTab(tab);
 
+        // output longitude e latitude
+        Log.d(TAG, "Latitude Longitude: " + LatitudeLongitude.getLatitudeLongitude());
     }
+
+    @Override
+    public void onResume() {
+        Log.i(TAG, "onResume");
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
 }
 
