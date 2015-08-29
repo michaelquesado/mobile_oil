@@ -21,12 +21,12 @@ class PreferenciasController{
 		return $this->preferencia->adicionar($dados);
 	}
 
-	public function getPreferenciasUsuarioId($id){
+	public function getPreferenciasUsuario($id){
 
 		if($this->request->REQUEST_METHOD != 'GET')
 			return 'erro, ao tentar solicitar preferencias do usuario.';
 
-		return $this->preferencia->getPreferenciasUsuario($id[2]);
+		return $this->preferencia->getPreferenciasUsuario($id['id']);
 	}
 
 }
