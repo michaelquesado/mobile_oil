@@ -68,7 +68,7 @@ class AppModel {
         foreach ($dados as $key => $values) {
             $campos[] = $key;
             $campos_v[] = $key;
-            $valores[] = utf8_decode($values);
+            $valores[] = $values;
         }
         $campos_v = ":" . implode(', :', $campos_v);
         return $this->setDados($campos, $valores, $campos_v);

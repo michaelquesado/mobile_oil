@@ -25,7 +25,7 @@ Host: localhost
 >Buscar preferencia de combustivel usuario
 
 
-GET /ws_mobile_oil/Preferencias/getPreferenciasUsuarioId/1 HTTP/1.1
+GET /ws_mobile_oil/Preferencias/getPreferenciasUsuario/id/1 HTTP/1.1
 Host: localhost
 
 [{"id":1,"combustivel_id":1,"user_id":1},{"id":2,"combustivel_id":2,"user_id":1}]
