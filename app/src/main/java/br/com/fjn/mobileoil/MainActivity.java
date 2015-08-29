@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
@@ -16,13 +17,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import br.com.fjn.mobileoil.utils.LatitudeLongitude;
+
 public class MainActivity extends Activity implements View.OnClickListener, LocationListener {
 
     private Button mEntrarFacebook;
     private Button mEntrarGooglePlus;
     private Button mEntrarSemCadastro;
 
-    private String TAG = "-----------------------------------";
+    private String TAG = "MO_ACTIVITY_MAIN";
     private LocationManager locationManager;
 
     @Override
@@ -76,7 +79,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
 
     @Override
     public void onResume() {
-        Log.i(TAG, "Chamou o metodo onResume");
+        Log.i(TAG, "onResume");
         super.onResume();
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -90,32 +93,31 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
     @Override
     public void onPause() {
         super.onPause();
-        Log.i(TAG, "Chamou o metodo onPause");
+        Log.i(TAG, "onPause");
         locationManager.removeUpdates(this);
     }
 
     @Override
     public void onLocationChanged(Location location) {
-        Log.i(TAG, "Chamou o metodo onLocationChange");
-        double lat = location.getLatitude();
-        double lng = location.getLongitude();
-        Log.i(TAG, "----------------------------------------------" + lat);
-        Log.i(TAG, "----------------------------------------------" + lng);
+        Log.i(TAG, "onLocationChange");
+        String latlog = location.getLatitude() + "," + location.getLongitude();
+        LatitudeLongitude.setLatitudeLongitude(latlog);
+        Log.i(TAG, "onLocationChange :: " + LatitudeLongitude.getLatitudeLongitude());
     }
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-        Log.i(TAG, "Chamou o metodo onStatusChanged");
+        Log.i(TAG, "onStatusChanged");
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-        Log.i(TAG, "Chamou o metodo onProviderEnable");
+        Log.i(TAG, "onProviderEnable");
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-        Log.i(TAG, "Chamou o metodo onProviderDiseble");
+        Log.i(TAG, "onProviderDisable");
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("O GPS está desligado, deseja ativa-lo agora?").setCancelable(false).setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
@@ -128,10 +130,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
-                Toast.makeText(getApplicationContext(), "Para usar o APP é preciso ativar GPS!!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Para usar o APP é preciso ativar GPS.", Toast.LENGTH_LONG).show();
             }
         });
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
     }
+
 }

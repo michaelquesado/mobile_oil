@@ -21,13 +21,12 @@
         android:id="@+id/enderecoPosto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nomePosto"
-        android:layout_alignStart="@+id/nomePosto"
+        android:text="Av. José Silva Santo, 15, Parque Recreio, Crato, CE"
         android:layout_below="@+id/nomePosto"
-        android:layout_marginRight="4dp"
-        android:layout_toLeftOf="@+id/linearLayout"
-        android:layout_toStartOf="@+id/linearLayout"
-        android:text="Av. José Silva Santo, 15, Parque Recreio, Crato, CE" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/nomePosto"
+        android:layout_alignEnd="@+id/nomePosto" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

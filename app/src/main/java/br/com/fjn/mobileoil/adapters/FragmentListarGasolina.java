@@ -42,7 +42,9 @@ public class FragmentListarGasolina extends SherlockFragment {
             list.add(p);
         }
 
-        ListViewAdapterCombustivel adapterCombustivel = new ListViewAdapterCombustivel(getActivity().getBaseContext(), list);
+        ListViewAdapterCombustivel adapterCombustivel = new ListViewAdapterCombustivel();
+        adapterCombustivel.setContext(getActivity().getBaseContext());
+        adapterCombustivel.setPostosCombustivelList(list);
         mListView.setAdapter(adapterCombustivel);
         return view;
     }

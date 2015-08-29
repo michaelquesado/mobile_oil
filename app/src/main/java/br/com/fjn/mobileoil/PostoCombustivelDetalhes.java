@@ -2,8 +2,6 @@ package br.com.fjn.mobileoil;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -18,7 +16,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.l;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +31,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     private TextView mTipoCombustivel;
     private TextView mValorCombustivel;
     private ListView mOutrosValoresProximos;
+    private TextView mPostoDistancia;
 
     private String postoNome;
     private String postoEndereco;
@@ -65,6 +63,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
             mNomePosto.setText(postoNome);
             mTipoCombustivel.setText(postoTipoCombustivel);
             mValorCombustivel.setText(postoValorCombustivel);
+            mPostoDistancia.setText(postoDistancia);
         }
 
         // Adicionando outros postos de combustiveis;
@@ -105,15 +104,10 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     }
 
     private void setUpMap() {
-        googleMap.setMyLocationEnabled(true);
-
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        locationManager.isProviderEnabled(locationManager.GPS_PROVIDER);
-        Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
-
+        googleMap.setMyLocationEnabled(false);
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        double latitude = location.getLatitude();
-        double longitude = location.getLongitude();
+        double latitude = -7.27345309;
+        double longitude = -39.31797088;
 
         LatLng latLng = new LatLng(latitude, longitude);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -131,6 +125,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
         mTipoCombustivel = (TextView) findViewById(R.id.tipoCombustivel);
         mValorCombustivel = (TextView) findViewById(R.id.valorCombustivel);
         mOutrosValoresProximos = (ListView) findViewById(R.id.postoOutrosPostos);
+        mPostoDistancia = (TextView) findViewById(R.id.textView3);
     }
 
 
