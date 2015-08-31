@@ -42,7 +42,7 @@ class HereMaps {
 
 			try {
 
-				if( count( $posto->getPostoPorIdMaps($p->id) ) > 1  ){
+				if( count( $posto->getPostoPorIdMaps($p->id) ) < 1  ){
 
 					$r = $posto->cadastrar(
 						[  
@@ -85,7 +85,7 @@ class HereMaps {
 	public function getPostos(){
 		
 		$p = new Posto();
-		
+
 		return $p->getAllPostoPorIdMaps( implode(',', $this->precosPostos ) );
 
 	}
