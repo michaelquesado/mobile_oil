@@ -81,6 +81,7 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
         it.putExtra("postoValorCombustivel", posto.getValorCombustivel());
         it.putExtra("postoDistancia", posto.getDistanciaPosto());
         it.putExtra("postoTipoCombustivel", "Alcool");
+        it.putExtra("postoLatLog", posto.getLatLog());
         startActivity(it);
     }
 
@@ -185,6 +186,7 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
                 for (int i = 0; i < totalItens; i++) {
 
                     JSONObject jsonObjectPosto = jsonMainNodeArray.getJSONObject(i);
+                    JSONArray latlog = jsonObjectPosto.getJSONArray("position");
 
                     String postoNome = jsonObjectPosto.getString("title");
                     String postoEndereco = jsonObjectPosto.getString("vicinity");
@@ -198,6 +200,7 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
                     p.setDataAtualizacao(postoDataAtualizacao);
                     p.setValorCombustivel(postoValorCombustivel);
                     p.setDistanciaPosto(postoDistancia);
+                    p.setLatLog(latlog.getString(0) + "," + latlog.getString(1));
 
                     if (!list.contains(p)) {
                         list.add(p);

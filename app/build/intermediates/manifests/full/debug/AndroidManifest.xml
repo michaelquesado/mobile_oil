@@ -34,6 +34,15 @@
         <meta-data
             android:name="com.google.android.geo.AIzaSyDBY5thaT91z7Lc8fnz9Bzhgvc_kTmY-Vg"
             android:value="AIzaSyDBY5thaT91z7Lc8fnz9Bzhgvc_kTmY-Vg" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAo5QER-VhsiYXhrpkkVPuAGdgbznpto-8" />
+
+        <!--
+            <meta-data
+            android:name="com.google.android.geo.AIzaSyDBY5thaT91z7Lc8fnz9Bzhgvc_kTmY-Vg"
+            android:value="AIzaSyDBY5thaT91z7Lc8fnz9Bzhgvc_kTmY-Vg" />
+        -->
 
         <activity
             android:name="br.com.fjn.mobileoil.MainActivity"
@@ -58,9 +67,6 @@
             android:label="@string/title_activity_posto_combustivel_detalhes"
             android:screenOrientation="portrait" />
 
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAo5QER-VhsiYXhrpkkVPuAGdgbznpto-8" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

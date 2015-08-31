@@ -11,6 +11,7 @@ public class PostosCombustivel {
     private String dataAtualizacao;
     private String valorCombustivel;
     private String distanciaPosto;
+    private String latLog;
 
     public PostosCombustivel() {
     }
@@ -69,5 +70,13 @@ public class PostosCombustivel {
 
     public void setDistanciaPosto(String distanciaPosto) {
         this.distanciaPosto = distanciaPosto;
+    }
+
+    public String getLatLog() {
+        return latLog;
+    }
+
+    public void setLatLog(String latLog) {
+        this.latLog = latLog;
     }
 }

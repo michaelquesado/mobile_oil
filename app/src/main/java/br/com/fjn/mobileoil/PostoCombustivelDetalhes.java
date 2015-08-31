@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +33,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     private TextView mValorCombustivel;
     private ListView mOutrosValoresProximos;
     private TextView mPostoDistancia;
+    private TextView mPostoEndereco;
 
     private String postoNome;
     private String postoEndereco;
@@ -39,10 +41,12 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     private String postoTipoCombustivel;
     private String postoValorCombustivel;
     private String postoDistancia;
+    private String postoLatLog;
 
     private Intent it;
 
     private GoogleMap googleMap;
+    PostosCombustivel p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +63,12 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
             postoDataAtualizacao = it.getStringExtra("postDataAtualizacao");
             postoValorCombustivel = it.getStringExtra("postoValorCombustivel");
             postoDistancia = it.getStringExtra("postoDistancia");
+            postoLatLog = it.getStringExtra("postoLatLog");
 
             mNomePosto.setText(postoNome);
-            mTipoCombustivel.setText(postoTipoCombustivel);
             mValorCombustivel.setText(postoValorCombustivel);
             mPostoDistancia.setText(postoDistancia);
+            mPostoEndereco.setText(postoEndereco);
         }
 
         // Adicionando outros postos de combustiveis;
@@ -72,7 +77,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
         // Criando postos para testes
         Context context = getBaseContext();
         for (int i = 0; i < 20; i++) {
-            PostosCombustivel p = new PostosCombustivel();
+            p = new PostosCombustivel();
             p.setNomePosto("Auto Posto Batateiras");
             p.setEndereco("Av. José Silva Santo, 15 Parque Recreio");
             p.setDataAtualizacao("Hoje");
@@ -81,24 +86,25 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
             list.add(p);
         }
 
-        ListViewAdapterCombustivel adapterCombustivel = new ListViewAdapterCombustivel();
-        adapterCombustivel.setContext(this);
-        adapterCombustivel.setPostosCombustivelList(list);
-        mOutrosValoresProximos.setAdapter(adapterCombustivel);
-        mOutrosValoresProximos.setOnItemClickListener(this);
+        // ListViewAdapterCombustivel adapterCombustivel = new ListViewAdapterCombustivel();
+        // dapterCombustivel.setContext(this);
+        // adapterCombustivel.setPostosCombustivelList(list);
+        // mOutrosValoresProximos.setAdapter(adapterCombustivel);
+        // mOutrosValoresProximos.setOnItemClickListener(this);
 
         setUpMapIfNeeded();
     }
 
 
     private void setUpMapIfNeeded() {
-        //Faça uma verificação nula para verificar se já  temos  o mapa instanciado
+        // Faça uma verificação nula para verificar se já  temos  o mapa instanciado
         if (googleMap == null) {
             //Tentar obter o mapa do SupportMapFragment
             googleMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.postoLocalizacao)).getMap();
         }
-        //Verificar se fomos bem sucedidos na obtenção do mapa
+
         if (googleMap != null) {
+            // Verifica se fomos bem sucedidos na obtenção do mapa
             setUpMap();
         }
     }
@@ -106,8 +112,11 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     private void setUpMap() {
         googleMap.setMyLocationEnabled(false);
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        double latitude = -7.27345309;
-        double longitude = -39.31797088;
+        String[] latlog = postoLatLog.split(",");
+
+        double latitude = Double.parseDouble(latlog[0]);
+        double longitude = Double.parseDouble(latlog[1]);
+        Log.d("LATLOG", latitude + "," + longitude);
 
         LatLng latLng = new LatLng(latitude, longitude);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -115,17 +124,13 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
         googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("Você está aqui!"));
     }
 
-
-    private void getDadosIntent() {
-    }
-
     // Inicializa os componentes da View
     private void initComponents() {
         mNomePosto = (TextView) findViewById(R.id.nomePosto);
-        mTipoCombustivel = (TextView) findViewById(R.id.tipoCombustivel);
         mValorCombustivel = (TextView) findViewById(R.id.valorCombustivel);
-        mOutrosValoresProximos = (ListView) findViewById(R.id.postoOutrosPostos);
+        // mOutrosValoresProximos = (ListView) findViewById(R.id.postoOutrosPostos);
         mPostoDistancia = (TextView) findViewById(R.id.textView3);
+        mPostoEndereco = (TextView) findViewById(R.id.endereco);
     }
 
 
