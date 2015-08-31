@@ -22,4 +22,23 @@ class Posto extends AppModel{
 
 	}
 
+	public function getPostoPorIdMaps($id){
+
+		return parent::read('id', "maps_id = '{$id}' ");
+	}
+
+
+	public function getAllPostoPorIdMaps($array_id){
+
+		
+		parent::setTabela(' postos p inner join precos pc on p.maps_id = pc.posto_id 
+							inner join combustiveis c on c.id = pc.combustivel_id ');
+
+		$where = " p.maps_id IN ( " . $array_id ." )";
+
+		return parent::read('*', $where);
+
+
+	}
+
 }

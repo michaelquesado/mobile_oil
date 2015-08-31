@@ -112,7 +112,9 @@ Class System {
             die('Metodo não existe em ' . $this->controller);
         }
         try {
+
             return json_encode($app->$action( (!empty($this->getParams()  ))? $this->getParams() : NULL  ) );    
+            
         } catch (Exception $e) {
 
         }

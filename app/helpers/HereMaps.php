@@ -33,39 +33,61 @@ class HereMaps {
 		$posto = new Posto();
 		$preco = new Preco();
 		$combustiveis = new Combustivel();
+		$tipoCombustivel = $combustiveis->getTodosCombustiveis();
+
 
 		foreach($this->postos->results->items as $p){
 
+			$this->precosPostos[] = "'". $p->id . "'";
+
 			try {
 
-				$posto->cadastrar(
-					[  
-					'nome' 		 =>  $p->title,
-					'latitude'   =>	 $p->position[0],
-					'longitude'  =>	 $p->position[1],
-					'maps_id'	 =>  $p->id
-					]
-					);
+				if( count( $posto->getPostoPorIdMaps($p->id) ) > 1  ){
 
-				foreach($combustiveis->getTodosCombustiveis() as $c){
-					$preco->addPreco(
-						[	
-						'valor'            => -1,
-						'combustivel_id'   => $c['id'],
-						'usuario_id'	   => 0,
-						'posto_id'		   => $p->id
+					$r = $posto->cadastrar(
+						[  
+						'nome' 		 =>  $p->title,
+						'latitude'   =>	 $p->position[0],
+						'longitude'  =>	 $p->position[1],
+						'maps_id'	 =>  $p->id
 						]
-						);
+						) ;
+
+
+
+					foreach($tipoCombustivel as $c){
+						$preco->addPreco(
+							[	
+							'valor'            => -1,
+							'combustivel_id'   => $c['id'],
+							'usuario_id'	   => 0,
+							'posto_id'		   => $p->id
+							]
+							);
+					}
 				}
 
-			} catch (Exception $e) {
-				continue;
+
+			} catch (PDOException $e) {
+				
 			}
 
 			
 		}
 
+		$combustiveis = null;
 		$posto = null;
+		$tipoCombustivel = null;
+		$preco = null;
+	}
+
+
+	public function getPostos(){
+		
+		$p = new Posto();
+		
+		return $p->getAllPostoPorIdMaps( implode(',', $this->precosPostos ) );
+
 	}
 
 }

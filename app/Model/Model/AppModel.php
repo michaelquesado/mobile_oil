@@ -40,52 +40,78 @@ class AppModel {
         // if(empty($this->getTabela())) return false;
         try {
 
-        $campos = ($campos != '') ? $campos : " * ";
+            $campos = ($campos != '') ? $campos : " * ";
 
-        $where = (!is_null($where)) ? "WHERE " . $where : " ";
+            $where = (!is_null($where)) ? "WHERE " . $where : " ";
 
-        $sql = "SELECT {$campos} FROM  {$this->getTabela()}   {$where}";
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+            $sql = "SELECT {$campos} FROM  {$this->getTabela()}   {$where}";
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 
-        $query = $this->db->query($sql);
-        $query->setFetchMode(PDO::FETCH_ASSOC);
+            $query = $this->db->query($sql);
+            
+            $query->setFetchMode(PDO::FETCH_ASSOC);
 
-        return $query->fetchALL();
+            return $query->fetchALL();
+
         } catch (PDOException $e) {
 
-         throw new Exception('Erro ao tentar executar instrucao - PDO. '. $e->getMessage());
+           throw new Exception('Erro ao tentar executar instrucao - PDO. '. $e->getMessage());
+
+       } catch (Exception $e) {
+          throw new Exception('Erro ao tentar executar instrucao - Exception');            
+      }
+  }
+
+  protected function insert(Array $dados) {
+
+
+    $valores = array();
+    $campos_v = array();
+    foreach ($dados as $key => $values) {
+        $campos[] = $key;
+        $campos_v[] = $key;
+        $valores[] = $values;
+    }
+    $campos_v = ":" . implode(', :', $campos_v);
+    return $this->setDados($campos, $valores, $campos_v);
+}
+private function setDados($campos, $valores, $campos_v) {
+    $camp_sql = implode(',', $campos);
+    $sql = "INSERT INTO {$this->getTabela()} ({$camp_sql}) VALUES ({$campos_v})";
+    $stmt = $this->db->prepare($sql);
+    foreach ($campos as $c => $v) {
+        $stmt->bindValue(":" . $v, $valores[$c]);
+    }
+
+    try {
+
+        $this->db->beginTransaction();
+        $r = $stmt->execute();
+        $this->db->commit();
+
+        return $r;
+
+    } catch (PDOException $ex) {
+
+        $this->db->rollback();
+        //$ex->getTraceAsString();
+
+    }
+}
+
+    protected function getLastInsertId(){
+
+        try {
+
+            $q = $this->db->query("SELECT currval('" . $this->getTabela() ."_id_seq') AS lastinsertid");
+            $q->setFetchMode(PDO::FETCH_ASSOC) ;
+
+            return  $q->fetchALL()[0]['lastinsertid'];    
 
         } catch (Exception $e) {
-          throw new Exception('Erro ao tentar executar instrucao - Exception');            
+            
         }
+        
     }
 
-     protected function insert(Array $dados) {
-     
-        
-        $valores = array();
-        $campos_v = array();
-        foreach ($dados as $key => $values) {
-            $campos[] = $key;
-            $campos_v[] = $key;
-            $valores[] = $values;
-        }
-        $campos_v = ":" . implode(', :', $campos_v);
-        return $this->setDados($campos, $valores, $campos_v);
-    }
-    private function setDados($campos, $valores, $campos_v) {
-        $camp_sql = implode(',', $campos);
-        $sql = "INSERT INTO {$this->getTabela()} ({$camp_sql}) VALUES ({$campos_v})";
-        $stmt = $this->db->prepare($sql);
-        foreach ($campos as $c => $v) {
-            $stmt->bindValue(":" . $v, $valores[$c]);
-        }
-        try {
-            $stmt->execute();
-            $id_inserido = $this->db->lastInsertId();
-            return (int) $id_inserido;
-        } catch (PDOException $ex) {
-            print $ex->getTraceAsString();
-        }
-    }
 }
