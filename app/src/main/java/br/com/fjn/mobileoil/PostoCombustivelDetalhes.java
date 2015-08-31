@@ -23,6 +23,7 @@ import java.util.List;
 
 import br.com.fjn.mobileoil.adapters.ListViewAdapterCombustivel;
 import br.com.fjn.mobileoil.models.PostosCombustivel;
+import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
 public class PostoCombustivelDetalhes extends FragmentActivity implements AdapterView.OnItemClickListener {
 
@@ -112,15 +113,21 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     private void setUpMap() {
         googleMap.setMyLocationEnabled(false);
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        String[] latlog = postoLatLog.split(",");
+        String[] latlogPosto = postoLatLog.split(",");
 
-        double latitude = Double.parseDouble(latlog[0]);
-        double longitude = Double.parseDouble(latlog[1]);
+        double latitude = Double.parseDouble(latlogPosto[0]);
+        double longitude = Double.parseDouble(latlogPosto[1]);
         Log.d("LATLOG", latitude + "," + longitude);
 
         LatLng latLng = new LatLng(latitude, longitude);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(postoNome));
+
+        String[] latlogUsuario = LatitudeLongitude.getLatitudeLongitude().split(",");
+        latitude = Double.parseDouble(latlogUsuario[0]);
+        longitude = Double.parseDouble(latlogUsuario[1]);
+
         googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("Você está aqui!"));
     }
 
