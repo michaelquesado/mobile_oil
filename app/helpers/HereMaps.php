@@ -42,16 +42,16 @@ class HereMaps {
 
 			try {
 
-				if( count( $posto->getPostoPorIdMaps($p->id) ) < 1  ){
+				if( !$posto->getPostoPorIdMaps($p->id) ){
 
-					$r = $posto->cadastrar(
+					$posto->cadastrar(
 						[  
 						'nome' 		 =>  $p->title,
 						'latitude'   =>	 $p->position[0],
 						'longitude'  =>	 $p->position[1],
 						'maps_id'	 =>  $p->id
 						]
-						) ;
+					);
 
 
 

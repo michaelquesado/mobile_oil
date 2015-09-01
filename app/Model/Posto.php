@@ -23,21 +23,42 @@ class Posto extends AppModel{
 	}
 
 	public function getPostoPorIdMaps($id){
+		try {
 
-		return parent::read('id', "maps_id = '{$id}' ");
+			return (isset( parent::read('id', "maps_id = '{$id}' ")[0]['id'] ) )? true : false ;
+
+		} catch (Exception $e) {
+
+		}
 	}
 
 
 	public function getAllPostoPorIdMaps($array_id){
 
+		try {
+
+			parent::setTabela(' postos p inner join precos pc on p.maps_id = pc.posto_id 
+				inner join combustiveis c on c.id = pc.combustivel_id '  );
+
+			$where = " p.maps_id IN ( " . $array_id ." )";
+
+			return parent::read(
+				'p.id,
+				p.nome, 
+				p.latitude, 
+				p.longitude, 
+				c.nome as combustivel, 
+				pc.valor,
+				pc.usuario_id,
+				c.subcategoria_id
+				', 
+				$where);
+
+			
+		} catch (Exception $e) {
+			
+		}		
 		
-		parent::setTabela(' postos p inner join precos pc on p.maps_id = pc.posto_id 
-							inner join combustiveis c on c.id = pc.combustivel_id ');
-
-		$where = " p.maps_id IN ( " . $array_id ." )";
-
-		return parent::read('*', $where);
-
 
 	}
 

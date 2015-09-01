@@ -5,11 +5,18 @@ class HereMapsController{
 
 	public function getPostos(Array $dados){
 		
-		extract($dados,EXTR_PREFIX_SAME, "wddx");
+		try {
 
-		$here = new HereMaps($lat,$long);
+			extract($dados,EXTR_PREFIX_SAME, "wddx");
 
-		return $here->getPostos();
+			$here = new HereMaps($lat,$long);
+
+			return $here->getPostos();
+
+		} catch (Exception $e) {
+			
+		}
+		
 
 	}
 
