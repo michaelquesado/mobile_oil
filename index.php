@@ -1,4 +1,5 @@
 <?php
+
 //definindo api como publica. Para requisições cross-domain.
 header("Access-Control-Allow-Origin: *");
 
