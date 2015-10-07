@@ -40,7 +40,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
         mEntrarFacebook.setOnClickListener(this);
         mEntrarGooglePlus.setOnClickListener(this);
         mEntrarSemCadastro.setOnClickListener(this);
-
     }
 
     @Override

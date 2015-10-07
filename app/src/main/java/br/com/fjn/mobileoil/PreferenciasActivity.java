@@ -2,7 +2,6 @@ package br.com.fjn.mobileoil;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,9 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.fjn.mobileoil.dao.PreferenciasDAO;
+import br.com.fjn.mobileoil.models.Preferencia;
+
 public class PreferenciasActivity extends Activity implements View.OnClickListener {
 
-    private SharedPreferences preferences;
 
     private Button mBotaoContinuar;
 
@@ -21,9 +25,9 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
     private CheckBox mPreferenciaDiesel;
     private CheckBox mPreferenciaGasolina;
 
-    private boolean spAlcool;
-    private boolean spDiesel;
-    private boolean spGasolina;
+    private boolean isAlcool;
+    private boolean isDiesel;
+    private boolean isGasolina;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,37 +36,12 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
 
         initComponents();
         mBotaoContinuar.setOnClickListener(this);
-        preferences = getPreferences(MODE_PRIVATE);
-
-        getPreferencias();
     }
 
     private void setPreferencias() {
-        spAlcool = mPreferenciaAlcool.isChecked();
-        spDiesel = mPreferenciaDiesel.isChecked();
-        spGasolina = mPreferenciaGasolina.isChecked();
-    }
-
-    public void getPreferencias() {
-        spAlcool = preferences.getBoolean("prefAlcool", false);
-        spDiesel = preferences.getBoolean("prefDiesel", false);
-        spGasolina = preferences.getBoolean("prefGasolina", false);
-    }
-
-    // Seleciona os check box a partir das preferências
-    public void setaCheckBox() {
-        mPreferenciaAlcool.setChecked(spAlcool);
-        mPreferenciaDiesel.setChecked(spDiesel);
-        mPreferenciaGasolina.setChecked(spGasolina);
-    }
-
-    private void salvarPreferencias() {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("prefAlcool", spAlcool);
-        editor.putBoolean("prefDiesel", spDiesel);
-        editor.putBoolean("prefGasolina", spGasolina);
-        Log.i("PREFERENCIAS", "Preferencias Salvas");
-        editor.commit();
+        isAlcool = mPreferenciaAlcool.isChecked();
+        isDiesel = mPreferenciaDiesel.isChecked();
+        isGasolina = mPreferenciaGasolina.isChecked();
     }
 
     // inicializa os componentes da view
@@ -83,16 +62,10 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -104,17 +77,43 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         setPreferencias();
-        salvarPreferencias();
-        getPreferencesToString();
+
+        // Criando Preferencias para alcool;
+        Preferencia prefAlcool = new Preferencia();
+        prefAlcool.setCombustivel("Alcool");
+        prefAlcool.setMostrar(isAlcool);
+
+        // Criando Preferencias para diesel;
+        Preferencia prefDiesel = new Preferencia();
+        prefDiesel.setCombustivel("Diesel");
+        prefDiesel.setMostrar(isDiesel);
+
+        // Criando Preferencias para gasolina;
+        Preferencia prefGasolina = new Preferencia();
+        prefGasolina.setCombustivel("Gasolina");
+        prefGasolina.setMostrar(isGasolina);
+
+        // Criando DAO para salvar
+        List<Preferencia> preferencias = new ArrayList<>();
+        preferencias.add(prefAlcool);
+        preferencias.add(prefDiesel);
+        preferencias.add(prefGasolina);
+
+        PreferenciasDAO prefDAO = new PreferenciasDAO(this);
+        prefDAO.atualizar(preferencias);
+        prefDAO.close();
+
         Intent it = new Intent(this, CombustivelActivity.class);
         startActivity(it);
+
+        getPreferencesToString();
     }
 
     private void getPreferencesToString() {
-        StringBuilder builder = new StringBuilder("Prefencias do usuario");
-        builder.append("spAlcool: " + spAlcool + "    ");
-        builder.append("spDiesel: " + spDiesel + "    ");
-        builder.append("spGasolina: " + spGasolina + "    ");
+        StringBuilder builder = new StringBuilder("Prefencias do usuario:: ");
+        builder.append("isAlcool: " + isAlcool + "    ");
+        builder.append("isDiesel: " + isDiesel + "    ");
+        builder.append("isGasolina: " + isGasolina + "    ");
         Log.i("PREFERENCIAS", builder.toString());
     }
 }

@@ -2,39 +2,39 @@
 <items version="2" >
 
     <item
+        jar="C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil2\mobile_oil\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil2\mobile_oil\app\build\intermediates\pre-dexed\debug\classes-b2b5e05944062a7653519b64fba82a6ce050ec94.jar" />
+    </item>
+    <item
+        jar="C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil2\mobile_oil\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\libs\internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil2\mobile_oil\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-1868482a3d66d12a3fa6a17be3c63f859d200f8d.jar" />
+    </item>
+    <item
+        jar="C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil2\mobile_oil\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil2\mobile_oil\app\build\intermediates\pre-dexed\debug\classes-a60f5334cc600d0fe93c399442964697437c08d8.jar" />
+    </item>
+    <item
+        jar="C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil2\mobile_oil\app\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="af64527b748983a75de9c0756e9768b56b240a49">
+        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil2\mobile_oil\app\build\intermediates\pre-dexed\debug\classes-5e2a2a764d64166cf27fc9a9f373b68a8085f7ef.jar" />
+    </item>
+    <item
         jar="C:\androidsdk\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
-        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-2e52b7bb40a6fecee317d45ea220de8fbbe584ca.jar" />
-    </item>
-    <item
-        jar="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\pre-dexed\debug\classes-68516a6aa90b506644920e1ecce8b880231fa8ac.jar" />
-    </item>
-    <item
-        jar="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="af64527b748983a75de9c0756e9768b56b240a49">
-        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\pre-dexed\debug\classes-41ac7be4a804b5039cd8c93a00ab6dbcc84fcab5.jar" />
-    </item>
-    <item
-        jar="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\libs\internal_impl-21.0.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
-        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-1ca1944f2aa36ba2625a3968dbf06108a08d5b29.jar" />
-    </item>
-    <item
-        jar="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
-        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobile_oil\app\build\intermediates\pre-dexed\debug\classes-68da96850766c11e8966d8c1e41536c44266fa55.jar" />
+        <dex dex="C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil2\mobile_oil\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-2e52b7bb40a6fecee317d45ea220de8fbbe584ca.jar" />
     </item>
 
 </items>
