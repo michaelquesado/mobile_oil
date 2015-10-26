@@ -19,6 +19,7 @@
         android:src="@drawable/logo2" />
 
     <TextView
+        android:id="@+id/tx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -66,4 +67,4 @@
         android:text="Continuar"
         android:textSize="18sp" />
 </LinearLayout>
-<!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobile_oil/app/src/main/res/layout/activity_preferencias.xml -->
+<!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/src/main/res/layout/activity_preferencias.xml -->

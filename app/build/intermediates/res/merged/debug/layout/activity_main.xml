@@ -40,13 +40,11 @@
             android:textSize="20sp"
             android:id="@+id/entrar_com_facebook" />
 
-        <Button
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/entrar_com_google"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Google+"
-            android:textSize="20sp"
-            android:id="@+id/entrar_com_google" />
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
     <Button
@@ -59,4 +57,4 @@
         android:id="@+id/entrar_sem_cadastro" />
 
 </LinearLayout>
-<!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobile_oil/app/src/main/res/layout/activity_main.xml -->
+<!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/src/main/res/layout/activity_main.xml -->

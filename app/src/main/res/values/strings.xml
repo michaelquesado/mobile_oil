@@ -7,4 +7,6 @@
     <string name="title_activity_preferencias">Preferências</string>
     <string name="title_activity_combustivel">Lista</string>
     <string name="title_activity_posto_combustivel_detalhes">Detalhes</string>
+    <string name="title_activity_login_google">Login com Google</string>
+    <string name="title_activity_perfil_do_usuario">PerfilDoUsuario</string>
 </resources>

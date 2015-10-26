@@ -10,6 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
+
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.plus.Plus;
 
 public class PreferenciasActivity extends Activity implements View.OnClickListener {
 
@@ -25,6 +29,9 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
     private boolean spDiesel;
     private boolean spGasolina;
 
+    private TextView texto;
+    GoogleApiClient googleApiClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +42,20 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
         preferences = getPreferences(MODE_PRIVATE);
 
         getPreferencias();
+
+        texto = (TextView) findViewById(R.id.tx);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle.containsKey("NOME")){
+            String nome = bundle.getString("NOME");
+            texto.setText("Bem vindo "+nome);
+        }
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Plus.API)
+                .addScope(Plus.SCOPE_PLUS_LOGIN)
+                .build();
+        googleApiClient.connect();
+
     }
 
     private void setPreferencias() {
@@ -90,7 +111,8 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent userProfile = new Intent(this, PerfilDoUsuario.class);
+            startActivity(userProfile);
         }
 
         return super.onOptionsItemSelected(item);

@@ -17,12 +17,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.common.SignInButton;
+
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
 public class MainActivity extends Activity implements View.OnClickListener, LocationListener {
 
     private Button mEntrarFacebook;
-    private Button mEntrarGooglePlus;
+    private SignInButton mEntrarGooglePlus;
     private Button mEntrarSemCadastro;
 
     private String TAG = "MO_ACTIVITY_MAIN";
@@ -34,7 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
         setContentView(R.layout.activity_main);
 
         mEntrarFacebook = (Button) findViewById(R.id.entrar_com_facebook);
-        mEntrarGooglePlus = (Button) findViewById(R.id.entrar_com_google);
+        mEntrarGooglePlus = (SignInButton) findViewById(R.id.entrar_com_google);
         mEntrarSemCadastro = (Button) findViewById(R.id.entrar_sem_cadastro);
 
         mEntrarFacebook.setOnClickListener(this);
@@ -72,8 +74,18 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
      */
     @Override
     public void onClick(View v) {
-        Intent it = new Intent(this, PreferenciasActivity.class);
-        startActivity(it);
+        if(v.getId() == R.id.entrar_com_google){
+            Intent LoginGoogleIntent = new Intent(this, LoginGoogle.class);
+            startActivity(LoginGoogleIntent);
+        }else if(v.getId() == R.id.entrar_com_facebook){
+            Intent LoginFacebookIntent = new Intent(this, PreferenciasActivity.class);
+            String nome = "Ainda não implementamos";
+            LoginFacebookIntent.putExtra("NOME", nome);
+            startActivity(LoginFacebookIntent);
+        }else{
+            Intent EntrarSemCadastro = new Intent(this, CombustivelActivity.class);
+            startActivity(EntrarSemCadastro);
+        }
     }
 
 
