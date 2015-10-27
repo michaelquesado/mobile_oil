@@ -8,7 +8,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
@@ -17,8 +16,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.google.android.gms.common.SignInButton;
 
+=======
+import br.com.fjn.mobileoil.dao.TelaConfigDAO;
+>>>>>>> banco_interno
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
 public class MainActivity extends Activity implements View.OnClickListener, LocationListener {
@@ -43,6 +46,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
         mEntrarGooglePlus.setOnClickListener(this);
         mEntrarSemCadastro.setOnClickListener(this);
 
+        TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
+        if (!telaConfigDAO.isMostrarTela("login_inicial")) {
+            abrirTelaConfigPreferencias();
+        }
     }
 
     @Override
@@ -74,6 +81,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
      */
     @Override
     public void onClick(View v) {
+<<<<<<< HEAD
         if(v.getId() == R.id.entrar_com_google){
             Intent LoginGoogleIntent = new Intent(this, LoginGoogle.class);
             startActivity(LoginGoogleIntent);
@@ -86,6 +94,16 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
             Intent EntrarSemCadastro = new Intent(this, CombustivelActivity.class);
             startActivity(EntrarSemCadastro);
         }
+=======
+        TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
+        telaConfigDAO.ocultarTela("login_inicial", false);
+        abrirTelaConfigPreferencias();
+    }
+
+    public void abrirTelaConfigPreferencias() {
+        Intent it = new Intent(this, PreferenciasActivity.class);
+        startActivity(it);
+>>>>>>> banco_interno
     }
 
 

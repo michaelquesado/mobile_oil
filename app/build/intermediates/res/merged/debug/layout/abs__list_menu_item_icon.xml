@@ -26,4 +26,8 @@
     android:scaleType="centerInside"
     android:duplicateParentState="true" />
 
+<<<<<<< HEAD
 <!-- From: file:/Users/jw/dev/ActionBarSherlock/target/checkout/actionbarsherlock/res/layout/abs__list_menu_item_icon.xml --><!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__list_menu_item_icon.xml -->
+=======
+<!-- From: file:/Users/jw/dev/ActionBarSherlock/target/checkout/actionbarsherlock/res/layout/abs__list_menu_item_icon.xml --><!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__list_menu_item_icon.xml -->
+>>>>>>> banco_interno

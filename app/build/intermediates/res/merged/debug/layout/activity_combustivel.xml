@@ -16,4 +16,8 @@ android:id="@+id/pager"
 android:layout_width="match_parent"
 android:layout_height="match_parent">
 </android.support.v4.view.ViewPager>
+<<<<<<< HEAD
     --><!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/src/main/res/layout/activity_combustivel.xml -->
+=======
+    --><!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/src/main/res/layout/activity_combustivel.xml -->
+>>>>>>> banco_interno

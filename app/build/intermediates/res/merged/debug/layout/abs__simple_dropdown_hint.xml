@@ -27,4 +27,8 @@
           android:layout_marginBottom="3dip"
           android:layout_width="match_parent"
           android:layout_height="wrap_content" />
+<<<<<<< HEAD
 <!-- From: file:/Users/jw/dev/ActionBarSherlock/target/checkout/actionbarsherlock/res/layout/abs__simple_dropdown_hint.xml --><!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__simple_dropdown_hint.xml -->
+=======
+<!-- From: file:/Users/jw/dev/ActionBarSherlock/target/checkout/actionbarsherlock/res/layout/abs__simple_dropdown_hint.xml --><!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout/abs__simple_dropdown_hint.xml -->
+>>>>>>> banco_interno
