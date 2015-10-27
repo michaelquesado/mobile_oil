@@ -14,8 +14,8 @@ class AppModel {
     /* Construtor da Classe */
 
     public function __construct() {
-        $this->db = new PDOConnection();
-        $this->db = $this->db->getConnection();
+        $this->db = PDOConnection::getInstance();
+        $this->db = $this->db->getCon();
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
