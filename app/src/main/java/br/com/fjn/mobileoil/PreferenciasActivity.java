@@ -40,7 +40,7 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
         mBotaoContinuar.setOnClickListener(this);
 
         TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
-        if (!telaConfigDAO.isMostrarTela("login_inicial")) {
+        if (!telaConfigDAO.isMostrarTela("preferencias_inicial")) {
             abrirTelaCombustiveis();
         }
     }
