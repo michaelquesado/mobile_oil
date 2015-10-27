@@ -16,12 +16,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-<<<<<<< HEAD
+
 import com.google.android.gms.common.SignInButton;
 
-=======
+
 import br.com.fjn.mobileoil.dao.TelaConfigDAO;
->>>>>>> banco_interno
+
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
 public class MainActivity extends Activity implements View.OnClickListener, LocationListener {
@@ -81,20 +81,20 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
      */
     @Override
     public void onClick(View v) {
-<<<<<<< HEAD
-        if(v.getId() == R.id.entrar_com_google){
+
+        if (v.getId() == R.id.entrar_com_google) {
             Intent LoginGoogleIntent = new Intent(this, LoginGoogle.class);
             startActivity(LoginGoogleIntent);
-        }else if(v.getId() == R.id.entrar_com_facebook){
+        } else if (v.getId() == R.id.entrar_com_facebook) {
             Intent LoginFacebookIntent = new Intent(this, PreferenciasActivity.class);
             String nome = "Ainda não implementamos";
             LoginFacebookIntent.putExtra("NOME", nome);
             startActivity(LoginFacebookIntent);
-        }else{
+        } else {
             Intent EntrarSemCadastro = new Intent(this, CombustivelActivity.class);
             startActivity(EntrarSemCadastro);
         }
-=======
+
         TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
         telaConfigDAO.ocultarTela("login_inicial", false);
         abrirTelaConfigPreferencias();
@@ -103,7 +103,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
     public void abrirTelaConfigPreferencias() {
         Intent it = new Intent(this, PreferenciasActivity.class);
         startActivity(it);
->>>>>>> banco_interno
+
     }
 
 

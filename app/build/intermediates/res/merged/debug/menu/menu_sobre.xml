@@ -5,8 +5,4 @@
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" />
 </menu>
-<<<<<<< HEAD
-<!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/src/main/res/menu/menu_sobre.xml -->
-=======
 <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/src/main/res/menu/menu_sobre.xml -->
->>>>>>> banco_interno

@@ -1157,12 +1157,8 @@ containing a value of this type.
         public static final int abs__textButton=0x7f0c0028;
         public static final int abs__title=0x7f0c0030;
         public static final int abs__up=0x7f0c0005;
-<<<<<<< HEAD
-        public static final int action_settings=0x7f0c0064;
-=======
-        public static final int action_configuracoes=0x7f0c0060;
-        public static final int action_settings=0x7f0c0061;
->>>>>>> banco_interno
+        public static final int action_configuracoes=0x7f0c0064;
+        public static final int action_settings=0x7f0c0065;
         public static final int adjust_height=0x7f0c0006;
         public static final int adjust_width=0x7f0c0007;
         public static final int book_now=0x7f0c001e;
@@ -1171,11 +1167,7 @@ containing a value of this type.
         public static final int buy_now=0x7f0c001f;
         public static final int buy_with_google=0x7f0c0020;
         public static final int classic=0x7f0c0022;
-<<<<<<< HEAD
-        public static final int continuar_preferencias=0x7f0c005f;
-=======
-        public static final int continuar_preferencias=0x7f0c0058;
->>>>>>> banco_interno
+        public static final int continuar_preferencias=0x7f0c005c;
         public static final int dataAtualizacao=0x7f0c004b;
         public static final int disableHome=0x7f0c000f;
         public static final int distanciaPosto=0x7f0c004e;
@@ -1204,17 +1196,10 @@ containing a value of this type.
         public static final int none=0x7f0c0008;
         public static final int normal=0x7f0c000a;
         public static final int pager=0x7f0c0047;
-<<<<<<< HEAD
         public static final int postoLocalizacao=0x7f0c005a;
-        public static final int preferenciaAlcool=0x7f0c005c;
-        public static final int preferenciaDiesel=0x7f0c005d;
-        public static final int preferenciaGasolina=0x7f0c005e;
-=======
-        public static final int postoLocalizacao=0x7f0c0057;
-        public static final int preferenciaAlcool=0x7f0c0059;
-        public static final int preferenciaDiesel=0x7f0c005a;
-        public static final int preferenciaGasolina=0x7f0c005b;
->>>>>>> banco_interno
+        public static final int preferenciaAlcool=0x7f0c005d;
+        public static final int preferenciaDiesel=0x7f0c005e;
+        public static final int preferenciaGasolina=0x7f0c005f;
         public static final int production=0x7f0c0018;
         public static final int sandbox=0x7f0c0019;
         public static final int satellite=0x7f0c000b;
@@ -1263,52 +1248,34 @@ containing a value of this type.
         public static final int abs__search_view=0x7f040013;
         public static final int abs__simple_dropdown_hint=0x7f040014;
         public static final int activity_combustivel=0x7f040015;
-<<<<<<< HEAD
-        public static final int activity_list_view_adapter_combustivel=0x7f040016;
-        public static final int activity_listar_alcool=0x7f040017;
-        public static final int activity_listar_diesel=0x7f040018;
-        public static final int activity_listar_gasolina=0x7f040019;
-        public static final int activity_login_google=0x7f04001a;
-        public static final int activity_main=0x7f04001b;
-        public static final int activity_perfil_do_usuario=0x7f04001c;
-        public static final int activity_posto_combustivel_detalhes=0x7f04001d;
-        public static final int activity_preferencias=0x7f04001e;
-=======
         public static final int activity_configuracoes=0x7f040016;
         public static final int activity_list_view_adapter_combustivel=0x7f040017;
         public static final int activity_listar_alcool=0x7f040018;
         public static final int activity_listar_diesel=0x7f040019;
         public static final int activity_listar_gasolina=0x7f04001a;
-        public static final int activity_main=0x7f04001b;
-        public static final int activity_posto_combustivel_detalhes=0x7f04001c;
-        public static final int activity_preferencias=0x7f04001d;
-        public static final int formulario_preferencias=0x7f04001e;
->>>>>>> banco_interno
-        public static final int sherlock_spinner_dropdown_item=0x7f04001f;
-        public static final int sherlock_spinner_item=0x7f040020;
-        public static final int teste=0x7f040021;
+        public static final int activity_login_google=0x7f04001b;
+        public static final int activity_main=0x7f04001c;
+        public static final int activity_perfil_do_usuario=0x7f04001d;
+        public static final int activity_posto_combustivel_detalhes=0x7f04001e;
+        public static final int activity_preferencias=0x7f04001f;
+        public static final int formulario_preferencias=0x7f040020;
+        public static final int sherlock_spinner_dropdown_item=0x7f040021;
+        public static final int sherlock_spinner_item=0x7f040022;
+        public static final int teste=0x7f040023;
     }
     public static final class menu {
-<<<<<<< HEAD
-        public static final int menu_aba_gasolina=0x7f0d0000;
-        public static final int menu_combustivel=0x7f0d0001;
-        public static final int menu_list_view_adapter_combustivel=0x7f0d0002;
-        public static final int menu_login_google=0x7f0d0003;
-        public static final int menu_main=0x7f0d0004;
-        public static final int menu_novo_preco=0x7f0d0005;
-        public static final int menu_perfil_do_usuario=0x7f0d0006;
-=======
         public static final int menu=0x7f0d0000;
         public static final int menu_aba_gasolina=0x7f0d0001;
         public static final int menu_combustivel=0x7f0d0002;
         public static final int menu_configuracoes=0x7f0d0003;
         public static final int menu_list_view_adapter_combustivel=0x7f0d0004;
-        public static final int menu_main=0x7f0d0005;
-        public static final int menu_novo_preco=0x7f0d0006;
->>>>>>> banco_interno
-        public static final int menu_posto_combustivel_detalhes=0x7f0d0007;
-        public static final int menu_preferencias=0x7f0d0008;
-        public static final int menu_sobre=0x7f0d0009;
+        public static final int menu_login_google=0x7f0d0005;
+        public static final int menu_main=0x7f0d0006;
+        public static final int menu_novo_preco=0x7f0d0007;
+        public static final int menu_perfil_do_usuario=0x7f0d0008;
+        public static final int menu_posto_combustivel_detalhes=0x7f0d0009;
+        public static final int menu_preferencias=0x7f0d000a;
+        public static final int menu_sobre=0x7f0d000b;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
@@ -1363,17 +1330,6 @@ containing a value of this type.
         public static final int common_open_on_phone=0x7f060019;
         public static final int common_signin_button_text=0x7f06001a;
         public static final int common_signin_button_text_long=0x7f06001b;
-<<<<<<< HEAD
-        public static final int create_calendar_message=0x7f06002d;
-        public static final int create_calendar_title=0x7f06002e;
-        public static final int decline=0x7f06002f;
-        public static final int hello_world=0x7f060030;
-        public static final int store_picture_message=0x7f060031;
-        public static final int store_picture_title=0x7f060032;
-        public static final int title_activity_combustivel=0x7f060033;
-        public static final int title_activity_login_google=0x7f060034;
-        public static final int title_activity_perfil_do_usuario=0x7f060035;
-=======
         public static final int create_calendar_message=0x7f06002e;
         public static final int create_calendar_title=0x7f06002f;
         public static final int decline=0x7f060030;
@@ -1382,9 +1338,10 @@ containing a value of this type.
         public static final int store_picture_title=0x7f060033;
         public static final int title_activity_combustivel=0x7f060034;
         public static final int title_activity_configuracoes=0x7f060035;
->>>>>>> banco_interno
-        public static final int title_activity_posto_combustivel_detalhes=0x7f060036;
-        public static final int title_activity_preferencias=0x7f060037;
+        public static final int title_activity_login_google=0x7f060036;
+        public static final int title_activity_perfil_do_usuario=0x7f060037;
+        public static final int title_activity_posto_combustivel_detalhes=0x7f060038;
+        public static final int title_activity_preferencias=0x7f060039;
         public static final int wallet_buy_button_place_holder=0x7f06001c;
     }
     public static final class style {

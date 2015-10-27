@@ -67,17 +67,12 @@
             android:label="@string/title_activity_posto_combustivel_detalhes"
             android:screenOrientation="portrait" />
         <activity
-<<<<<<< HEAD
             android:name=".LoginGoogle"
             android:label="@string/title_activity_login_google" >
         </activity>
         <activity
             android:name=".PerfilDoUsuario"
             android:label="@string/title_activity_perfil_do_usuario" >
-=======
-            android:name=".Configuracoes"
-            android:label="@string/title_activity_configuracoes" >
->>>>>>> banco_interno
         </activity>
     </application>
 

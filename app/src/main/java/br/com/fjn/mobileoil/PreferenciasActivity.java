@@ -19,7 +19,6 @@ import java.util.List;
 
 import br.com.fjn.mobileoil.dao.PreferenciasDAO;
 import br.com.fjn.mobileoil.dao.TelaConfigDAO;
-import br.com.fjn.mobileoil.models.Combustivel;
 import br.com.fjn.mobileoil.models.Preferencia;
 
 public class PreferenciasActivity extends Activity implements View.OnClickListener {
@@ -45,16 +44,12 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
 
         initComponents();
         mBotaoContinuar.setOnClickListener(this);
-<<<<<<< HEAD
-        preferences = getPreferences(MODE_PRIVATE);
-
-        getPreferencias();
 
         texto = (TextView) findViewById(R.id.tx);
         Bundle bundle = getIntent().getExtras();
-        if(bundle.containsKey("NOME")){
+        if (bundle.containsKey("NOME")) {
             String nome = bundle.getString("NOME");
-            texto.setText("Bem vindo "+nome);
+            texto.setText("Bem vindo " + nome);
         }
 
         googleApiClient = new GoogleApiClient.Builder(this)
@@ -63,14 +58,13 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
                 .build();
         googleApiClient.connect();
 
-    }
-=======
->>>>>>> banco_interno
-
         TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
-        if (!telaConfigDAO.isMostrarTela("preferencias_inicial")) {
+        if (!telaConfigDAO.isMostrarTela("preferencias_inicial"))
+
+        {
             abrirTelaCombustiveis();
         }
+
     }
 
 

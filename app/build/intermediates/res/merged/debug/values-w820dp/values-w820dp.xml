@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<<<<<<< HEAD
-    <!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/src/main/res/values-w820dp/dimens.xml -->
-=======
     <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/src/main/res/values-w820dp/dimens.xml -->
->>>>>>> banco_interno
     <eat-comment/>
     <dimen name="activity_horizontal_margin">64dp</dimen>
 </resources>

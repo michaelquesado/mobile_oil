@@ -73,7 +73,6 @@
             android:label="@string/title_activity_posto_combustivel_detalhes"
             android:screenOrientation="portrait" />
         <activity
-<<<<<<< HEAD
             android:name="br.com.fjn.mobileoil.LoginGoogle"
             android:label="@string/title_activity_login_google" >
         </activity>
@@ -81,15 +80,6 @@
             android:name="br.com.fjn.mobileoil.PerfilDoUsuario"
             android:label="@string/title_activity_perfil_do_usuario" >
         </activity>
-=======
-            android:name="br.com.fjn.mobileoil.Configuracoes"
-            android:label="@string/title_activity_configuracoes" >
-        </activity>
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
->>>>>>> banco_interno
     </application>
 
 </manifest>

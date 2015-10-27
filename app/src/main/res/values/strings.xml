@@ -7,12 +7,12 @@
     <string name="title_activity_preferencias">Preferências</string>
     <string name="title_activity_combustivel">Lista</string>
     <string name="title_activity_posto_combustivel_detalhes">Detalhes</string>
-<<<<<<< HEAD
+
     <string name="title_activity_login_google">Login com Google</string>
     <string name="title_activity_perfil_do_usuario">PerfilDoUsuario</string>
-=======
+
 
     <string name="action_configuracoes">Configurações</string>
     <string name="title_activity_configuracoes">Configuracoes</string>
->>>>>>> banco_interno
+
 </resources>

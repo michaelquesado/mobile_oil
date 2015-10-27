@@ -38,8 +38,4 @@
               android:textAllCaps="true"
               android:text="@string/abs__action_mode_done" />
 </com.actionbarsherlock.internal.nineoldandroids.widget.NineLinearLayout>
-<<<<<<< HEAD
-<!-- From: file:/Users/jw/dev/ActionBarSherlock/target/checkout/actionbarsherlock/res/layout-large/abs__action_mode_close_item.xml --><!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout-large/abs__action_mode_close_item.xml -->
-=======
 <!-- From: file:/Users/jw/dev/ActionBarSherlock/target/checkout/actionbarsherlock/res/layout-large/abs__action_mode_close_item.xml --><!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/layout-large/abs__action_mode_close_item.xml -->
->>>>>>> banco_interno

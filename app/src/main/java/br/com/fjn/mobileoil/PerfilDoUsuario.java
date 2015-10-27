@@ -7,8 +7,6 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,7 +21,7 @@ import com.google.android.gms.plus.model.people.Person;
 
 import java.io.InputStream;
 
-public class PerfilDoUsuario extends Activity implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback{
+public class PerfilDoUsuario extends Activity implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback {
 
     private TextView nomeUsuario;
     private static final int PROFILE_PIC_SIZE = 400;
@@ -64,13 +62,13 @@ public class PerfilDoUsuario extends Activity implements View.OnClickListener, G
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.botaoLogout){
+        if (v.getId() == R.id.botaoLogout) {
             desconectaUsuario();
         }
     }
 
-    public void desconectaUsuario(){
-        if(mGoogleApiClient.isConnected()){
+    public void desconectaUsuario() {
+        if (mGoogleApiClient.isConnected()) {
             Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
             Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient);
             mGoogleApiClient.disconnect();
@@ -80,13 +78,13 @@ public class PerfilDoUsuario extends Activity implements View.OnClickListener, G
         }
     }
 
-    public void getDataProfile(){
+    public void getDataProfile() {
         Person userProfile = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-        if(userProfile != null){
+        if (userProfile != null) {
             String name = userProfile.getDisplayName();
             String personPhotoUrl = userProfile.getImage().getUrl();
             nomeUsuario.setText(name);
-            personPhotoUrl = personPhotoUrl.substring(0, personPhotoUrl.length() -2) + PROFILE_PIC_SIZE;
+            personPhotoUrl = personPhotoUrl.substring(0, personPhotoUrl.length() - 2) + PROFILE_PIC_SIZE;
             new LoadProfileImage(imgProfilePic).execute(personPhotoUrl);
             botaoSair.setVisibility(View.VISIBLE);
         }

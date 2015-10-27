@@ -14,8 +14,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
-<<<<<<< HEAD
-<!-- From: file:/C:/Users/ch4p0/AndroidStudioProjects/mobile_oil/app/src/main/res/layout/activity_listar_alcool.xml -->
-=======
 <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/src/main/res/layout/activity_listar_alcool.xml -->
->>>>>>> banco_interno
