@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fjn.mobileoil.dao.PreferenciasDAO;
+import br.com.fjn.mobileoil.dao.TelaConfigDAO;
+import br.com.fjn.mobileoil.models.Combustivel;
 import br.com.fjn.mobileoil.models.Preferencia;
 
 public class PreferenciasActivity extends Activity implements View.OnClickListener {
@@ -36,7 +38,13 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
 
         initComponents();
         mBotaoContinuar.setOnClickListener(this);
+
+        TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
+        if (!telaConfigDAO.isMostrarTela("login_inicial")) {
+            abrirTelaCombustiveis();
+        }
     }
+
 
     private void setPreferencias() {
         isAlcool = mPreferenciaAlcool.isChecked();
@@ -103,11 +111,18 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
         prefDAO.atualizar(preferencias);
         prefDAO.close();
 
+        getPreferencesToString();
+
+        TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
+        telaConfigDAO.ocultarTela("preferencias_inicial", false);
+        telaConfigDAO.close();
+    }
+
+    private void abrirTelaCombustiveis() {
         Intent it = new Intent(this, CombustivelActivity.class);
         startActivity(it);
-
-        getPreferencesToString();
     }
+
 
     private void getPreferencesToString() {
         StringBuilder builder = new StringBuilder("Prefencias do usuario:: ");

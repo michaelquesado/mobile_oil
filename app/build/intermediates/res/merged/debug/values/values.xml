@@ -114,6 +114,7 @@
     <string name="accept">Accept</string>
     <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="action_configuracoes">Configurações</string>
     <string name="action_settings">Settings</string>
     <string name="app_name">MobileOil</string>
     <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/common_strings.xml -->
@@ -161,6 +162,7 @@
     <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="title_activity_combustivel">Lista</string>
+    <string name="title_activity_configuracoes">Configuracoes</string>
     <string name="title_activity_posto_combustivel_detalhes">Detalhes</string>
     <string name="title_activity_preferencias">Preferências</string>
     <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil2/mobile_oil/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/wallet_strings.xml -->

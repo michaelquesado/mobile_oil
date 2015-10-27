@@ -7,8 +7,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import br.com.fjn.mobileoil.models.Combustivel;
 import br.com.fjn.mobileoil.models.Preferencia;
 
 /**
@@ -20,6 +23,43 @@ public class PreferenciasDAO extends DAO {
 
     public PreferenciasDAO(Context context) {
         super(context);
+    }
+
+    public List<Combustivel> getPreferencias() {
+
+        List<Combustivel> combustivels = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] colunas = {"id", "combustivel", "mostrar"};
+        Cursor cursor = db.query(nomeTabela, colunas, "", null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Combustivel combustivel = new Combustivel();
+                combustivel.setId(cursor.getInt(0));
+                combustivel.setNome(cursor.getString(1));
+                combustivel.setMostrar(cursor.getInt(2));
+                combustivels.add(combustivel);
+
+            } while (cursor.moveToNext());
+        }
+        return combustivels;
+    }
+
+    public void selecionado(String combustivel, int valor) {
+        String sql = "UPDATE preferencias SET mostrar = " + valor + " WHERE combustivel = '" + combustivel + "' LIMIT 1";
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(sql);
+        db.close();
+    }
+
+    public void marcarOpcaoCombustivel(String combustivel, boolean status) {
+
+        int mostrar = (status) ? 1 : 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "UPDATE preferencias SET mostrar=" + mostrar + " WHERE combustivel='" + combustivel + "'";
+        db.execSQL(sql);
+        db.close();
     }
 
     public void atualizar(List<Preferencia> listaPreferencias) {

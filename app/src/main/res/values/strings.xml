@@ -7,4 +7,7 @@
     <string name="title_activity_preferencias">Preferências</string>
     <string name="title_activity_combustivel">Lista</string>
     <string name="title_activity_posto_combustivel_detalhes">Detalhes</string>
+
+    <string name="action_configuracoes">Configurações</string>
+    <string name="title_activity_configuracoes">Configuracoes</string>
 </resources>

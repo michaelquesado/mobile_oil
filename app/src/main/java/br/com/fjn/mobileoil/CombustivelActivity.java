@@ -1,5 +1,6 @@
 package br.com.fjn.mobileoil;
 
+import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,8 @@ import android.util.Log;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 
 import br.com.fjn.mobileoil.adapters.ViewPagerAdapter;
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
@@ -106,5 +109,26 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         Log.i(TAG, "onPause");
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        com.actionbarsherlock.view.MenuInflater inflater = getSupportMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_configuracoes:
+                Intent it = new Intent(this, Configuracoes.class);
+                startActivity(it);
+                break;
+        }
+        return false;
+    }
+
+
 }
+
+
 

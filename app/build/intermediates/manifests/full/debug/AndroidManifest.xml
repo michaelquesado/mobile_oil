@@ -66,6 +66,10 @@
             android:name="br.com.fjn.mobileoil.PostoCombustivelDetalhes"
             android:label="@string/title_activity_posto_combustivel_detalhes"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="br.com.fjn.mobileoil.Configuracoes"
+            android:label="@string/title_activity_configuracoes" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
