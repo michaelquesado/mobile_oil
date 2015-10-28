@@ -32,7 +32,8 @@ class HereMaps {
 
 		$posto = new Posto();
 		$preco = new Preco();
-		$combustiveis = new Combustivel();
+		$combustiveis = Combustivel::getInstance();
+		
 		$tipoCombustivel = $combustiveis->getTodosCombustiveis();
 
 
