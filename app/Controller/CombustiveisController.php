@@ -7,8 +7,8 @@ class CombustiveisController{
 
 	public function __construct(){
 
-		$this->combustivel = new Combustivel();
-			$this->request = (Object) $_SERVER;
+		$this->combustivel = Combustivel::getInstance();
+		$this->request = (Object) $_SERVER;
 	}
 
 	public function cadastrar($Combustivel){

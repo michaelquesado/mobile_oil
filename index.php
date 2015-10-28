@@ -7,3 +7,4 @@ require_once('config.php');
 
 $system = new System();
 echo $system->Run();
+$system = null;

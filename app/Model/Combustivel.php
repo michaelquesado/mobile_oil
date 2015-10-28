@@ -5,11 +5,22 @@ require_once('Model/AppModel.php');
 class Combustivel extends AppModel{ 
 
 	private $table = 'combustiveis';
+	private static $instance = null;
 
 	public function __construct(){
 		parent::__construct();
 		parent::setTabela($this->table);
 	}
+
+	public static function getInstance(){
+
+		if(is_null(self::$instance) || empty(self::$instance)){
+			self::$instance = new self;
+		}
+
+		return self::$instance;
+	}
+
 
 	public function adicionar(Array $dados){
 		
