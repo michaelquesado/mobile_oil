@@ -38,11 +38,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mEntrarFacebook = (Button) findViewById(R.id.entrar_com_facebook);
         mEntrarGooglePlus = (SignInButton) findViewById(R.id.entrar_com_google);
         mEntrarSemCadastro = (Button) findViewById(R.id.entrar_sem_cadastro);
-
-        mEntrarFacebook.setOnClickListener(this);
+        
         mEntrarGooglePlus.setOnClickListener(this);
         mEntrarSemCadastro.setOnClickListener(this);
 
