@@ -26,7 +26,6 @@ import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
 public class MainActivity extends Activity implements View.OnClickListener, LocationListener {
 
-    private Button mEntrarFacebook;
     private SignInButton mEntrarGooglePlus;
     private Button mEntrarSemCadastro;
 
@@ -83,11 +82,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
         if (v.getId() == R.id.entrar_com_google) {
             Intent LoginGoogleIntent = new Intent(this, LoginGoogle.class);
             startActivity(LoginGoogleIntent);
-        } else if (v.getId() == R.id.entrar_com_facebook) {
-            Intent LoginFacebookIntent = new Intent(this, PreferenciasActivity.class);
-            String nome = "Ainda não implementamos";
-            LoginFacebookIntent.putExtra("NOME", nome);
-            startActivity(LoginFacebookIntent);
         } else {
             Intent EntrarSemCadastro = new Intent(this, CombustivelActivity.class);
             startActivity(EntrarSemCadastro);
