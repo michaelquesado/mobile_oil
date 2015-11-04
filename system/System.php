@@ -116,7 +116,7 @@ Class System {
             return json_encode($app->$action( (!empty($this->getParams()  ))? $this->getParams() : NULL  ) );    
             
         } catch (Exception $e) {
-
+            echo $e->getMessage();
         }
     }
 

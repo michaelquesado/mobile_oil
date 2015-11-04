@@ -26,4 +26,12 @@ class LoginController{
 		
 	}
 
+	/**
+	*Metodo responsavel por retorna todos os usuarios cadastrados no banco ordenando pelo id desc
+	*/
+	public function getUsuarios(){
+
+		return $this->login->getUsers();
+	}
+
 }

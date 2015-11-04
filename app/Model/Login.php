@@ -36,5 +36,23 @@ class Login extends AppModel{
 		$result = parent::read('*', $where);
 
 		return (count($result) > 0)? $result[0] : 'usuario ou senha incorreta.';
+	}
+
+
+	public function getUsers(){
+
+		try {
+
+			$result = parent::read('*', null, ' order by id desc');
+
+			return (count($result) > 0) ? $result : [0 => 'nada encontrado.'];
+
+		} catch (Exception $e) {
+			
+			echo 'Erro ao tentar buscar usuarios.';
+		}
+		
+
 	}	
+
 }
