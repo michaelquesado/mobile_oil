@@ -30,6 +30,12 @@ Host: localhost
 
 [{"id":1,"combustivel_id":1,"user_id":1},{"id":2,"combustivel_id":2,"user_id":1}]
 
+>Buscando todos os usuarios cadastrados.
+
+GET /ws_mobile_oil/Login/getUsuarios HTTP/1.1
+
+[{"id":1,"username":"exemplo","pass":"123456","email":"aguiaMaxima@mail.com","created":"2015-10-15 11:40:16.242511-03"}]
+
 ```
 
 
