@@ -8,6 +8,8 @@ define('CONTROLLER','app/Controller/');
 define('MODEL', 'app/Model/');
 define('HELPERS', 'app/helpers/');
 
+date_default_timezone_set('America/Fortaleza');
+
 function __autoload($file) {
     $file .= ".php";
     if (file_exists(MODEL . $file)) {

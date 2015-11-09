@@ -12,11 +12,22 @@ class Login extends AppModel{
 	public function cadastrar(Array $dados){
 		if(count($dados) == 0)
 			return 'erro, tente passar dados validos de usuario';
+		try {
+			
+			$dados['username'] = filter_var($dados['username'], FILTER_SANITIZE_STRING);
+			$dados['email'] = filter_var($dados['email'], FILTER_SANITIZE_EMAIL);
+			$dados['pass'] = filter_var($dados['pass'], FILTER_SANITIZE_STRING);
+			$now = new \DateTime();
+			$dados['created'] = $now->format('Y-m-d H:m:s');
 
-		$dados['username'] = filter_var($dados['username'], FILTER_SANITIZE_STRING);
-		$dados['email'] = filter_var($dados['email'], FILTER_SANITIZE_EMAIL);
-		$dados['pass'] = filter_var($dados['pass'], FILTER_SANITIZE_STRING);
-		$dados['created'] = filter_var($dados['created'], FILTER_SANITIZE_STRING);
+			$now = null;
+
+		} catch (Exception $e) {
+
+			throw new Exception("Dados invalidos");
+			
+		}
+		
 
 		return parent::insert($dados);
 

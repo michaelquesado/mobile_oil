@@ -75,7 +75,8 @@ class AppModel {
     $campos_v = ":" . implode(', :', $campos_v);
     return $this->setDados($campos, $valores, $campos_v);
 }
-private function setDados($campos, $valores, $campos_v) {
+ private function setDados($campos, $valores, $campos_v) {
+
     $camp_sql = implode(',', $campos);
     $sql = "INSERT INTO {$this->getTabela()} ({$camp_sql}) VALUES ({$campos_v})";
     $stmt = $this->db->prepare($sql);
