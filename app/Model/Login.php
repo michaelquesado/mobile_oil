@@ -36,17 +36,25 @@ class Login extends AppModel{
 	public function validaUsuario(Array $dados){
 		if(count($dados) == 0)
 			return 'erro, tente passar dados validos de login';
-		
-		$dados['email'] = strtolower(filter_var($dados['email'], FILTER_SANITIZE_EMAIL));
-		$dados['pass'] = filter_var($dados['pass'], FILTER_SANITIZE_STRING);
+		try {
+			
+			$dados['email'] = strtolower(filter_var($dados['email'], FILTER_SANITIZE_EMAIL));
+			$dados['pass'] = filter_var($dados['pass'], FILTER_SANITIZE_STRING);
 
-		$where  = " email = '". $dados['email']. "'";
-		$where .= " and pass  = '". $dados['pass'] . "'";
-		$where .= ' limit 1 ';
+			$where  = " email = '". $dados['email']. "'";
+			$where .= " and pass  = '". $dados['pass'] . "'";
+			$where .= ' limit 1 ';
 
-		$result = parent::read('*', $where);
+			$result = parent::read('*', $where);
 
-		return (count($result) > 0)? $result[0] : 'usuario ou senha incorreta.';
+			 if(count($result) > 0) return $result[0] ; throw new Exception('usuario ou senha incorreta.');
+
+		} catch (Exception $e) {
+
+			die( $e->getMessage() );
+
+		}
+
 	}
 
 
