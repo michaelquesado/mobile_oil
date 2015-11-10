@@ -46,11 +46,6 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
         mBotaoContinuar.setOnClickListener(this);
 
         texto = (TextView) findViewById(R.id.tx);
-        Bundle bundle = getIntent().getExtras();
-        if (bundle.containsKey("NOME")) {
-            String nome = bundle.getString("NOME");
-            texto.setText("Bem vindo " + nome);
-        }
 
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Plus.API)
@@ -58,12 +53,12 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
                 .build();
         googleApiClient.connect();
 
-        TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
+        /*TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
         if (!telaConfigDAO.isMostrarTela("preferencias_inicial"))
 
         {
             abrirTelaCombustiveis();
-        }
+        }*/
 
     }
 
@@ -136,9 +131,9 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
 
         getPreferencesToString();
 
-        TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
+        /*TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
         telaConfigDAO.ocultarTela("preferencias_inicial", false);
-        telaConfigDAO.close();
+        telaConfigDAO.close();*/
     }
 
     private void abrirTelaCombustiveis() {

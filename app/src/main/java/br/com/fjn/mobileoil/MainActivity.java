@@ -43,10 +43,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
         mEntrarGooglePlus.setOnClickListener(this);
         mEntrarSemCadastro.setOnClickListener(this);
 
-        TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
+        /*TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
         if (!telaConfigDAO.isMostrarTela("login_inicial")) {
             abrirTelaConfigPreferencias();
-        }
+        }*/
     }
 
     @Override
@@ -87,9 +87,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
             startActivity(EntrarSemCadastro);
         }
 
-        TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
+        /*TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
         telaConfigDAO.ocultarTela("login_inicial", false);
-        abrirTelaConfigPreferencias();
+        abrirTelaConfigPreferencias();*/
     }
 
     public void abrirTelaConfigPreferencias() {

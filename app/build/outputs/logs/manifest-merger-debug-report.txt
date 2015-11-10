@@ -27,11 +27,11 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:10:5-67
 	android:name
 		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:10:22-64
-uses-permission#ANDROID.PERMISSION.GET_ACCOUNTS
+uses-permission#android.permission.GET_ACCOUNTS
 ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:11:5-71
 	android:name
 		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:11:22-68
-uses-permission#ANDROID.PERMISSION.USE_FINGERPRINT
+uses-permission#android.permission.USE_FINGERPRINT
 ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:12:5-74
 	android:name
 		ADDED from C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\src\main\AndroidManifest.xml:12:22-71

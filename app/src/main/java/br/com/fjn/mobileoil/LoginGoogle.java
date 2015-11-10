@@ -14,6 +14,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
+import br.com.fjn.mobileoil.dao.LoginWebService;
+
 public class LoginGoogle extends Activity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
     private static final int RC_SIGN_IN = 0;
@@ -87,16 +89,21 @@ public class LoginGoogle extends Activity implements GoogleApiClient.ConnectionC
     }
 
     public void getDataProfile(){
-        Person userProfile = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-        if(userProfile != null){
-            String id = userProfile.getId();
-            String name = userProfile.getDisplayName();
-            String language = userProfile.getLanguage();
+        new Thread(){
+            public void run(){
+                Person userProfile = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+                if(userProfile != null){
+                    String username = userProfile.getDisplayName();
+                    String pass = userProfile.getId();
+                    String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
 
-            Intent intent = new Intent(this, PreferenciasActivity.class);
-            intent.putExtra("NOME", name);
-            startActivity(intent);
-            Log.d("LOGINUSER", "" + id + " - " + name + " - " + language);
-        }
+                    LoginWebService.cadastrarDadosDoLogin(username, pass, email);
+
+                    Log.i("LOGINUSER", "" + pass + " - " + username + " - " + email);
+                }
+            }
+        }.start();
+        Intent intent = new Intent(this, PreferenciasActivity.class);
+        startActivity(intent);
     }
 }

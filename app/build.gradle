@@ -26,4 +26,6 @@ dependencies {
     //compile 'com.android.support:support-v4:18.0.+'
     compile 'com.google.android.gms:play-services:6.+'
     // compile 'com.google.android.gms:play-services:7.8.0'
+    //lib responsável pela comnunicação com o WS
+    compile group: 'cz.msebera.android' , name: 'httpclient', version: '4.4.1.1'
 }

@@ -32,14 +32,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Facebook"
-            android:textSize="20sp"
-            android:id="@+id/entrar_com_facebook" />
-
         <com.google.android.gms.common.SignInButton
             android:id="@+id/entrar_com_google"
             android:layout_width="wrap_content"
