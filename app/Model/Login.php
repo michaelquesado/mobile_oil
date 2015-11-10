@@ -47,11 +47,11 @@ class Login extends AppModel{
 
 			$result = parent::read('*', $where);
 
-			 if(count($result) > 0) return $result[0] ; throw new Exception('usuario ou senha incorreta.');
+			 return (count($result) > 0)  [0 => 'true'] : [0 => 'false' ];
 
 		} catch (Exception $e) {
 
-			die( $e->getMessage() );
+			die( 'erro ao tentar validar usuario.' );
 
 		}
 
