@@ -22,6 +22,8 @@ class Login extends AppModel{
 
 			$now = null;
 
+			return parent::insert($dados);
+
 		} catch (Exception $e) {
 
 			throw new Exception("Dados invalidos");
@@ -29,7 +31,7 @@ class Login extends AppModel{
 		}
 		
 
-		return parent::insert($dados);
+		
 
 	}
 
@@ -47,7 +49,7 @@ class Login extends AppModel{
 
 			$result = parent::read('*', $where);
 
-			 return (count($result) > 0)  [0 => 'true'] : [0 => 'false' ];
+			 return (count($result) > 0) ?  [0 => 'true'] : [0 => 'false' ];
 
 		} catch (Exception $e) {
 
