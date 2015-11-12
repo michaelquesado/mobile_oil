@@ -49,7 +49,7 @@ class Login extends AppModel{
 
 			$result = parent::read('*', $where);
 
-			 return (count($result) > 0) ?  [0 => 'true'] : [0 => 'false' ];
+			 return  [ 'retorno' =>  (count($result) > 0) ? 'true' : 'false' ] ;
 
 		} catch (Exception $e) {
 
