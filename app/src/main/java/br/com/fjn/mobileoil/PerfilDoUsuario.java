@@ -21,6 +21,10 @@ import com.google.android.gms.plus.model.people.Person;
 
 import java.io.InputStream;
 
+/**
+ * Created by Junior Siqueira on 06/11/2015.
+ */
+
 public class PerfilDoUsuario extends Activity implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback {
 
     private TextView nomeUsuario;

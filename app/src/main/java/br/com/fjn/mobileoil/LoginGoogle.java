@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -15,6 +16,10 @@ import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
 import br.com.fjn.mobileoil.dao.LoginWebService;
+
+/**
+ * Created by Junior Siqueira on 05/11/2015.
+ */
 
 public class LoginGoogle extends Activity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
@@ -97,7 +102,12 @@ public class LoginGoogle extends Activity implements GoogleApiClient.ConnectionC
                     String pass = userProfile.getId();
                     String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
 
-                    LoginWebService.cadastrarDadosDoLogin(username, pass, email);
+                        if(LoginWebService.validarUserBanco(pass, email).equalsIgnoreCase("false")){
+                            LoginWebService.cadastrarDadosDoLogin(username, pass, email);
+                            System.out.println("Usuario cadastrado com sucesso :D!");
+                        }else{
+                            System.out.println("Usuario já possui registro no banco!");
+                        }
 
                     Log.i("LOGINUSER", "" + pass + " - " + username + " - " + email);
                 }
