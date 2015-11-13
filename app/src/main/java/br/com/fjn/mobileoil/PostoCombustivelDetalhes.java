@@ -185,6 +185,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
                 try{
                     Intent unrestrictedIntent = new Intent(android.content.Intent.ACTION_VIEW,
                             Uri.parse("http://maps.google.com/maps?daddr="+latitude+","+longitude+""));
+                            startActivity(unrestrictedIntent);
                 } catch (ActivityNotFoundException innerEx){
                     Toast.makeText(this, "Por favor, instale o aplicativo Google Maps para continuar!!", Toast.LENGTH_LONG).show();
                 }
