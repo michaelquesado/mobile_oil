@@ -134,6 +134,10 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
         /*TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
         telaConfigDAO.ocultarTela("preferencias_inicial", false);
         telaConfigDAO.close();*/
+
+        Intent openActivityCombustivel = new Intent(this, CombustivelActivity.class);
+        startActivity(openActivityCombustivel);
+
     }
 
     private void abrirTelaCombustiveis() {
