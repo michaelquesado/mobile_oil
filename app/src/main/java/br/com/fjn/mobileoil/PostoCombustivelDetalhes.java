@@ -1,7 +1,9 @@
 package br.com.fjn.mobileoil;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -9,8 +11,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -35,6 +39,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     private ListView mOutrosValoresProximos;
     private TextView mPostoDistancia;
     private TextView mPostoEndereco;
+    private Button buttonTracarRota;
 
     private String postoNome;
     private String postoEndereco;
@@ -138,6 +143,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
         // mOutrosValoresProximos = (ListView) findViewById(R.id.postoOutrosPostos);
         mPostoDistancia = (TextView) findViewById(R.id.textView3);
         mPostoEndereco = (TextView) findViewById(R.id.endereco);
+        buttonTracarRota = (Button) findViewById(R.id.buttonTracarRota);
     }
 
 
@@ -162,6 +168,30 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    //Metodo chamado para traçar a rota da localização do usuário até o posto selecionado.
+    public void traceRoute(View view){
+        String[] latlogPosto = postoLatLog.split(",");
+        double latitude = Double.parseDouble(latlogPosto[0]);
+        double longitude = Double.parseDouble(latlogPosto[1]);
+
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse("http://maps.google.com/maps?daddr="+latitude+","+longitude+""));
+        intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+            try{
+                startActivity(intent);
+            } catch (ActivityNotFoundException ex){
+                try{
+                    Intent unrestrictedIntent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse("http://maps.google.com/maps?daddr="+latitude+","+longitude+""));
+                } catch (ActivityNotFoundException innerEx){
+                    Toast.makeText(this, "Por favor, instale o aplicativo Google Maps para continuar!!", Toast.LENGTH_LONG).show();
+                }
+            }
+    }
+
+
 
     // Método para tratar os evendos dos clicks nos itens da lista
     @Override
