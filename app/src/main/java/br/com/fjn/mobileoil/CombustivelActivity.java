@@ -113,6 +113,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         com.actionbarsherlock.view.MenuInflater inflater = getSupportMenuInflater();
         inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.menu_perfil_do_usuario, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -123,6 +124,9 @@ public class CombustivelActivity extends SherlockFragmentActivity {
                 Intent it = new Intent(this, Configuracoes.class);
                 startActivity(it);
                 break;
+            case  R.id.action_perfil_user:
+                Intent userProfile = new Intent(this, PerfilDoUsuario.class);
+                startActivity(userProfile);
         }
         return false;
     }

@@ -89,8 +89,7 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Intent userProfile = new Intent(this, PerfilDoUsuario.class);
-            startActivity(userProfile);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

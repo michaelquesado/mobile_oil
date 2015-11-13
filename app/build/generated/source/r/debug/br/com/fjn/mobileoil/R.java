@@ -1158,6 +1158,7 @@ containing a value of this type.
         public static final int abs__title=0x7f0c0030;
         public static final int abs__up=0x7f0c0005;
         public static final int action_configuracoes=0x7f0c0064;
+        public static final int action_perfil_user=0x7f0c0066;
         public static final int action_settings=0x7f0c0065;
         public static final int adjust_height=0x7f0c0006;
         public static final int adjust_width=0x7f0c0007;
@@ -1300,8 +1301,9 @@ containing a value of this type.
         public static final int abs__shareactionprovider_share_with_application=0x7f060029;
         public static final int accept=0x7f06002a;
         public static final int action_configuracoes=0x7f06002b;
-        public static final int action_settings=0x7f06002c;
-        public static final int app_name=0x7f06002d;
+        public static final int action_perfil_user=0x7f06002c;
+        public static final int action_settings=0x7f06002d;
+        public static final int app_name=0x7f06002e;
         public static final int common_android_wear_notification_needs_update_text=0x7f060000;
         public static final int common_android_wear_update_text=0x7f060001;
         public static final int common_android_wear_update_title=0x7f060002;
@@ -1330,18 +1332,18 @@ containing a value of this type.
         public static final int common_open_on_phone=0x7f060019;
         public static final int common_signin_button_text=0x7f06001a;
         public static final int common_signin_button_text_long=0x7f06001b;
-        public static final int create_calendar_message=0x7f06002e;
-        public static final int create_calendar_title=0x7f06002f;
-        public static final int decline=0x7f060030;
-        public static final int hello_world=0x7f060031;
-        public static final int store_picture_message=0x7f060032;
-        public static final int store_picture_title=0x7f060033;
-        public static final int title_activity_combustivel=0x7f060034;
-        public static final int title_activity_configuracoes=0x7f060035;
-        public static final int title_activity_login_google=0x7f060036;
-        public static final int title_activity_perfil_do_usuario=0x7f060037;
-        public static final int title_activity_posto_combustivel_detalhes=0x7f060038;
-        public static final int title_activity_preferencias=0x7f060039;
+        public static final int create_calendar_message=0x7f06002f;
+        public static final int create_calendar_title=0x7f060030;
+        public static final int decline=0x7f060031;
+        public static final int hello_world=0x7f060032;
+        public static final int store_picture_message=0x7f060033;
+        public static final int store_picture_title=0x7f060034;
+        public static final int title_activity_combustivel=0x7f060035;
+        public static final int title_activity_configuracoes=0x7f060036;
+        public static final int title_activity_login_google=0x7f060037;
+        public static final int title_activity_perfil_do_usuario=0x7f060038;
+        public static final int title_activity_posto_combustivel_detalhes=0x7f060039;
+        public static final int title_activity_preferencias=0x7f06003a;
         public static final int wallet_buy_button_place_holder=0x7f06001c;
     }
     public static final class style {

@@ -3,6 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_perfil_user">Perfil</string>
 
     <string name="title_activity_preferencias">Preferências</string>
     <string name="title_activity_combustivel">Lista</string>
