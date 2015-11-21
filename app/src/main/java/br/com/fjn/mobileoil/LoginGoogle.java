@@ -15,7 +15,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
+import br.com.fjn.mobileoil.dao.DadosUsuario;
 import br.com.fjn.mobileoil.dao.LoginWebService;
+import br.com.fjn.mobileoil.models.Usuario;
 
 /**
  * Created by Junior Siqueira on 05/11/2015.
@@ -106,7 +108,17 @@ public class LoginGoogle extends Activity implements GoogleApiClient.ConnectionC
 
                         if(LoginWebService.validarUserBanco(pass, email).equalsIgnoreCase("false")){
                             LoginWebService.cadastrarDadosDoLogin(username, pass, email);
+
+                            Usuario user = new Usuario();
+                            user.setId(1234);
+                            user.setNome(username);
+                            user.setEmail(email);
+
+                            DadosUsuario userData = new DadosUsuario(getBaseContext());
+                            userData.salvarUsuario(user);
+
                             System.out.println("Usuario cadastrado com sucesso :D!");
+                            Log.i("USERDATA", user.toString());
                         }else{
                             System.out.println("Usuario já possui registro no banco!");
                         }

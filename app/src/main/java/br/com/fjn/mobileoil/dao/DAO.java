@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DAO extends SQLiteOpenHelper {
 
     // Versão do banco de dados.
-    private static final int DB_VERSION = 5;
+    private static final int DB_VERSION = 6;
 
     // Nome do banco de dados.
     private static final String DB_NAME = "mobileoildatabase";
@@ -43,6 +43,8 @@ public class DAO extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + PreferenciasDAO.nomeTabela + ";");
+        db.execSQL("DROP TABLE IF EXISTS config_tela");
+        db.execSQL("DROP TABLE IF EXISTS dados_usuario");
         onCreate(db);
     }
 
