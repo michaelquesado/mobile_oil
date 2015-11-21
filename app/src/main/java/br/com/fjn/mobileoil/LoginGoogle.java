@@ -33,8 +33,8 @@ public class LoginGoogle extends Activity implements GoogleApiClient.ConnectionC
         super.onCreate(savedInstanceState);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
         progressDialog.setMessage("Aguarde, estamos conectando você ao Google! Processando...");
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -79,6 +79,7 @@ public class LoginGoogle extends Activity implements GoogleApiClient.ConnectionC
             } catch (IntentSender.SendIntentException e){
                 mIntentInProgress = false;
                 mGoogleApiClient.connect();
+                Log.e("google", "em onConnectionFailed::" + e.getMessage());
             }
         }
     }
@@ -93,6 +94,7 @@ public class LoginGoogle extends Activity implements GoogleApiClient.ConnectionC
         }
     }
 
+    // Salvar os dados so usuário no banco de dados.
     public void getDataProfile(){
         new Thread(){
             public void run(){

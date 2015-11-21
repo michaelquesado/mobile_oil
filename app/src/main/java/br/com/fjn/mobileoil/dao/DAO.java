@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DAO extends SQLiteOpenHelper {
 
     // Versão do banco de dados.
-    private static final int DB_VERSION = 4;
+    private static final int DB_VERSION = 5;
 
     // Nome do banco de dados.
     private static final String DB_NAME = "mobileoildatabase";
@@ -23,6 +23,11 @@ public class DAO extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // PREFERENCIAS DE COMBUSTIVEIS
+
+        // Para armazenar os dados so usuário
+        db.execSQL("CREATE TABLE dados_usuario (id INTEGER NOT NULL, nome TEXT NOT NULL, email TEXT NOT NULL)");
+
+        // para armazenar as preferencias de combustiveis do usuario
         db.execSQL("CREATE TABLE preferencias (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, combustivel TEXT NOT NULL, mostrar INTEGER NOT NULL)");
         db.execSQL("INSERT INTO preferencias (combustivel, mostrar) VALUES ('Alcool', 0)");
         db.execSQL("INSERT INTO preferencias (combustivel, mostrar) VALUES ('Diesel', 0)");

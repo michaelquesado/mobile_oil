@@ -39,7 +39,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
 
         mEntrarGooglePlus = (SignInButton) findViewById(R.id.entrar_com_google);
         mEntrarSemCadastro = (Button) findViewById(R.id.entrar_sem_cadastro);
-        
+
         mEntrarGooglePlus.setOnClickListener(this);
         mEntrarSemCadastro.setOnClickListener(this);
 
