@@ -22,7 +22,7 @@ app/build/outputs/logs/manifest-merger-debug-report.txt
 app/src/main/AndroidManifest.xml
 app/src/main/java/br/com/fjn/mobileoil/MainActivity.java
 build/intermediates/dex-cache/cache.xml
-app/build/intermediates/incremental/*
+app/build/intermediates/*
 # Built application files
 *.apk
 *.ap_
