@@ -14,6 +14,8 @@ import br.com.fjn.mobileoil.models.Usuario;
  */
 public class DadosUsuario extends DAO {
 
+    public static String tabela = "dados_usuario";
+
     public DadosUsuario(Context context) {
         super(context);
     }
@@ -25,7 +27,7 @@ public class DadosUsuario extends DAO {
      * Limpa os dados da tabela DADOS_USUARIO
      */
     public void limparTabela() {
-        String sql = "DELETE * FROM dados_usuario";
+        String sql = "DELETE * FROM " + DadosUsuario.tabela;
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(sql);
         db.close();
@@ -51,7 +53,7 @@ public class DadosUsuario extends DAO {
         cv.put("email", usuario.getEmail());
 
         // Realiza a operacao de salvar
-        long resultado = db.insert("dados_usuario", "", cv);
+        long resultado = db.insert(DadosUsuario.tabela, "", cv);
 
         // Fecha a conexao com o banco de dados
         db.close();

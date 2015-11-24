@@ -44,7 +44,7 @@ public class DAO extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + PreferenciasDAO.nomeTabela + ";");
         db.execSQL("DROP TABLE IF EXISTS config_tela");
-        db.execSQL("DROP TABLE IF EXISTS dados_usuario");
+        db.execSQL("DROP TABLE IF EXISTS " + DadosUsuario.tabela);
         onCreate(db);
     }
 

@@ -1,6 +1,5 @@
 package br.com.fjn.mobileoil.dao;
 
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import br.com.fjn.mobileoil.models.Combustivel;
@@ -19,7 +17,7 @@ import br.com.fjn.mobileoil.models.Preferencia;
  */
 public class PreferenciasDAO extends DAO {
 
-    public static String nomeTabela = "preferencias";
+    public static String tabela = "preferencias";
 
     public PreferenciasDAO(Context context) {
         super(context);
@@ -31,7 +29,7 @@ public class PreferenciasDAO extends DAO {
 
         SQLiteDatabase db = this.getReadableDatabase();
         String[] colunas = {"id", "combustivel", "mostrar"};
-        Cursor cursor = db.query(nomeTabela, colunas, "", null, null, null, null);
+        Cursor cursor = db.query(tabela, colunas, "", null, null, null, null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -47,7 +45,7 @@ public class PreferenciasDAO extends DAO {
     }
 
     public void selecionado(String combustivel, int valor) {
-        String sql = "UPDATE preferencias SET mostrar = " + valor + " WHERE combustivel = '" + combustivel + "' LIMIT 1";
+        String sql = "UPDATE " + tabela + " SET mostrar = " + valor + " WHERE combustivel = '" + combustivel + "' LIMIT 1";
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(sql);
         db.close();
@@ -73,7 +71,7 @@ public class PreferenciasDAO extends DAO {
             ContentValues cv = new ContentValues();
             cv.put("mostrar", p.getMostrar());
 
-            int atualizar = db.update(nomeTabela, cv, "combustivel = ?",
+            int atualizar = db.update(tabela, cv, "combustivel = ?",
                     new String[]{p.getCombustivel()});
             Log.i("PREFERENCIAS", p.getCombustivel() + " PARA: " + p.getMostrar() + " VALOR ATUALIZAR: " + atualizar);
         }
@@ -87,7 +85,7 @@ public class PreferenciasDAO extends DAO {
 
     public void combustiveis() {
 
-        String sql = "SELECT * FROM " + nomeTabela;
+        String sql = "SELECT * FROM " + tabela;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
