@@ -28,6 +28,9 @@ public class CombustivelActivity extends SherlockFragmentActivity {
     private Tab tab;
     private LocationManager locationManager;
     private final String TAG = "POSICAO_ACT_COMBUSTIVEL";
+    private PreferenciasDAO preferenciasDAO;
+    private List<Combustivel> preferenciaCombustiveis;
+    private ActionBar.TabListener tabListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,8 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         setContentView(R.layout.activity_combustivel);
 
         // obtendo uma lista de combustiveis selecionados nas preferencias
-        PreferenciasDAO preferenciasDAO = new PreferenciasDAO(this);
-        List<Combustivel> preferenciaCombustiveis = preferenciasDAO.getPreferencias();
+        preferenciasDAO = new PreferenciasDAO(this);
+        preferenciaCombustiveis = preferenciasDAO.getPreferencias();
 
         // Ativando a navegação em modo de abas
         mActionBar = getSupportActionBar();
@@ -67,7 +70,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         mPager.setAdapter(viewPagerAdapter);
 
         // Captura os clicks nas abas
-        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+        tabListener = new ActionBar.TabListener() {
 
             @Override
             public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
@@ -90,19 +93,23 @@ public class CombustivelActivity extends SherlockFragmentActivity {
             }
         };
 
-        // Criando as abas
-        // TODO Essas abas, só serão criadas de acordo com a seleção de preferências do usuário
-        tab = mActionBar.newTab().setText("Alcool").setTabListener(tabListener);
-        mActionBar.addTab(tab);
-
-        tab = mActionBar.newTab().setText("Diesel").setTabListener(tabListener);
-        mActionBar.addTab(tab);
-
-        tab = mActionBar.newTab().setText("Gasolina").setTabListener(tabListener);
-        mActionBar.addTab(tab);
-
         // output longitude e latitude
         Log.d(TAG, "Latitude Longitude: " + LatitudeLongitude.getLatitudeLongitude());
+    }
+
+    public void exibirTabs() {
+        // remove todas as abas
+        mActionBar.removeAllTabs();
+
+        // popula as abas.
+        for (Combustivel combustivel : preferenciaCombustiveis) {
+            if (combustivel.getMostrar() == 1) {
+                // Criando as abas
+                // TODO Essas abas, só serão criadas de acordo com a seleção de preferências do usuário
+                tab = mActionBar.newTab().setText(combustivel.getNome()).setTabListener(tabListener);
+                mActionBar.addTab(tab);
+            }
+        }
     }
 
     @Override
@@ -111,6 +118,9 @@ public class CombustivelActivity extends SherlockFragmentActivity {
 
         Log.i(TAG, "onResume");
         Log.i("combustivel", preferenciaCombustiveis.toString());
+
+        // Atualiza a visualização das tabs
+        exibirTabs();
     }
 
     @Override
@@ -134,7 +144,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
                 Intent it = new Intent(this, Configuracoes.class);
                 startActivity(it);
                 break;
-            case  R.id.action_perfil_user:
+            case R.id.action_perfil_user:
                 Intent userProfile = new Intent(this, PerfilDoUsuario.class);
                 startActivity(userProfile);
         }
