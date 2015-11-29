@@ -130,9 +130,4 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         }
         return false;
     }
-
-
 }
-
-
-

@@ -74,12 +74,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="br.com.fjn.mobileoil.LoginGoogle"
-            android:label="@string/title_activity_login_google" >
-        </activity>
+            android:label="@string/title_activity_login_google" />
+        <activity
+            android:name="br.com.fjn.mobileoil.Configuracoes"
+            android:label="@string/title_activity_configuracoes" />
         <activity
             android:name="br.com.fjn.mobileoil.PerfilDoUsuario"
-            android:label="@string/title_activity_perfil_do_usuario" >
-        </activity>
+            android:label="@string/title_activity_perfil_do_usuario" />
     </application>
 
 </manifest>
