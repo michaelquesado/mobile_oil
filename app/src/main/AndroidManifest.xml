@@ -50,7 +50,6 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -68,12 +67,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LoginGoogle"
-            android:label="@string/title_activity_login_google" >
-        </activity>
+            android:label="@string/title_activity_login_google" />
+
+        <activity
+            android:name=".Configuracoes"
+            android:label="@string/title_activity_configuracoes" />
         <activity
             android:name=".PerfilDoUsuario"
-            android:label="@string/title_activity_perfil_do_usuario" >
-        </activity>
+            android:label="@string/title_activity_perfil_do_usuario" />
     </application>
 
 </manifest>
