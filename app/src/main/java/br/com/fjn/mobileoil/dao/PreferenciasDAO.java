@@ -66,15 +66,12 @@ public class PreferenciasDAO extends DAO {
         SQLiteDatabase db = this.getWritableDatabase();
         resetarPreferencias(db);
 
-        Log.i("PREFERENCIAS", "TOTAL DE PREFERENCIAS " + listaPreferencias.size());
-
         for (Preferencia p : listaPreferencias) {
             ContentValues cv = new ContentValues();
             cv.put("mostrar", p.getMostrar());
 
             int atualizar = db.update(tabela, cv, "combustivel = ?",
                     new String[]{p.getCombustivel()});
-            Log.i("PREFERENCIAS", p.getCombustivel() + " PARA: " + p.getMostrar() + " VALOR ATUALIZAR: " + atualizar);
         }
         db.close();
     }

@@ -29,8 +29,9 @@ public class CombustivelActivity extends SherlockFragmentActivity {
     private LocationManager locationManager;
     private final String TAG = "ACT_COMBUSTIVEL";
     private PreferenciasDAO preferenciasDAO;
-    public static List<Combustivel> preferenciaCombustiveis;
     private ActionBar.TabListener tabListener;
+
+    static List<Combustivel> preferenciaCombustiveis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,25 +53,23 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         // Activate Fragment Manager
         FragmentManager fm = getSupportFragmentManager();
 
-        // Criando recurso para deslizar nas abas.
         ViewPager.SimpleOnPageChangeListener ViewPagerListener = new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                // Procura a posição do ViewPager
+                // Find the ViewPager Position
                 mActionBar.setSelectedNavigationItem(position);
             }
         };
 
         mPager.setOnPageChangeListener(ViewPagerListener);
-        // Localiza a classe de adapter (ViewPager.java) e coloca como o adapter do ViewPager
-        // TODO fazer com que a localização do usuário vá para as activites de viewPagerAdapter
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(fm, "");
-        // Seta o ViewPagerAdapter para o ViewPager
+        // Locate the adapter class classed ViewPagerAdapter.java
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(fm);
+        // Set the View Pager Adapter into ViewPager
         mPager.setAdapter(viewPagerAdapter);
 
-        // Captura os clicks nas abas
-        tabListener = new ActionBar.TabListener() {
+        // Capture tab button clicks
+        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
 
             @Override
             public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
@@ -80,16 +79,10 @@ public class CombustivelActivity extends SherlockFragmentActivity {
 
             @Override
             public void onTabUnselected(Tab tab, FragmentTransaction fragmentTransaction) {
-                // Utilizado para uma aba que perca o foco.
             }
 
             @Override
             public void onTabReselected(Tab tab, FragmentTransaction fragmentTransaction) {
-                // TODO Utilizado para, quando uma aba já esta selecionada
-                // e o usuário clica nela novamente.
-                // Podia fazer com que, se o usuário clicar nela novamente, o conteúda
-                // da aba atualize os dados
-
             }
         };
 
@@ -107,10 +100,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         // popula as abas.
         for (Combustivel combustivel : preferenciaCombustiveis) {
             if (combustivel.getMostrar() == 1) {
-                // Cria uma aba
-                tab = mActionBar.newTab().setText("123" + combustivel.getNome()).setTabListener(tabListener);
-
-                // Adiciona a actionbar
+                tab = mActionBar.newTab().setText(combustivel.getNome()).setTabListener(tabListener);
                 mActionBar.addTab(tab);
             }
         }
