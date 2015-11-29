@@ -14,7 +14,11 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
+import java.util.List;
+
 import br.com.fjn.mobileoil.adapters.ViewPagerAdapter;
+import br.com.fjn.mobileoil.dao.PreferenciasDAO;
+import br.com.fjn.mobileoil.models.Combustivel;
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
 public class CombustivelActivity extends SherlockFragmentActivity {
@@ -29,6 +33,10 @@ public class CombustivelActivity extends SherlockFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combustivel);
+
+        // obtendo uma lista de combustiveis selecionados nas preferencias
+        PreferenciasDAO preferenciasDAO = new PreferenciasDAO(this);
+        List<Combustivel> preferenciaCombustiveis = preferenciasDAO.getPreferencias();
 
         // Ativando a navegação em modo de abas
         mActionBar = getSupportActionBar();
@@ -99,8 +107,10 @@ public class CombustivelActivity extends SherlockFragmentActivity {
 
     @Override
     public void onResume() {
-        Log.i(TAG, "onResume");
         super.onResume();
+
+        Log.i(TAG, "onResume");
+        Log.i("combustivel", preferenciaCombustiveis.toString());
     }
 
     @Override

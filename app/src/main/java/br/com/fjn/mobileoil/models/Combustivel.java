@@ -40,4 +40,13 @@ public class Combustivel {
     public void setMostrar(int mostrar) {
         this.mostrar = mostrar;
     }
+
+    @Override
+    public String toString() {
+        return "Combustivel{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", mostrar=" + mostrar +
+                '}';
+    }
 }
