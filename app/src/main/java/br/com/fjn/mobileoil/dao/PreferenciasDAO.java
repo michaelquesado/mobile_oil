@@ -29,7 +29,7 @@ public class PreferenciasDAO extends DAO {
 
         SQLiteDatabase db = this.getReadableDatabase();
         String[] colunas = {"id", "combustivel", "mostrar"};
-        Cursor cursor = db.query(tabela, colunas, "", null, null, null, null);
+        Cursor cursor = db.query(tabela, colunas, "mostrar=1", null, null, null, null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -41,6 +41,7 @@ public class PreferenciasDAO extends DAO {
 
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return combustivels;
     }
 

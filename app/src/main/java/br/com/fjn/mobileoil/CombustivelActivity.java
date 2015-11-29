@@ -27,9 +27,9 @@ public class CombustivelActivity extends SherlockFragmentActivity {
     private ViewPager mPager;
     private Tab tab;
     private LocationManager locationManager;
-    private final String TAG = "POSICAO_ACT_COMBUSTIVEL";
+    private final String TAG = "ACT_COMBUSTIVEL";
     private PreferenciasDAO preferenciasDAO;
-    private List<Combustivel> preferenciaCombustiveis;
+    public static List<Combustivel> preferenciaCombustiveis;
     private ActionBar.TabListener tabListener;
 
     @Override
@@ -101,12 +101,16 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         // remove todas as abas
         mActionBar.removeAllTabs();
 
+        // obtem novamente as configurações
+        CombustivelActivity.preferenciaCombustiveis = preferenciasDAO.getPreferencias();
+
         // popula as abas.
         for (Combustivel combustivel : preferenciaCombustiveis) {
             if (combustivel.getMostrar() == 1) {
-                // Criando as abas
-                // TODO Essas abas, só serão criadas de acordo com a seleção de preferências do usuário
-                tab = mActionBar.newTab().setText(combustivel.getNome()).setTabListener(tabListener);
+                // Cria uma aba
+                tab = mActionBar.newTab().setText("123" + combustivel.getNome()).setTabListener(tabListener);
+
+                // Adiciona a actionbar
                 mActionBar.addTab(tab);
             }
         }
@@ -117,9 +121,15 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         super.onResume();
 
         Log.i(TAG, "onResume");
-        Log.i("combustivel", preferenciaCombustiveis.toString());
+        Log.i("combustivel", CombustivelActivity.preferenciaCombustiveis.toString());
 
         // Atualiza a visualização das tabs
+        exibirTabs();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
         exibirTabs();
     }
 
