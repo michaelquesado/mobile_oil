@@ -93,7 +93,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
 
         // Criando as abas
         // TODO Essas abas, só serão criadas de acordo com a seleção de preferências do usuário
-        tab1 = mActionBar.newTab().setText("Gasolina").setTabListener(tabListener);
+        tab1 = mActionBar.newTab().setText("Alcool").setTabListener(tabListener);
         mActionBar.addTab(tab1);
 
         tab2 = mActionBar.newTab().setText("Diesel").setTabListener(tabListener);

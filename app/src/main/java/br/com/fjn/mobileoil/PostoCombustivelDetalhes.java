@@ -41,6 +41,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     private TextView mPostoEndereco;
     private Button buttonTracarRota;
 
+    private String postoId;
     private String postoNome;
     private String postoEndereco;
     private String postoDataAtualizacao;
@@ -64,6 +65,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
         if (it != null) {
             initComponents();
 
+            postoId = it.getStringExtra("postoId");
             postoNome = it.getStringExtra("postoNome");
             postoEndereco = it.getStringExtra("postoEndereco");
             postoDataAtualizacao = it.getStringExtra("postDataAtualizacao");
@@ -90,6 +92,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
         Context context = getBaseContext();
         for (int i = 0; i < 20; i++) {
             p = new PostosCombustivel();
+            p.setIdPosto(postoId);
             p.setNomePosto("Auto Posto Batateiras");
             p.setEndereco("Av. José Silva Santo, 15 Parque Recreio");
             p.setDataAtualizacao("Hoje");
@@ -223,6 +226,11 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
 
             // Abrir janela de cadastro de combustivel
             Intent it = new Intent(this, CombustivelAdicionarValor.class);
+
+            // obtem o objeto do item clicado
+            it.putExtra("postoNome", postoNome);
+            it.putExtra("postoValorCombustivel", postoTipoCombustivel);
+            it.putExtra("postoTipoCombustivel", postoTipoCombustivel);
             startActivity(it);
 
         }

@@ -4,7 +4,7 @@ package br.com.fjn.mobileoil.models;
  * Created by unobre on 22/08/2015.
  */
 public class PostosCombustivel {
-    private long idPosto;
+    private String idPosto;
     private int logo;
     private String nomePosto;
     private String endereco;
@@ -16,11 +16,11 @@ public class PostosCombustivel {
     public PostosCombustivel() {
     }
 
-    public long getIdPosto() {
+    public String getIdPosto() {
         return idPosto;
     }
 
-    public void setIdPosto(long idPosto) {
+    public void setIdPosto(String idPosto) {
         this.idPosto = idPosto;
     }
 

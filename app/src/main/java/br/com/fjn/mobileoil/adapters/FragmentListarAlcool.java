@@ -80,6 +80,7 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
 
         // obtem o objeto do item clicado
         PostosCombustivel posto = list.get(position);
+        it.putExtra("postoId", posto.getIdPosto());
         it.putExtra("postoNome", posto.getNomePosto());
         //it.putExtra("postoEndereco", posto.getEndereco());
         //it.putExtra("postDataAtualizacao", posto.getDataAtualizacao());
@@ -189,29 +190,33 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
                 //JSONArray jsonMainNodeArray = jsonObjectResults.getJSONArray("items");
 
                 // Percorrendo o array JSON.
-               int totalItens = jsonArray.length();
+                int totalItens = jsonArray.length();
                 for (int i = 0; i < totalItens; i++) {
 
                     JSONObject jsonObjectPosto = jsonArray.getJSONObject(i);
-                    String postoNome = jsonObjectPosto.getString("nome");
-                    String postoEndereco = jsonObjectPosto.getString("combustivel");
-                    String latitude = jsonObjectPosto.getString("latitude");
-                    String longitude = jsonObjectPosto.getString("longitude");
-                    String postoDataAtualizacao = "Ontem";
-                    String postoValorCombustivel = jsonObjectPosto.getString("valor");
-                    Log.i("json", postoValorCombustivel);
-                    //String postoDistancia = FormatarDistancia.getDistanciaFormatada(jsonObjectPosto.getString("distance"));
+                    if (jsonObjectPosto.getString("combustivel").equals("Etanol")) {
+                        String postoId = jsonObjectPosto.getString("id");
+                        String postoNome = jsonObjectPosto.getString("nome");
+                        String postoEndereco = jsonObjectPosto.getString("combustivel");
+                        String latitude = jsonObjectPosto.getString("latitude");
+                        String longitude = jsonObjectPosto.getString("longitude");
+                        String postoDataAtualizacao = "Ontem";
+                        String postoValorCombustivel = jsonObjectPosto.getString("valor");
+                        Log.i("json", postoValorCombustivel);
+                        //String postoDistancia = FormatarDistancia.getDistanciaFormatada(jsonObjectPosto.getString("distance"));
 
-                    PostosCombustivel p = new PostosCombustivel();
-                    p.setNomePosto(postoNome);
-                    p.setEndereco(postoEndereco);
-                    p.setDataAtualizacao(postoDataAtualizacao);
-                    p.setValorCombustivel(postoValorCombustivel);
-                    //p.setDistanciaPosto(postoDistancia);
-                    p.setLatLog(latitude + "," + longitude);
+                        PostosCombustivel p = new PostosCombustivel();
+                        p.setIdPosto(postoId);
+                        p.setNomePosto(postoNome);
+                        p.setEndereco(postoEndereco);
+                        p.setDataAtualizacao(postoDataAtualizacao);
+                        p.setValorCombustivel(postoValorCombustivel);
+                        //p.setDistanciaPosto(postoDistancia);
+                        p.setLatLog(latitude + "," + longitude);
 
-                    if (!list.contains(p)) {
-                        list.add(p);
+                        if (!list.contains(p)) {
+                            list.add(p);
+                        }
                     }
                 }
 

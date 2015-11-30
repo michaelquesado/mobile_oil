@@ -1,6 +1,7 @@
 package br.com.fjn.mobileoil;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,15 +37,32 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
     private EditText mTextValorCombustivel;
     private Button buttonSalvarValorCombustivel;
 
+    private String postoID;
+    private String postoNome;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combustivel_adicionar_valor);
 
+        //Inicializa os componentes
+        initComponents();
+
+
+        Intent it = getIntent();
+        if (it != null) {
+            postoID = it.getStringExtra("postoId");
+            postoNome = it.getStringExtra("postoNome");
+
+
+        }
+    }
+
+    private void initComponents() {
         mTextValorCombustivel = (EditText) findViewById(R.id.editTextValorCombustivel);
         buttonSalvarValorCombustivel = (Button) findViewById(R.id.buttonSalvarValorCombustivel);
         buttonSalvarValorCombustivel.setOnClickListener(this);
-
     }
 
     @Override
@@ -100,7 +118,7 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
 
                 // In a POST request, we don't pass the values in the URL.
                 //Therefore we use only the web page URL as the parameter of the HttpPost argument
-                HttpPost httpPost = new HttpPost("http://localhost/ws_mobile_oil/Precos/cadastrar");
+                HttpPost httpPost = new HttpPost("http://93.188.167.153/ws_mobile_oil/Precos/cadastrar");
 
                 // Because we are not passing values over the URL, we should have a mechanism to pass the values that can be
                 //uniquely separate by the other end.
@@ -170,18 +188,22 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
 
+                Log.d("resultado", "Resultado: " + result);
+
                 try {
                     JSONObject jsonObject = new JSONObject(result);
-                    String msg = jsonObject.getString("msg");
-
-                    if (msg == "ok") {
-                        Toast.makeText(getApplicationContext(), "HTTP POST is working...", Toast.LENGTH_LONG).show();
+                    String msg = jsonObject.getString("msg").trim();
+                    Log.d("resultado", "Resultado do json: " + msg);
+                    if (msg.equals("ok")) {
+                        Toast.makeText(getApplicationContext(), "Cadastrado com sucesso!", Toast.LENGTH_LONG).show();
+                        finish();
                     } else {
                         Toast.makeText(getApplicationContext(), "Invalid POST req...", Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
             }
         }
 
