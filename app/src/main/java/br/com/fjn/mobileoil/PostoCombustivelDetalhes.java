@@ -74,12 +74,9 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
 
             mValorCombustivel.setText(postoValorCombustivel);
             // alterando a aparencia do texto
-            if (postoValorCombustivel.toString().equals("-1.0000") || postoValorCombustivel.toString().equals("-")) {
-                mValorCombustivel.setText("Add Valor");
-
-                // Listener em textview
-                mValorCombustivel.setOnClickListener(this);
-            }
+            Log.i("VALOR_COMBUSTIVEL", "valor do combustivel: " + postoValorCombustivel);
+            // Listener em textview
+            mValorCombustivel.setOnClickListener(this);
 
             mNomePosto.setText(postoNome);
             mPostoDistancia.setText(postoDistancia);

@@ -10,7 +10,7 @@ import android.util.Log;
  */
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 1;
+    final int PAGE_COUNT = 3;
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);

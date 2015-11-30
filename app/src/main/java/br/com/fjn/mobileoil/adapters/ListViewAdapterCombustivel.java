@@ -76,10 +76,6 @@ public class ListViewAdapterCombustivel extends BaseAdapter {
         vhac.postoValorCombustivel.setText(postoCombustivel.getValorCombustivel());
         vhac.postoDataAtualizacao.setText(postoCombustivel.getDataAtualizacao());
         vhac.postoDistancia.setText(postoCombustivel.getDistanciaPosto());
-
-        if(postoCombustivel.getValorCombustivel() == "-1.0000");{
-            vhac.postoValorCombustivel.setText("-");
-        }
         return convertView;
     }
 

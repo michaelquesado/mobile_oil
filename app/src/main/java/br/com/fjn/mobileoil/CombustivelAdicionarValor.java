@@ -75,7 +75,7 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
         if (mTextValorCombustivel.getText().toString().length() < 4) {
             Toast.makeText(this, "Informe o numero corretamente.", Toast.LENGTH_SHORT).show();
         } else {
-            sendPostRequest("529", "3.456", "1", "543");
+            sendPostRequest("0767nsn9-b5b07bdc346f4702b0836d2ec971b35f", "3.456", "1", "543");
         }
     }
 
@@ -172,16 +172,15 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
 
                 try {
                     JSONObject jsonObject = new JSONObject(result);
+                    String msg = jsonObject.getString("msg");
 
+                    if (msg == "ok") {
+                        Toast.makeText(getApplicationContext(), "HTTP POST is working...", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Invalid POST req...", Toast.LENGTH_LONG).show();
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }
-
-
-                if (result.equals("true")) {
-                    Toast.makeText(getApplicationContext(), "HTTP POST is working...", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Invalid POST req...", Toast.LENGTH_LONG).show();
                 }
             }
         }

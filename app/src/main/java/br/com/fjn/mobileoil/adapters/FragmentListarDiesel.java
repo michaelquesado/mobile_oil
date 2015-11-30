@@ -25,7 +25,7 @@ public class FragmentListarDiesel extends SherlockFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Get the view from fragmenttab2.xml
-        View view = inflater.inflate(R.layout.activity_listar_alcool, container, false);
+        View view = inflater.inflate(R.layout.activity_listar_diesel, container, false);
         mListView = (ListView) view.findViewById(R.id.listaPostos);
 
         // Populando meu listView
