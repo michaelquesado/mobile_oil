@@ -14,16 +14,22 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
+import java.util.List;
+
 import br.com.fjn.mobileoil.adapters.ViewPagerAdapter;
+import br.com.fjn.mobileoil.dao.PreferenciasDAO;
+import br.com.fjn.mobileoil.models.Combustivel;
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
 public class CombustivelActivity extends SherlockFragmentActivity {
 
     private ActionBar mActionBar;
     private ViewPager mPager;
-    private Tab tab;
+    private Tab tab1, tab2, tab3;
     private LocationManager locationManager;
     private final String TAG = "POSICAO_ACT_COMBUSTIVEL";
+    private List<Combustivel> listaCombustiveis;
+    private PreferenciasDAO prefDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,9 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         mActionBar = getSupportActionBar();
         mActionBar.setHomeButtonEnabled(true);
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        prefDAO = new PreferenciasDAO(this);
+        listaCombustiveis = prefDAO.getPreferencias();
 
         // Localiza o ViewPager no layout activity_combustivel.xml
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -54,7 +63,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         mPager.setOnPageChangeListener(ViewPagerListener);
         // Localiza a classe de adapter (ViewPager.java) e coloca como o adapter do ViewPager
         // TODO fazer com que a localização do usuário vá para as activites de viewPagerAdapter
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(fm, "");
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(fm);
         // Seta o ViewPagerAdapter para o ViewPager
         mPager.setAdapter(viewPagerAdapter);
 
@@ -69,7 +78,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
 
             @Override
             public void onTabUnselected(Tab tab, FragmentTransaction fragmentTransaction) {
-                // Utilizado para uma aba que perca o foco.
+
             }
 
             @Override
@@ -84,14 +93,14 @@ public class CombustivelActivity extends SherlockFragmentActivity {
 
         // Criando as abas
         // TODO Essas abas, só serão criadas de acordo com a seleção de preferências do usuário
-        tab = mActionBar.newTab().setText("Alcool").setTabListener(tabListener);
-        mActionBar.addTab(tab);
+        tab1 = mActionBar.newTab().setText("Alcool").setTabListener(tabListener);
+        mActionBar.addTab(tab1);
 
-        tab = mActionBar.newTab().setText("Diesel").setTabListener(tabListener);
-        mActionBar.addTab(tab);
+        //tab2 = mActionBar.newTab().setText("Diesel").setTabListener(tabListener);
+        //mActionBar.addTab(tab2);
 
-        tab = mActionBar.newTab().setText("Gasolina").setTabListener(tabListener);
-        mActionBar.addTab(tab);
+        //tab3 = mActionBar.newTab().setText("Gasolina").setTabListener(tabListener);
+        //mActionBar.addTab(tab3);
 
         // output longitude e latitude
         Log.d(TAG, "Latitude Longitude: " + LatitudeLongitude.getLatitudeLongitude());
@@ -124,7 +133,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
                 Intent it = new Intent(this, Configuracoes.class);
                 startActivity(it);
                 break;
-            case  R.id.action_perfil_user:
+            case R.id.action_perfil_user:
                 Intent userProfile = new Intent(this, PerfilDoUsuario.class);
                 startActivity(userProfile);
         }

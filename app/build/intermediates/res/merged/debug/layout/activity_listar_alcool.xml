@@ -7,11 +7,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Listagem de combustivel" />
+        android:text="Listagem alcool" />
 
     <ListView
         android:id="@+id/listaPostos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
-<!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil3/mobile_oil/app/src/main/res/layout/activity_listar_alcool.xml -->
+
+<!-- Fala Miguel! --><!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil3/mobile_oil/app/src/main/res/layout/activity_listar_alcool.xml -->

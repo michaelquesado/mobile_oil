@@ -61,8 +61,8 @@ public class ListViewAdapterCombustivel extends BaseAdapter {
             vhac = new ViewHolderAdapterCategoria();
             vhac.postoNome = (TextView) convertView.findViewById(R.id.nomePosto);
             vhac.postoEndereco = (TextView) convertView.findViewById(R.id.enderecoPosto);
-            vhac.postoValorCombustivel = (TextView) convertView.findViewById(R.id.dataAtualizacao);
-            vhac.postoDataAtualizacao = (TextView) convertView.findViewById(R.id.valorCombustivel);
+            vhac.postoValorCombustivel = (TextView) convertView.findViewById(R.id.valorCombustivel);
+            vhac.postoDataAtualizacao = (TextView) convertView.findViewById(R.id.dataAtualizacao);
             vhac.postoDistancia = (TextView) convertView.findViewById(R.id.dataAtualizacao);
             vhac.postoDataAtualizacao = (TextView) convertView.findViewById(R.id.distanciaPosto);
             convertView.setTag(vhac);
@@ -76,6 +76,10 @@ public class ListViewAdapterCombustivel extends BaseAdapter {
         vhac.postoValorCombustivel.setText(postoCombustivel.getValorCombustivel());
         vhac.postoDataAtualizacao.setText(postoCombustivel.getDataAtualizacao());
         vhac.postoDistancia.setText(postoCombustivel.getDistanciaPosto());
+
+        if(postoCombustivel.getValorCombustivel() == "-1.0000");{
+            vhac.postoValorCombustivel.setText("-");
+        }
         return convertView;
     }
 

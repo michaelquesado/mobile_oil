@@ -3,20 +3,22 @@ package br.com.fjn.mobileoil.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 /**
  * Created by unobre on 17/08/2015.
  */
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 3;
+    final int PAGE_COUNT = 1;
 
-    public ViewPagerAdapter(FragmentManager fm, String coordenadas) {
+    public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
     @Override
     public Fragment getItem(int position) {
+        Log.i("UELIO_VIEWPA", "Position: " + position);
         switch (position) {
             case 0:
                 FragmentListarAlcool fragmentListarAlcool = new FragmentListarAlcool();

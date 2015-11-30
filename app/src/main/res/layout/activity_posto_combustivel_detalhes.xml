@@ -33,7 +33,6 @@
                 android:layout_height="wrap_content"
                 android:text="3,490"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_below="@+id/textView4"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
@@ -47,16 +46,6 @@
                 android:text="(1km)" />
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="5dp"
-                android:text="Hoje"
-                android:layout_alignParentTop="true"
-                android:layout_alignRight="@+id/textView3"
-                android:layout_alignEnd="@+id/textView3" />
-
-            <TextView
                 android:id="@+id/endereco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,9 +53,8 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/nomePosto"
 
-                android:layout_toLeftOf="@+id/textView4"
-                android:layout_toStartOf="@+id/textView4"
-                android:text="Gasolina Comum" />
+                android:text="Gasolina Comum"
+                android:layout_alignRight="@+id/textView3" />
         </RelativeLayout>
 
         <LinearLayout

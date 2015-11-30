@@ -63,7 +63,12 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
         adapterCombustivel.setContext(getActivity().getBaseContext());
         mListView.setOnItemClickListener(this);
 
-        new HttpAsyncTask().execute(url + LatitudeLongitude.getLatitudeLongitude());
+
+        String latitudes = LatitudeLongitude.getLatitudeLongitude();
+        String[] latlog = LatitudeLongitude.getLatitudeLongitude().split(",");
+        url = "http://93.188.167.153/ws_mobile_oil/HereMaps/getPostos/lat/" + latlog[0] + "/long/" + latlog[1];
+
+        new HttpAsyncTask().execute(url);
         return view;
     }
 
@@ -76,10 +81,10 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
         // obtem o objeto do item clicado
         PostosCombustivel posto = list.get(position);
         it.putExtra("postoNome", posto.getNomePosto());
-        it.putExtra("postoEndereco", posto.getEndereco());
-        it.putExtra("postDataAtualizacao", posto.getDataAtualizacao());
+        //it.putExtra("postoEndereco", posto.getEndereco());
+        //it.putExtra("postDataAtualizacao", posto.getDataAtualizacao());
         it.putExtra("postoValorCombustivel", posto.getValorCombustivel());
-        it.putExtra("postoDistancia", posto.getDistanciaPosto());
+        //it.putExtra("postoDistancia", posto.getDistanciaPosto());
         it.putExtra("postoTipoCombustivel", "Alcool");
         it.putExtra("postoLatLog", posto.getLatLog());
         startActivity(it);
@@ -177,30 +182,34 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
         protected void onPostExecute(String result) {
             try {
 
-                JSONObject jsonObject = new JSONObject(result);
-                JSONObject jsonObjectResults = jsonObject.getJSONObject("results");
-                JSONArray jsonMainNodeArray = jsonObjectResults.getJSONArray("items");
+                JSONArray jsonArray = new JSONArray(result);
+                Log.i("json", jsonArray.toString());
+
+                //JSONObject jsonObjectResults = jsonObject.getJSONObject("results");
+                //JSONArray jsonMainNodeArray = jsonObjectResults.getJSONArray("items");
 
                 // Percorrendo o array JSON.
-                int totalItens = jsonMainNodeArray.length();
+               int totalItens = jsonArray.length();
                 for (int i = 0; i < totalItens; i++) {
 
-                    JSONObject jsonObjectPosto = jsonMainNodeArray.getJSONObject(i);
-                    JSONArray latlog = jsonObjectPosto.getJSONArray("position");
+                    JSONObject jsonObjectPosto = jsonArray.getJSONObject(i);
 
-                    String postoNome = jsonObjectPosto.getString("title");
-                    String postoEndereco = jsonObjectPosto.getString("vicinity");
+                    String postoNome = jsonObjectPosto.getString("nome");
+                    String postoEndereco = jsonObjectPosto.getString("combustivel");
+                    String latitude = jsonObjectPosto.getString("latitude");
+                    String longitude = jsonObjectPosto.getString("longitude");
                     String postoDataAtualizacao = "Ontem";
-                    String postoValorCombustivel = "3.310";
-                    String postoDistancia = FormatarDistancia.getDistanciaFormatada(jsonObjectPosto.getString("distance"));
+                    String postoValorCombustivel = jsonObjectPosto.getString("valor");
+                    Log.i("json", postoValorCombustivel);
+                    //String postoDistancia = FormatarDistancia.getDistanciaFormatada(jsonObjectPosto.getString("distance"));
 
                     PostosCombustivel p = new PostosCombustivel();
                     p.setNomePosto(postoNome);
                     p.setEndereco(postoEndereco);
                     p.setDataAtualizacao(postoDataAtualizacao);
                     p.setValorCombustivel(postoValorCombustivel);
-                    p.setDistanciaPosto(postoDistancia);
-                    p.setLatLog(latlog.getString(0) + "," + latlog.getString(1));
+                    //p.setDistanciaPosto(postoDistancia);
+                    p.setLatLog(latitude + "," + longitude);
 
                     if (!list.contains(p)) {
                         list.add(p);
