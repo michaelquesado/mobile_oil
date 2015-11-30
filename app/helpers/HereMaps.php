@@ -37,6 +37,7 @@ class HereMaps {
 		$tipoCombustivel = $combustiveis->getTodosCombustiveis();
 
 
+
 		foreach($this->postos->results->items as $p){
 
 			$this->precosPostos[] = "'". $p->id . "'";
@@ -70,11 +71,15 @@ class HereMaps {
 
 
 			} catch (PDOException $e) {
-				
+
+				echo $e->getMessage();
+
 			}
 
 			
 		}
+
+
 
 		$combustiveis = null;
 		$posto = null;
@@ -86,7 +91,7 @@ class HereMaps {
 	public function getPostos(){
 		
 		$p = new Posto();
-
+		
 		return $p->getAllPostoPorIdMaps( implode(',', $this->precosPostos ) );
 
 	}

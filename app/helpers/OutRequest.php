@@ -7,7 +7,7 @@ class OutRequest{
 	public function __construct( $link){
 
 		$this->link = $link;
-		error_reporting(0);
+		
 
 	}
 
