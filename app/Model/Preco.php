@@ -14,7 +14,8 @@ class Preco extends AppModel {
 	public function addPreco(Array $dados){
 
 		
-		return parent::insert($dados);
+		$insert = parent::insert($dados);
+		return  ['msg' => ($insert == true)? 'ok'  : 'erro' ];
 
 
 	}
