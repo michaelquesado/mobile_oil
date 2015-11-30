@@ -43,7 +43,7 @@ class Posto extends AppModel{
 			$where = " p.maps_id IN ( " . $array_id ." )";
 
 			return parent::read(
-				'p.id,
+				'p.maps_id as id,
 				p.nome, 
 				p.latitude, 
 				p.longitude, 
