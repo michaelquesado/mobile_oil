@@ -40,8 +40,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
         mEntrarGooglePlus = (SignInButton) findViewById(R.id.entrar_com_google);
         mEntrarSemCadastro = (Button) findViewById(R.id.entrar_sem_cadastro);
 
+
         mEntrarGooglePlus.setOnClickListener(this);
         mEntrarSemCadastro.setOnClickListener(this);
+
 
         /*TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
         if (!telaConfigDAO.isMostrarTela("login_inicial")) {
@@ -79,12 +81,16 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
     @Override
     public void onClick(View v) {
 
-        if (v.getId() == R.id.entrar_com_google) {
-            Intent LoginGoogleIntent = new Intent(this, LoginGoogle.class);
-            startActivity(LoginGoogleIntent);
+        if (LatitudeLongitude.getLatitudeLongitude() != null) {
+            if (v.getId() == R.id.entrar_com_google) {
+                Intent LoginGoogleIntent = new Intent(this, LoginGoogle.class);
+                startActivity(LoginGoogleIntent);
+            } else {
+                Intent EntrarSemCadastro = new Intent(this, CombustivelActivity.class);
+                startActivity(EntrarSemCadastro);
+            }
         } else {
-            Intent EntrarSemCadastro = new Intent(this, CombustivelActivity.class);
-            startActivity(EntrarSemCadastro);
+            Toast.makeText(this, "Obtendo localização GPS", Toast.LENGTH_SHORT).show();
         }
 
         /*TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
