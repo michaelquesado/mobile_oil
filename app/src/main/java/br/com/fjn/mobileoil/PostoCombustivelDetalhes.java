@@ -29,7 +29,7 @@ import br.com.fjn.mobileoil.adapters.ListViewAdapterCombustivel;
 import br.com.fjn.mobileoil.models.PostosCombustivel;
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
-public class PostoCombustivelDetalhes extends FragmentActivity implements AdapterView.OnItemClickListener {
+public class PostoCombustivelDetalhes extends FragmentActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
 
     private List<PostosCombustivel> list;
 
@@ -71,8 +71,17 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
             postoDistancia = it.getStringExtra("postoDistancia");
             postoLatLog = it.getStringExtra("postoLatLog");
 
-            mNomePosto.setText(postoNome);
+
             mValorCombustivel.setText(postoValorCombustivel);
+            // alterando a aparencia do texto
+            if (postoValorCombustivel.toString().equals("-1.0000") || postoValorCombustivel.toString().equals("-")) {
+                mValorCombustivel.setText("Add Valor");
+
+                // Listener em textview
+                mValorCombustivel.setOnClickListener(this);
+            }
+
+            mNomePosto.setText(postoNome);
             mPostoDistancia.setText(postoDistancia);
             mPostoEndereco.setText(postoEndereco);
         }
@@ -171,27 +180,26 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
 
 
     //Metodo chamado para traçar a rota da localização do usuário até o posto selecionado.
-    public void traceRoute(View view){
+    public void traceRoute(View view) {
         String[] latlogPosto = postoLatLog.split(",");
         double latitude = Double.parseDouble(latlogPosto[0]);
         double longitude = Double.parseDouble(latlogPosto[1]);
 
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                Uri.parse("http://maps.google.com/maps?daddr="+latitude+","+longitude+""));
+                Uri.parse("http://maps.google.com/maps?daddr=" + latitude + "," + longitude + ""));
         intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-            try{
-                startActivity(intent);
-            } catch (ActivityNotFoundException ex){
-                try{
-                    Intent unrestrictedIntent = new Intent(android.content.Intent.ACTION_VIEW,
-                            Uri.parse("http://maps.google.com/maps?daddr="+latitude+","+longitude+""));
-                            startActivity(unrestrictedIntent);
-                } catch (ActivityNotFoundException innerEx){
-                    Toast.makeText(this, "Por favor, instale o aplicativo Google Maps para continuar!!", Toast.LENGTH_LONG).show();
-                }
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException ex) {
+            try {
+                Intent unrestrictedIntent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("http://maps.google.com/maps?daddr=" + latitude + "," + longitude + ""));
+                startActivity(unrestrictedIntent);
+            } catch (ActivityNotFoundException innerEx) {
+                Toast.makeText(this, "Por favor, instale o aplicativo Google Maps para continuar!!", Toast.LENGTH_LONG).show();
             }
+        }
     }
-
 
 
     // Método para tratar os evendos dos clicks nos itens da lista
@@ -209,6 +217,18 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
         it.putExtra("postoTipoCombustivel", "Alcool");
         startActivity(it);
         finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.valorCombustivel) {
+            Toast.makeText(this, "Abrir janela de cadastro", Toast.LENGTH_SHORT).show();
+
+            // Abrir janela de cadastro de combustivel
+            Intent it = new Intent(this, CombustivelAdicionarValor.class);
+            startActivity(it);
+
+        }
     }
 }
 

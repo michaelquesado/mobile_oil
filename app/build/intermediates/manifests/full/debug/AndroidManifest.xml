@@ -81,6 +81,10 @@
         <activity
             android:name="br.com.fjn.mobileoil.PerfilDoUsuario"
             android:label="@string/title_activity_perfil_do_usuario" />
+        <activity
+            android:name="br.com.fjn.mobileoil.CombustivelAdicionarValor"
+            android:label="@string/title_activity_combustivel_adicionar_valor" >
+        </activity>
     </application>
 
 </manifest>

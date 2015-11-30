@@ -163,6 +163,7 @@
     <!-- From: file:/C:/Users/ibyte/AndroidStudioProjects/GIT/mobileoil3/mobile_oil/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="title_activity_combustivel">Lista</string>
+    <string name="title_activity_combustivel_adicionar_valor">CombustivelAdicionarValor</string>
     <string name="title_activity_configuracoes">Configuracoes</string>
     <string name="title_activity_login_google">Login com Google</string>
     <string name="title_activity_perfil_do_usuario">PerfilDoUsuario</string>

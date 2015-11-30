@@ -15,5 +15,6 @@
 
     <string name="action_configuracoes">Configurações</string>
     <string name="title_activity_configuracoes">Configuracoes</string>
+    <string name="title_activity_combustivel_adicionar_valor">CombustivelAdicionarValor</string>
 
 </resources>
