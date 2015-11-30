@@ -193,7 +193,6 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
                 for (int i = 0; i < totalItens; i++) {
 
                     JSONObject jsonObjectPosto = jsonArray.getJSONObject(i);
-
                     String postoNome = jsonObjectPosto.getString("nome");
                     String postoEndereco = jsonObjectPosto.getString("combustivel");
                     String latitude = jsonObjectPosto.getString("latitude");

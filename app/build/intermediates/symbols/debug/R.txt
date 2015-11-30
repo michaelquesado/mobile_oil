@@ -385,7 +385,7 @@ int id adjust_height 0x7f0c0006
 int id adjust_width 0x7f0c0007
 int id book_now 0x7f0c001e
 int id botaoLogout 0x7f0c0059
-int id button 0x7f0c004b
+int id buttonSalvarValorCombustivel 0x7f0c004b
 int id buttonTracarRota 0x7f0c005d
 int id buyButton 0x7f0c001b
 int id buy_now 0x7f0c001f

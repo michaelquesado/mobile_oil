@@ -1,20 +1,40 @@
 package br.com.fjn.mobileoil;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import java.text.NumberFormat;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class CombustivelAdicionarValor extends Activity {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class CombustivelAdicionarValor extends Activity implements View.OnClickListener {
 
     private EditText mTextValorCombustivel;
+    private Button buttonSalvarValorCombustivel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,58 +42,8 @@ public class CombustivelAdicionarValor extends Activity {
         setContentView(R.layout.activity_combustivel_adicionar_valor);
 
         mTextValorCombustivel = (EditText) findViewById(R.id.editTextValorCombustivel);
-        mTextValorCombustivel.setInputType(InputType.TYPE_CLASS_NUMBER);
-        mTextValorCombustivel.addTextChangedListener(new TextWatcher() {
-
-            private boolean isUpdating = false;
-            // Pega a formatacao do sistema, se for brasil R$ se EUA US$
-            private NumberFormat nf = NumberFormat.getCurrencyInstance();
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before,
-                                      int after) {
-                // Evita que o método seja executado varias vezes.
-                // Se tirar ele entre em loop
-                if (isUpdating) {
-                    isUpdating = false;
-                    return;
-                }
-
-                isUpdating = true;
-                String str = s.toString();
-                // Verifica se já existe a máscara no texto.
-                boolean hasMask = ((str.indexOf("R$") > -1 || str.indexOf("$") > -1) &&
-                        (str.indexOf(".") > -1 || str.indexOf(",") > -1));
-                // Verificamos se existe máscara
-                if (hasMask) {
-                    // Retiramos a máscara.
-                    str = str.replaceAll("[R$]", "").replaceAll("[,]", "")
-                            .replaceAll("[.]", "");
-                }
-
-                try {
-                    // Transformamos o número que está escrito no EditText em
-                    // monetário.
-                    str = nf.format(Double.parseDouble(str) / 100);
-                    mTextValorCombustivel.setText(str);
-                    mTextValorCombustivel.setSelection(mTextValorCombustivel.getText().length());
-                } catch (NumberFormatException e) {
-                    s = "";
-                }
-            }
-
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Não utilizamos
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // Não utilizamos
-            }
-        });
-
+        buttonSalvarValorCombustivel = (Button) findViewById(R.id.buttonSalvarValorCombustivel);
+        buttonSalvarValorCombustivel.setOnClickListener(this);
 
     }
 
@@ -97,5 +67,126 @@ public class CombustivelAdicionarValor extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (mTextValorCombustivel.getText().toString().length() < 4) {
+            Toast.makeText(this, "Informe o numero corretamente.", Toast.LENGTH_SHORT).show();
+        } else {
+            sendPostRequest("529", "3.456", "1", "543");
+        }
+    }
+
+    private void sendPostRequest(String postoId, String valor, String combustivelID, String usuarioId) {
+
+        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                String paramPostoId = params[0];
+                String paramValor = params[1];
+                String paramCombustivelId = params[2];
+                String paramUsuarioId = params[3];
+
+                String msg = "mandando em background: " + paramPostoId + "," + paramValor
+                        + "," + paramCombustivelId + "," + paramUsuarioId;
+
+                Log.i("COMBUSTIVELADDVALOR", msg);
+
+                HttpClient httpClient = new DefaultHttpClient();
+
+                // In a POST request, we don't pass the values in the URL.
+                //Therefore we use only the web page URL as the parameter of the HttpPost argument
+                HttpPost httpPost = new HttpPost("http://localhost/ws_mobile_oil/Precos/cadastrar");
+
+                // Because we are not passing values over the URL, we should have a mechanism to pass the values that can be
+                //uniquely separate by the other end.
+                //To achieve that we use BasicNameValuePair
+                //Things we need to pass with the POST request
+                BasicNameValuePair postoId = new BasicNameValuePair("posto_id", paramPostoId);
+                BasicNameValuePair postoValor = new BasicNameValuePair("valor", paramValor);
+                BasicNameValuePair postoCombustivelId = new BasicNameValuePair("combustivel_id", paramCombustivelId);
+                BasicNameValuePair postoUsuarioId = new BasicNameValuePair("usuario_id", paramUsuarioId);
+
+                // We add the content that we want to pass with the POST request to as name-value pairs
+                //Now we put those sending details to an ArrayList with type safe of NameValuePair
+                List<NameValuePair> nameValuePairList = new ArrayList<NameValuePair>();
+                nameValuePairList.add(postoId);
+                nameValuePairList.add(postoValor);
+                nameValuePairList.add(postoCombustivelId);
+                nameValuePairList.add(postoUsuarioId);
+
+                try {
+                    // UrlEncodedFormEntity is an entity composed of a list of url-encoded pairs.
+                    //This is typically useful while sending an HTTP POST request.
+                    UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(nameValuePairList);
+
+                    // setEntity() hands the entity (here it is urlEncodedFormEntity) to the request.
+                    httpPost.setEntity(urlEncodedFormEntity);
+
+                    try {
+                        // HttpResponse is an interface just like HttpPost.
+                        //Therefore we can't initialize them
+                        HttpResponse httpResponse = httpClient.execute(httpPost);
+
+                        // According to the JAVA API, InputStream constructor do nothing.
+                        //So we can't initialize InputStream although it is not an interface
+                        InputStream inputStream = httpResponse.getEntity().getContent();
+
+                        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+
+                        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                        StringBuilder stringBuilder = new StringBuilder();
+
+                        String bufferedStrChunk = null;
+
+                        while ((bufferedStrChunk = bufferedReader.readLine()) != null) {
+                            stringBuilder.append(bufferedStrChunk);
+                        }
+
+                        return stringBuilder.toString();
+
+                    } catch (ClientProtocolException cpe) {
+                        System.out.println("First Exception caz of HttpResponese :" + cpe);
+                        cpe.printStackTrace();
+                    } catch (IOException ioe) {
+                        System.out.println("Second Exception caz of HttpResponse :" + ioe);
+                        ioe.printStackTrace();
+                    }
+
+                } catch (UnsupportedEncodingException uee) {
+                    System.out.println("An Exception given because of UrlEncodedFormEntity argument :" + uee);
+                    uee.printStackTrace();
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                if (result.equals("true")) {
+                    Toast.makeText(getApplicationContext(), "HTTP POST is working...", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Invalid POST req...", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+
+        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+        sendPostReqAsyncTask.execute(postoId, valor, combustivelID, usuarioId);
     }
 }

@@ -1164,7 +1164,7 @@ containing a value of this type.
         public static final int adjust_width=0x7f0c0007;
         public static final int book_now=0x7f0c001e;
         public static final int botaoLogout=0x7f0c0059;
-        public static final int button=0x7f0c004b;
+        public static final int buttonSalvarValorCombustivel=0x7f0c004b;
         public static final int buttonTracarRota=0x7f0c005d;
         public static final int buyButton=0x7f0c001b;
         public static final int buy_now=0x7f0c001f;
