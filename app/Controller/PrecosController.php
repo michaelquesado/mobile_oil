@@ -15,8 +15,11 @@ class PrecosController {
 
 	public function cadastrar(Array $dados){
 
-		if(count($dados) > 1 || $this->request->REQUEST_METHOD != "post")
+
+		
+		if($this->request->REQUEST_METHOD != 'POST')
 			return 'erro, tente passar dados validos';
+
 		return $this->preco->addPreco($dados);
 
 
