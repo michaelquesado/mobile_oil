@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DAO extends SQLiteOpenHelper {
 
     // Versão do banco de dados.
-    private static final int DB_VERSION = 6;
+    private static final int DB_VERSION = 9;
 
     // Nome do banco de dados.
     private static final String DB_NAME = "mobileoildatabase";

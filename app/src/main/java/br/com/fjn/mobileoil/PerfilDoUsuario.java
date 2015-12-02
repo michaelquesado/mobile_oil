@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.ResultCallback;
@@ -28,11 +29,13 @@ import java.io.InputStream;
 public class PerfilDoUsuario extends Activity implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback {
 
     private TextView nomeUsuario;
+    private TextView emailUsuario;
     private static final int PROFILE_PIC_SIZE = 400;
     private Button botaoSair;
     GoogleApiClient mGoogleApiClient;
     boolean mSignInClicked;
     private ImageView imgProfilePic;
+    private SignInButton mEntrarGooglePlus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +48,13 @@ public class PerfilDoUsuario extends Activity implements View.OnClickListener, G
                 .addScope(Plus.SCOPE_PLUS_LOGIN).build();
 
         nomeUsuario = (TextView) findViewById(R.id.userName);
+        emailUsuario = (TextView) findViewById(R.id.userEmail);
         imgProfilePic = (ImageView) findViewById(R.id.imgProfilePic);
         botaoSair = (Button) findViewById(R.id.botaoLogout);
         botaoSair.setOnClickListener(this);
+        mEntrarGooglePlus = (SignInButton) findViewById(R.id.entrar_com_google);
+        mEntrarGooglePlus.setOnClickListener(this);
+
 
     }
 
@@ -68,13 +75,16 @@ public class PerfilDoUsuario extends Activity implements View.OnClickListener, G
     public void onClick(View v) {
         if (v.getId() == R.id.botaoLogout) {
             desconectaUsuario();
+        }else{
+            Intent LoginGoogleIntent = new Intent(this, LoginGoogle.class);
+            startActivity(LoginGoogleIntent);
         }
     }
 
     public void desconectaUsuario() {
         if (mGoogleApiClient.isConnected()) {
             Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
-            Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient);
+            //Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient);
             mGoogleApiClient.disconnect();
             mGoogleApiClient.connect();
             Intent intent = new Intent(this, MainActivity.class);
@@ -86,11 +96,14 @@ public class PerfilDoUsuario extends Activity implements View.OnClickListener, G
         Person userProfile = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
         if (userProfile != null) {
             String name = userProfile.getDisplayName();
+            String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
             String personPhotoUrl = userProfile.getImage().getUrl();
             nomeUsuario.setText(name);
+            emailUsuario.setText(email);
             personPhotoUrl = personPhotoUrl.substring(0, personPhotoUrl.length() - 2) + PROFILE_PIC_SIZE;
             new LoadProfileImage(imgProfilePic).execute(personPhotoUrl);
             botaoSair.setVisibility(View.VISIBLE);
+            mEntrarGooglePlus.setVisibility(View.GONE);
         }
     }
 
