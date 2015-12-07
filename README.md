@@ -36,6 +36,15 @@ GET /ws_mobile_oil/Login/getUsuarios HTTP/1.1
 
 [{"id":1,"username":"exemplo","pass":"123456","email":"aguiaMaxima@mail.com","created":"2015-10-15 11:40:16.242511-03"}]
 
+
+>Buscando postos com base na localidade e retornando com seus respectivos tipos de combustiveis e valores.
+
+GET /ws_mobile_oil/HereMaps/getPostos/lat/-7.2650057/long/-39.310245/c/1
+
+>>Onde 'c' recebe o id do combustivel.
+
+
+
 ```
 
 
