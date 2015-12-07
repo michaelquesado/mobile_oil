@@ -77,6 +77,13 @@ class Posto extends AppModel{
 
 			}
 
+			//liberando da memoria variaveis que agora são inuteis.
+			$p = null;
+			$pre = null;
+			$com = null;
+			$v = null;
+			$c = null;
+
 			return $precos;
 			
 		} catch (Exception $e) {
