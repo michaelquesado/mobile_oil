@@ -30,7 +30,6 @@ import java.util.List;
 import br.com.fjn.mobileoil.PostoCombustivelDetalhes;
 import br.com.fjn.mobileoil.R;
 import br.com.fjn.mobileoil.models.PostosCombustivel;
-import br.com.fjn.mobileoil.utils.FormatarDistancia;
 import br.com.fjn.mobileoil.utils.JSONLoader;
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
@@ -56,7 +55,7 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
         View view = inflater.inflate(R.layout.activity_listar_alcool, container, false);
         mListView = (ListView) view.findViewById(R.id.listaPostos);
 
-        /* Populando meu listView
+        //Populando meu listView
         list = new ArrayList<>();
 
         adapterCombustivel = new ListViewAdapterCombustivel();
@@ -66,10 +65,9 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
 
         String latitudes = LatitudeLongitude.getLatitudeLongitude();
         String[] latlog = LatitudeLongitude.getLatitudeLongitude().split(",");
-        url = "http://93.188.167.153/ws_mobile_oil/HereMaps/getPostos/lat/" + latlog[0] + "/long/" + latlog[1];
+        url = "http://93.188.167.153/ws_mobile_oil/HereMaps/getPostos/lat/" + latlog[0] + "/long/" + latlog[1] + "/c/4";
 
         new HttpAsyncTask().execute(url);
-        */
         return view;
     }
 
