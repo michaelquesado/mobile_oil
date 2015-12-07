@@ -27,7 +27,12 @@ class HereMaps {
 
 	}
 
-
+	/**
+	* Quanto solicitado postos de um determinado local, verifica se os postos daquela localidade
+	* ja existe na base cadastrada, caso não exista, cadastra e junto com ele, os valores padrões
+	* 
+	* @author Michael Quesado 
+	*/
 	private function verificaPostos(){
 
 		$posto = new Posto();
@@ -35,7 +40,6 @@ class HereMaps {
 		$combustiveis = Combustivel::getInstance();
 		
 		$tipoCombustivel = $combustiveis->getTodosCombustiveis();
-
 
 
 		foreach($this->postos->results->items as $p){
@@ -75,11 +79,8 @@ class HereMaps {
 				echo $e->getMessage();
 
 			}
-
 			
 		}
-
-
 
 		$combustiveis = null;
 		$posto = null;
@@ -91,8 +92,8 @@ class HereMaps {
 	public function getPostos(){
 		
 		$p = new Posto();
-		
-		return $p->getAllPostoPorIdMaps( implode(',', $this->precosPostos ) );
+	
+		return $p->getAllPostoPorIdMaps( $this->precosPostos  );
 
 	}
 

@@ -22,6 +22,12 @@ class Posto extends AppModel{
 
 	}
 
+	/**
+	* Metodo responsavel por retornar posto por id
+	*
+	* @param $id identificador do posto
+	* @author Michael Quesado
+	*/
 	public function getPostoPorIdMaps($id){
 		try {
 
@@ -33,33 +39,77 @@ class Posto extends AppModel{
 	}
 
 
+	/**
+	* Ao buscar por precos dos postos, deve remover os dados repetidos de precos para um determinado posto
+	* deixando apenas o valor mais recente e de valor mais baixo cadastrado.
+	*
+	* @param  Array $array_id array com os ids do postos.
+	* @author Michael Quesado
+	* @return Array associativo.
+	*/
 	public function getAllPostoPorIdMaps($array_id){
 
-		try {
+		try {	
 
-			parent::setTabela(' postos p inner join precos pc on p.maps_id = pc.posto_id 
-				inner join combustiveis c on c.id = pc.combustivel_id '  );
+			//Instanciar os models necessarios
+			$pre =  new Preco();
+			$com = new Combustivel();
+			//buscar por todos os combustiveis.
+			$com = $com->getTodosCombustiveis();
 
-			$where = " p.maps_id IN ( " . $array_id ." )";
 
-			return parent::read(
-				'p.maps_id as id,
-				p.nome, 
-				p.latitude, 
-				p.longitude, 
-				c.nome as combustivel, 
-				pc.valor,
-				pc.usuario_id,
-				c.subcategoria_id
-				', 
-				$where);
+			$precos = Array();
+			$p = Array();
+			//iteração no array dos postos
+			foreach($array_id as  $v){
+				//iteração em cada tipo de combustivel dentro de cadas posto
+				foreach( $com as $c ){
+					//pra cada tipo de combustivel busca o valor mais recente para aquele posto.
+					$p[] = $pre->algo($v, $c['id']) ;
 
+				}
+
+				//Agora que temos os precos mais recentes para cada tipo de combustivel
+				//buscamos eles associados ao posto.
+				if(count($p) > 1){
+					$precos[] = $this->buscaPostoEPrecos($v , implode(',', $p ) );	
+				}
+
+			}
+
+			return $result;
 			
 		} catch (Exception $e) {
 			
 		}		
 		
 
+	}
+
+	/**
+	* Metodo responsavel por buscar os valores para os postos.
+	*
+	* @author Michael Quesado
+	*/
+	private function buscaPostoEPrecos($maps_id, $precos){
+		
+
+		parent::setTabela(' postos p inner join precos pc on p.maps_id = pc.posto_id 
+			inner join combustiveis c on c.id = pc.combustivel_id '  );
+
+		$where = " maps_id = $maps_id and pc.id in ($precos) ";
+
+		return parent::read(
+		   'c.nome as combustivel,
+			p.maps_id as id,
+			p.nome, 
+			p.latitude, 
+			p.longitude,  
+			pc.valor,
+			pc.usuario_id,
+			c.subcategoria_id
+			', 
+			$where);
 	}
 
 }

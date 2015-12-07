@@ -13,11 +13,29 @@ class Preco extends AppModel {
 
 	public function addPreco(Array $dados){
 
-		
+		$date = new \DateTime();
+		$dados['created'] = $date->format('d-m-Y H:i:s');
 		$insert = parent::insert($dados);
+
 		return  ['msg' => ($insert == true)? 'ok'  : 'erro' ];
 
 
+	}
+
+
+	public function getTodosOsPrecos(){
+
+		return  parent::read();
+	}
+
+
+	public function algo($id, $com){
+		
+
+		$result = parent::read('id', " posto_id = $id and combustivel_id = $com order by created desc limit 1");
+
+		
+		return  (isset($result[0]))? $result[0]['id'] : '' ;
 	}
 
 
