@@ -77,7 +77,7 @@ class Posto extends AppModel{
 
 			}
 
-			return $result;
+			return $precos;
 			
 		} catch (Exception $e) {
 			
