@@ -75,7 +75,7 @@ MERGED from [com.android.support:support-v4:21.0.0] C:\Users\ibyte\AndroidStudio
 	android:allowBackup
 		ADDED from C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil3\mobile_oil\app\src\main\AndroidManifest.xml:25:9-35
 	android:icon
-		ADDED from C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil3\mobile_oil\app\src\main\AndroidManifest.xml:26:9-43
+		ADDED from C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil3\mobile_oil\app\src\main\AndroidManifest.xml:26:9-39
 	android:theme
 		ADDED from C:\Users\ibyte\AndroidStudioProjects\GIT\mobileoil3\mobile_oil\app\src\main\AndroidManifest.xml:28:9-40
 uses-library#com.google.android.maps
