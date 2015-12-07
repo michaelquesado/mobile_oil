@@ -9,7 +9,7 @@ class HereMapsController{
 
 			extract($dados,EXTR_PREFIX_SAME, "wddx");
 
-			$here = new HereMaps($lat,$long);
+			$here = new HereMaps($lat,$long, ( isset($c) )? (int) $c : null  );
 			
 			return $here->getPostos();
 

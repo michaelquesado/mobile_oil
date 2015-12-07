@@ -47,7 +47,7 @@ class Posto extends AppModel{
 	* @author Michael Quesado
 	* @return Array associativo.
 	*/
-	public function getAllPostoPorIdMaps($array_id){
+	public function getAllPostoPorIdMaps($array_id, $tipo){
 
 		try {	
 
@@ -72,7 +72,7 @@ class Posto extends AppModel{
 				//Agora que temos os precos mais recentes para cada tipo de combustivel
 				//buscamos eles associados ao posto.
 				if(count($p) > 1){
-					$precos[] = $this->buscaPostoEPrecos($v , implode(',', $p ) );	
+					$precos[] = $this->buscaPostoEPrecos($v , implode(',', $p ), $tipo );	
 				}
 
 			}
@@ -98,13 +98,14 @@ class Posto extends AppModel{
 	*
 	* @author Michael Quesado
 	*/
-	private function buscaPostoEPrecos($maps_id, $precos){
+	private function buscaPostoEPrecos($maps_id, $precos, $tipo){
 		
 
 		parent::setTabela(' postos p inner join precos pc on p.maps_id = pc.posto_id 
 			inner join combustiveis c on c.id = pc.combustivel_id '  );
 
-		$where = " maps_id = $maps_id and pc.id in ($precos) ";
+		$where  = " maps_id = $maps_id and pc.id in ($precos) ";
+		$where .= ( !is_null($tipo) )? " and ( c.id = $tipo or c.subcategoria_id = $tipo ) " : " ";
 
 		return parent::read(
 		   'c.nome as combustivel,
@@ -114,7 +115,8 @@ class Posto extends AppModel{
 			p.longitude,  
 			pc.valor,
 			pc.usuario_id,
-			c.subcategoria_id
+			c.subcategoria_id,
+			c.id as combustivel_id
 			', 
 			$where);
 	}

@@ -4,9 +4,11 @@ class HereMaps {
 	private $link = "http://places.api.here.com/places/v1/discover/search?at=latitude,longitude&q=petrol-station&app_id=hG4gnJyrmlbNgGscL7Ki&app_code=h3XG36Nr4RgQOjymUTblJQ&pretty";
 	private $postos;
 	private $precosPostos = array();
+	private $tipo = null;
 
-	public function __construct($lat, $long){
+	public function __construct($lat, $long, $tipo){
 
+		$this->tipo = $tipo;
 		$this->changeLink($lat, $long);
 		$this->buscaPostos();
 		$this->verificaPostos();
@@ -93,7 +95,7 @@ class HereMaps {
 		
 		$p = new Posto();
 	
-		return $p->getAllPostoPorIdMaps( $this->precosPostos  );
+		return $p->getAllPostoPorIdMaps( $this->precosPostos, $this->tipo  );
 
 	}
 
