@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
+import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -25,11 +28,14 @@ public class CombustivelActivity extends SherlockFragmentActivity {
 
     private ActionBar mActionBar;
     private ViewPager mPager;
-    private Tab tab1, tab2, tab3;
+    private ViewPagerAdapter viewPagerAdapter;
+    private SimpleOnPageChangeListener ViewPagerListener;
+    private Tab tab, tab1, tab2, tab3;
     private LocationManager locationManager;
     private final String TAG = "POSICAO_ACT_COMBUSTIVEL";
-    private List<Combustivel> listaCombustiveis;
+    public static List<Combustivel> listaCombustiveis;
     private PreferenciasDAO prefDAO;
+    private TabListener tabListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,24 +57,27 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         FragmentManager fm = getSupportFragmentManager();
 
         // Criando recurso para deslizar nas abas.
-        ViewPager.SimpleOnPageChangeListener ViewPagerListener = new ViewPager.SimpleOnPageChangeListener() {
+        ViewPagerListener = new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+                listaCombustiveis = prefDAO.getPreferencias();
                 // Procura a posição do ViewPager
                 mActionBar.setSelectedNavigationItem(position);
+                String str = "Mostrar " + listaCombustiveis.get(position).getNome();
+                Toast.makeText(getBaseContext(), "ViewPagerListener: " + position + "\n" + str, Toast.LENGTH_SHORT).show();
             }
         };
 
         mPager.setOnPageChangeListener(ViewPagerListener);
         // Localiza a classe de adapter (ViewPager.java) e coloca como o adapter do ViewPager
         // TODO fazer com que a localização do usuário vá para as activites de viewPagerAdapter
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(fm);
+        viewPagerAdapter = new ViewPagerAdapter(fm);
         // Seta o ViewPagerAdapter para o ViewPager
         mPager.setAdapter(viewPagerAdapter);
 
         // Captura os clicks nas abas
-        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+        tabListener = new ActionBar.TabListener() {
 
             @Override
             public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
@@ -78,44 +87,51 @@ public class CombustivelActivity extends SherlockFragmentActivity {
 
             @Override
             public void onTabUnselected(Tab tab, FragmentTransaction fragmentTransaction) {
-
             }
 
             @Override
             public void onTabReselected(Tab tab, FragmentTransaction fragmentTransaction) {
-                // TODO Utilizado para, quando uma aba já esta selecionada
-                // e o usuário clica nela novamente.
-                // Podia fazer com que, se o usuário clicar nela novamente, o conteúda
-                // da aba atualize os dados
-
             }
         };
 
         // Criando as abas
-        // TODO Essas abas, só serão criadas de acordo com a seleção de preferências do usuário
-        tab1 = mActionBar.newTab().setText("Alcool").setTabListener(tabListener);
-        mActionBar.addTab(tab1);
-
-        tab2 = mActionBar.newTab().setText("Diesel").setTabListener(tabListener);
-        mActionBar.addTab(tab2);
-
-        tab3 = mActionBar.newTab().setText("Gasolina").setTabListener(tabListener);
-        mActionBar.addTab(tab3);
+        criarAbas();
 
         // output longitude e latitude
         Log.d(TAG, "Latitude Longitude: " + LatitudeLongitude.getLatitudeLongitude());
+    }
+
+    private void criarAbas() {
+        // Remove todas as abas antes de continuar
+        mActionBar.removeAllTabs();
+        Log.i(TAG, "CRIAR ABAS - ABAS REMOVIDAS");
+
+        // atualiza a lista de combustiveis
+        listaCombustiveis = prefDAO.getPreferencias();
+        Log.i(TAG, "CRIAR ABAS - LISTA DE COMBUSTIVEIS ATUALIZADAS");
+
+        // percorre a lista de combustiveis selecionadas
+        for (Combustivel combustivel : listaCombustiveis) {
+            tab = mActionBar.newTab().setText("d " + combustivel.getNome()).setTabListener(tabListener);
+            mActionBar.addTab(tab);
+        }
+        Log.i(TAG, "CRIAR ABAS - ABAS RE-ADICIONADAS");
     }
 
     @Override
     public void onResume() {
         Log.i(TAG, "onResume");
         super.onResume();
+        criarAbas();
     }
 
     @Override
     public void onPause() {
         super.onPause();
         Log.i(TAG, "onPause");
+
+        // Criando as abas
+        criarAbas();
     }
 
     @Override

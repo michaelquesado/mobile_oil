@@ -5,12 +5,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
+import br.com.fjn.mobileoil.CombustivelActivity;
+
 /**
  * Created by unobre on 17/08/2015.
  */
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 3;
+    private int PAGE_COUNT = CombustivelActivity.listaCombustiveis.size();
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -19,18 +21,19 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Log.i("UELIO_VIEWPA", "Position: " + position);
-        switch (position) {
-            case 0:
-                FragmentListarAlcool fragmentListarAlcool = new FragmentListarAlcool();
-                return fragmentListarAlcool;
-            case 1:
-                FragmentListarDiesel fragmentListarDiesel = new FragmentListarDiesel();
-                return fragmentListarDiesel;
-            case 2:
-                FragmentListarGasolina fragmentListarGasolina = new FragmentListarGasolina();
-                return fragmentListarGasolina;
+
+        if (CombustivelActivity.listaCombustiveis.get(position).getNome().equals("Alcool")) {
+            FragmentListarAlcool fragmentListarAlcool = new FragmentListarAlcool();
+            return fragmentListarAlcool;
+        } else if (CombustivelActivity.listaCombustiveis.get(position).getNome().equals("Diesel")) {
+            FragmentListarDiesel fragmentListarDiesel = new FragmentListarDiesel();
+            return fragmentListarDiesel;
+        } else if (CombustivelActivity.listaCombustiveis.get(position).getNome().equals("Gasolina")) {
+            FragmentListarGasolina fragmentListarGasolina = new FragmentListarGasolina();
+            return fragmentListarGasolina;
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
