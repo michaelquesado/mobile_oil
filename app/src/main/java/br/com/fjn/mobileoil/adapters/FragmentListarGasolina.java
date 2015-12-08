@@ -64,7 +64,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
 
         String latitudes = LatitudeLongitude.getLatitudeLongitude();
         String[] latlog = LatitudeLongitude.getLatitudeLongitude().split(",");
-        url = "http://93.188.167.153/ws_mobile_oil/HereMaps/getPostos/lat/" + latlog[0] + "/long/" + latlog[1] + "/c/4";
+        url = "http://93.188.167.153/ws_mobile_oil/HereMaps/getPostos/lat/" + latlog[0] + "/long/" + latlog[1] + "/c/1";
 
         new HttpAsyncTask().execute(url);
         return view;
