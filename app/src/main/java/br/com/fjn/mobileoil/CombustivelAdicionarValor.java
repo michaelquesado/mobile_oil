@@ -53,7 +53,7 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
         Intent it = getIntent();
         if (it != null) {
             postoID = it.getStringExtra("postoID");
-            // combustivelID = it.getStringExtra("combustivelId");
+            combustivelID = it.getStringExtra("postoCombustivelId");
             Log.e(TAG, "idposto: " + postoID);
         }
     }
@@ -181,8 +181,10 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
 
+                Toast.makeText(getApplicationContext(), "Cadastrado com sucesso! " + result, Toast.LENGTH_LONG).show();
                 try {
                     JSONObject jsonObject = new JSONObject(result);
+
                     String msg = jsonObject.getString("msg").trim();
 
                     if (msg.equals("ok")) {

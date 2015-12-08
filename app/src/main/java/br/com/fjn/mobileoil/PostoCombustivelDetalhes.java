@@ -49,6 +49,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     private String postoValorCombustivel;
     private String postoDistancia;
     private String postoLatLog;
+    private String postoCombustivelID;
 
     private Intent it;
 
@@ -65,13 +66,15 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
         if (it != null) {
             initComponents();
 
-            postoId = it.getStringExtra("postoId");
+            postoId = it.getStringExtra("idposto");
             postoNome = it.getStringExtra("postoNome");
             postoEndereco = it.getStringExtra("postoEndereco");
             postoDataAtualizacao = it.getStringExtra("postDataAtualizacao");
             postoValorCombustivel = it.getStringExtra("postoValorCombustivel");
             postoDistancia = it.getStringExtra("postoDistancia");
             postoLatLog = it.getStringExtra("postoLatLog");
+            postoCombustivelID = it.getStringExtra("idcombustivel");
+
 
 
             mValorCombustivel.setText(postoValorCombustivel);
@@ -209,6 +212,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
 
         // obtem o objeto do item clicado
         PostosCombustivel posto = list.get(position);
+        it.putExtra("postoID", posto.getIdPosto());
         it.putExtra("postoNome", posto.getNomePosto());
         it.putExtra("postoEndereco", posto.getEndereco());
         it.putExtra("postDataAtualizacao", posto.getDataAtualizacao());
@@ -222,7 +226,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.valorCombustivel) {
-            Toast.makeText(this, "Abrir janela de cadastro", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Abrir janela de cadastro + " + postoId, Toast.LENGTH_SHORT).show();
 
             // Abrir janela de cadastro de combustivel
             Intent it = new Intent(this, CombustivelAdicionarValor.class);
@@ -232,6 +236,8 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
             it.putExtra("postoNome", postoNome);
             it.putExtra("postoValorCombustivel", postoTipoCombustivel);
             it.putExtra("postoTipoCombustivel", postoTipoCombustivel);
+            it.putExtra("postoCombustivelId", postoCombustivelID);
+
             startActivity(it);
 
         }

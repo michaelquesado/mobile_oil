@@ -79,6 +79,8 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
 
         // obtem o objeto do item clicado
         PostosCombustivel posto = list.get(position);
+        Toast.makeText(getActivity().getBaseContext(), "id do posto: "+posto.getIdPosto(), Toast.LENGTH_SHORT).show();
+
         it.putExtra("idposto", posto.getIdPosto());
         it.putExtra("idcombustivel", "4");
         it.putExtra("postoValorCombustivel", posto.getValorCombustivel());
