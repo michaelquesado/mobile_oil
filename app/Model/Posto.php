@@ -76,6 +76,8 @@ class Posto extends AppModel{
 					foreach($busca as $b){
 						$precos[] = $b;
 					}
+					$b = null;
+					$busca = null;
 				}
 
 			}
