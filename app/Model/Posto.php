@@ -72,7 +72,10 @@ class Posto extends AppModel{
 				//Agora que temos os precos mais recentes para cada tipo de combustivel
 				//buscamos eles associados ao posto.
 				if(count($p) > 1){
-					$precos[] = $this->buscaPostoEPrecos($v , implode(',', $p ), $tipo );	
+					$busca = $this->buscaPostoEPrecos($v , implode(',', $p ), $tipo );	
+					foreach($busca as $b){
+						$precos[] = $b;
+					}
 				}
 
 			}
@@ -119,6 +122,11 @@ class Posto extends AppModel{
 			c.id as combustivel_id
 			', 
 			$where);
+
+
+		
+
+		
 	}
 
 }
