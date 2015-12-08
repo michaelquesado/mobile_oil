@@ -51,7 +51,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_listar_alcool, container, false);
+        View view = inflater.inflate(R.layout.activity_listar_gasolina, container, false);
         mListView = (ListView) view.findViewById(R.id.listaPostos);
 
         //Populando meu listView
