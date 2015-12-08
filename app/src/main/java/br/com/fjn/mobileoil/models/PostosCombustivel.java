@@ -79,4 +79,18 @@ public class PostosCombustivel {
     public void setLatLog(String latLog) {
         this.latLog = latLog;
     }
+
+    @Override
+    public String toString() {
+        return "PostosCombustivel{" +
+                "idPosto='" + idPosto + '\'' +
+                ", logo=" + logo +
+                ", nomePosto='" + nomePosto + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", dataAtualizacao='" + dataAtualizacao + '\'' +
+                ", valorCombustivel='" + valorCombustivel + '\'' +
+                ", distanciaPosto='" + distanciaPosto + '\'' +
+                ", latLog='" + latLog + '\'' +
+                '}';
+    }
 }

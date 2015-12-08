@@ -228,6 +228,7 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
             Intent it = new Intent(this, CombustivelAdicionarValor.class);
 
             // obtem o objeto do item clicado
+            it.putExtra("postoID", postoId);
             it.putExtra("postoNome", postoNome);
             it.putExtra("postoValorCombustivel", postoTipoCombustivel);
             it.putExtra("postoTipoCombustivel", postoTipoCombustivel);

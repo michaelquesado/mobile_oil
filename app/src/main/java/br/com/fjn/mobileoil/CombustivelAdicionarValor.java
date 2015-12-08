@@ -34,12 +34,13 @@ import java.util.List;
 
 public class CombustivelAdicionarValor extends Activity implements View.OnClickListener {
 
+    private String TAG = "ACT_ADD_VALOR";
+
     private EditText mTextValorCombustivel;
     private Button buttonSalvarValorCombustivel;
 
     private String postoID;
-    private String postoNome;
-
+    private String combustivelID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +50,11 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
         //Inicializa os componentes
         initComponents();
 
-
         Intent it = getIntent();
         if (it != null) {
-            postoID = it.getStringExtra("postoId");
-            postoNome = it.getStringExtra("postoNome");
-
-
+            postoID = it.getStringExtra("postoID");
+            // combustivelID = it.getStringExtra("combustivelId");
+            Log.e(TAG, "idposto: " + postoID);
         }
     }
 
@@ -89,11 +88,10 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-
         if (mTextValorCombustivel.getText().toString().length() < 4) {
             Toast.makeText(this, "Informe o numero corretamente.", Toast.LENGTH_SHORT).show();
         } else {
-            sendPostRequest("0767nsn9-b5b07bdc346f4702b0836d2ec971b35f", "3.456", "1", "543");
+            sendPostRequest(postoID, mTextValorCombustivel.getText().toString(), combustivelID, "1");
         }
     }
 
@@ -108,11 +106,6 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
                 String paramValor = params[1];
                 String paramCombustivelId = params[2];
                 String paramUsuarioId = params[3];
-
-                String msg = "mandando em background: " + paramPostoId + "," + paramValor
-                        + "," + paramCombustivelId + "," + paramUsuarioId;
-
-                Log.i("COMBUSTIVELADDVALOR", msg);
 
                 HttpClient httpClient = new DefaultHttpClient();
 
@@ -188,12 +181,10 @@ public class CombustivelAdicionarValor extends Activity implements View.OnClickL
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
 
-                Log.d("resultado", "Resultado: " + result);
-
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     String msg = jsonObject.getString("msg").trim();
-                    Log.d("resultado", "Resultado do json: " + msg);
+
                     if (msg.equals("ok")) {
                         Toast.makeText(getApplicationContext(), "Cadastrado com sucesso!", Toast.LENGTH_LONG).show();
                         finish();
