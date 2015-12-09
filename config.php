@@ -10,7 +10,7 @@ define('HELPERS', 'app/helpers/');
 
 date_default_timezone_set('America/Fortaleza');
 
-//error_reporting(0);
+error_reporting(0);
 
 function __autoload($file) {
     $file .= ".php";

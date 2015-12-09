@@ -15,9 +15,21 @@ class Preco extends AppModel {
 
 		$date = new \DateTime();
 		$dados['created'] = $date->format('d-m-Y H:i:s');
-		$insert = parent::insert($dados);
 
-		return  ['msg' => ($insert == true)? 'ok'  : 'erro' ];
+		try {
+
+			$insert = parent::insert($dados);
+
+			return  ['msg' => ($insert == true)? 'ok'  : 'erro ao tentar cadastrar.' ];
+
+		} catch (Exception $e) {
+			
+
+			
+		}
+		
+
+		
 
 
 	}
