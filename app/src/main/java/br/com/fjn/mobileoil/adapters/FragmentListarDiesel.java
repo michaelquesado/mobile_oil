@@ -33,10 +33,12 @@ import br.com.fjn.mobileoil.models.PostosCombustivel;
 import br.com.fjn.mobileoil.utils.JSONLoader;
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
+
 /**
  * Created by unobre on 17/08/2015.
  */
 public class FragmentListarDiesel extends Fragment implements AdapterView.OnItemClickListener, LocationListener {
+
     private ListView mListView;
     private List<PostosCombustivel> list;
     private ListViewAdapterCombustivel adapterCombustivel;
@@ -49,7 +51,7 @@ public class FragmentListarDiesel extends Fragment implements AdapterView.OnItem
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Get the view from fragmenttab2.xml
+
         View view = inflater.inflate(R.layout.activity_listar_diesel, container, false);
         mListView = (ListView) view.findViewById(R.id.listaPostos);
 
@@ -59,7 +61,6 @@ public class FragmentListarDiesel extends Fragment implements AdapterView.OnItem
         adapterCombustivel = new ListViewAdapterCombustivel();
         adapterCombustivel.setContext(getActivity().getBaseContext());
         mListView.setOnItemClickListener(this);
-
 
         String latitudes = LatitudeLongitude.getLatitudeLongitude();
         String[] latlog = LatitudeLongitude.getLatitudeLongitude().split(",");
@@ -77,14 +78,20 @@ public class FragmentListarDiesel extends Fragment implements AdapterView.OnItem
 
         // obtem o objeto do item clicado
         PostosCombustivel posto = list.get(position);
-        it.putExtra("postoId", posto.getIdPosto());
+        Toast.makeText(getActivity().getBaseContext(), "id do posto: " + posto.getIdPosto(), Toast.LENGTH_SHORT).show();
+
+        it.putExtra("idposto", posto.getIdPosto());
+        it.putExtra("idcombustivel", "3");
+        it.putExtra("postoValorCombustivel", posto.getValorCombustivel());
         it.putExtra("postoNome", posto.getNomePosto());
         //it.putExtra("postoEndereco", posto.getEndereco());
         //it.putExtra("postDataAtualizacao", posto.getDataAtualizacao());
-        it.putExtra("postoValorCombustivel", posto.getValorCombustivel());
         //it.putExtra("postoDistancia", posto.getDistanciaPosto());
-        it.putExtra("postoTipoCombustivel", "Alcool");
+        //it.putExtra("combustivelId", "4");
         it.putExtra("postoLatLog", posto.getLatLog());
+
+        Log.e(TAG, posto.toString());
+
         startActivity(it);
     }
 
@@ -218,7 +225,7 @@ public class FragmentListarDiesel extends Fragment implements AdapterView.OnItem
                 }
 
             } catch (JSONException e) {
-                Log.e("FRAG_LIST_ALCOOL", "jsonexception :: " + e.getMessage());
+                Log.e("FRAG_LIST_DIESEL", "jsonexception :: " + e.getMessage());
                 e.printStackTrace();
             }
 

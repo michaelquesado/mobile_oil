@@ -62,7 +62,6 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
         adapterCombustivel.setContext(getActivity().getBaseContext());
         mListView.setOnItemClickListener(this);
 
-
         String latitudes = LatitudeLongitude.getLatitudeLongitude();
         String[] latlog = LatitudeLongitude.getLatitudeLongitude().split(",");
         url = "http://93.188.167.153/ws_mobile_oil/HereMaps/getPostos/lat/" + latlog[0] + "/long/" + latlog[1] + "/c/4";
