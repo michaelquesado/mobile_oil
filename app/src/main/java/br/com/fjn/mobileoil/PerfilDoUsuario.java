@@ -22,6 +22,8 @@ import com.google.android.gms.plus.model.people.Person;
 
 import java.io.InputStream;
 
+import br.com.fjn.mobileoil.dao.DadosUsuario;
+
 /**
  * Created by Junior Siqueira on 06/11/2015.
  */
@@ -83,6 +85,8 @@ public class PerfilDoUsuario extends Activity implements View.OnClickListener, G
 
     public void desconectaUsuario() {
         if (mGoogleApiClient.isConnected()) {
+            DadosUsuario dadosUsuario = new DadosUsuario(getApplicationContext());
+            dadosUsuario.limparLogin();
             Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
             //Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient);
             mGoogleApiClient.disconnect();

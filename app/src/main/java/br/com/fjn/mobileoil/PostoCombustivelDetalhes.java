@@ -1,7 +1,9 @@
 package br.com.fjn.mobileoil;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,20 +18,25 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.plus.Plus;
+import com.google.android.gms.plus.model.people.Person;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fjn.mobileoil.adapters.ListViewAdapterCombustivel;
+import br.com.fjn.mobileoil.dao.DadosUsuario;
 import br.com.fjn.mobileoil.models.PostosCombustivel;
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
 
-public class PostoCombustivelDetalhes extends FragmentActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class PostoCombustivelDetalhes extends FragmentActivity implements AdapterView.OnItemClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private List<PostosCombustivel> list;
 
@@ -55,11 +62,19 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
 
     private GoogleMap googleMap;
     PostosCombustivel p;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posto_combustivel_detalhes);
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(Plus.API)
+                .addScope(Plus.SCOPE_PLUS_LOGIN)
+                .build();
 
         Intent it = getIntent();
 
@@ -226,21 +241,91 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.valorCombustivel) {
-            Toast.makeText(this, "Abrir janela de cadastro + " + postoId, Toast.LENGTH_SHORT).show();
+            if(mGoogleApiClient.isConnected() || mGoogleApiClient == null){
+                DadosUsuario usuario = new DadosUsuario(getApplicationContext());
+                String idGoogle = getIdUserGoogle();
+                String idSqlite = usuario.retornaIdSQlite();
+                if(idGoogle.equalsIgnoreCase(idSqlite)){
+                    Toast.makeText(this, "Abrir janela de cadastro + " + postoId, Toast.LENGTH_SHORT).show();
 
-            // Abrir janela de cadastro de combustivel
-            Intent it = new Intent(this, CombustivelAdicionarValor.class);
+                    // Abrir janela de cadastro de combustivel
+                    Intent it = new Intent(this, CombustivelAdicionarValor.class);
 
-            // obtem o objeto do item clicado
-            it.putExtra("postoID", postoId);
-            it.putExtra("postoNome", postoNome);
-            it.putExtra("postoValorCombustivel", postoTipoCombustivel);
-            it.putExtra("postoTipoCombustivel", postoTipoCombustivel);
-            it.putExtra("postoCombustivelId", postoCombustivelID);
+                    // obtem o objeto do item clicado
+                    it.putExtra("postoID", postoId);
+                    it.putExtra("postoNome", postoNome);
+                    it.putExtra("postoValorCombustivel", postoTipoCombustivel);
+                    it.putExtra("postoTipoCombustivel", postoTipoCombustivel);
+                    it.putExtra("postoCombustivelId", postoCombustivelID);
 
-            startActivity(it);
+                    startActivity(it);
 
+                }else{
+                    Toast.makeText(getApplicationContext(),"cai fora", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                onProviderDisabled();
+            }
         }
+    }
+
+    public void onProviderDisabled() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Você precisa estar logado no aplicativo para poder vincular um valor a um posto. Deseja fazer isso agora?").setCancelable(false).setPositiveButton("Logar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                Intent loginGoogle = new Intent(getApplicationContext(), LoginGoogle.class);
+                startActivity(loginGoogle);
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+                Toast.makeText(getApplicationContext(), "Ok, continue procurando preços.", Toast.LENGTH_LONG).show();
+            }
+        });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
+    protected void onStart(){
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    protected void onStop(){
+        super.onStop();
+        if(mGoogleApiClient.isConnected()){
+            mGoogleApiClient.disconnect();
+        }
+    }
+
+
+    public String getIdUserGoogle(){
+        String id = "";
+        Person userId = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+        if(userId != null){
+            id = userId.getId();
+        }
+        return id;
+    }
+
+
+
+    @Override
+    public void onConnected(Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
     }
 }
 

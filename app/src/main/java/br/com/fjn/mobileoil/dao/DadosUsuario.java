@@ -33,6 +33,39 @@ public class DadosUsuario extends DAO {
         db.close();
     }
 
+    //limpa a tabela que contém o id do usuário na hora que ele fizer o logout
+    public void limparLogin(){
+        String sql = "DELETE FROM checklogin";
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(sql);
+        db.close();
+    }
+
+    //faz a checagem do login na hora de add um valor
+    public void checarLogin(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id", id);
+        db.insert("checklogin", "", cv);
+        db.close();
+
+        Log.i("DADOSSSSSS", id);
+    }
+
+    //retorna o id do usuario salvo no sqlite para comparação com o do mGoogleClient
+    public String retornaIdSQlite(){
+        String query = "SELECT id FROM checklogin";
+        SQLiteDatabase banco = this.getWritableDatabase();
+        Cursor cursor = banco.rawQuery(query, null);
+        cursor.moveToFirst();
+
+        String nomeString = cursor.getString(cursor.getColumnIndex("id"));
+        StringBuilder conversor = new StringBuilder();
+        conversor.append(nomeString);
+
+        return conversor.toString();
+    }
+
     public boolean salvarUsuario(Usuario usuario) {
 
         // So permite um usuario na tabela do banco de dados.

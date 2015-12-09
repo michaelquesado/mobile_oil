@@ -27,6 +27,9 @@ public class DAO extends SQLiteOpenHelper {
         // Para armazenar os dados so usuário
         db.execSQL("CREATE TABLE dados_usuario (id INTEGER NOT NULL, nome TEXT NOT NULL, email TEXT NOT NULL)");
 
+        //para checar o login na hora de adicionar um valor a um posto
+        db.execSQL("CREATE TABLE checklogin (id TEXT NOT NULL)");
+
         // para armazenar as preferencias de combustiveis do usuario
         db.execSQL("CREATE TABLE preferencias (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, combustivel TEXT NOT NULL, mostrar INTEGER NOT NULL)");
         db.execSQL("INSERT INTO preferencias (combustivel, mostrar) VALUES ('Alcool', 0)");
@@ -44,6 +47,7 @@ public class DAO extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + PreferenciasDAO.tabela + ";");
         db.execSQL("DROP TABLE IF EXISTS config_tela");
+        db.execSQL("DROP TABLE IF EXISTS checklogin");
         db.execSQL("DROP TABLE IF EXISTS " + DadosUsuario.tabela);
         onCreate(db);
     }
