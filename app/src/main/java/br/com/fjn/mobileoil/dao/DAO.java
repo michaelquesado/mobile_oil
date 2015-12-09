@@ -34,7 +34,7 @@ public class DAO extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE preferencias (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, combustivel TEXT NOT NULL, mostrar INTEGER NOT NULL)");
         db.execSQL("INSERT INTO preferencias (combustivel, mostrar) VALUES ('Alcool', 0)");
         db.execSQL("INSERT INTO preferencias (combustivel, mostrar) VALUES ('Diesel', 0)");
-        db.execSQL("INSERT INTO preferencias (combustivel, mostrar)VALUES('Gasolina', 0)");
+        db.execSQL("INSERT INTO preferencias (combustivel, mostrar)VALUES('Gasolina', 1)");
 
         // EXIBICAO DAS TELAS
         db.execSQL("CREATE TABLE config_tela (id INTEGER PRIMARY KEY AUTOINCREMENT, tela TEXT, exibir INTEGER NOT NULL)");
