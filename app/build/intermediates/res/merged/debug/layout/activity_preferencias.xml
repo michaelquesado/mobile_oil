@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:text="Olá! Fulano de Tal!"
+        android:text="Olá, Seja Bem-Vindo! Selecione qual tipo de Combustível você quer ver."
         android:textSize="14sp" />
 
     <include layout="@layout/formulario_preferencias"></include>

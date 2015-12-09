@@ -90,7 +90,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
                 startActivity(EntrarSemCadastro);
             }
         } else {
-            Toast.makeText(this, "Obtendo localização GPS", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Só um momento, estamos obtendo sua localização!", Toast.LENGTH_SHORT).show();
         }
 
         /*TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);

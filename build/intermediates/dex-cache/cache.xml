@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\ch4p0\.gradle\caches\modules-2\files-2.1\cz.msebera.android\httpclient\4.4.1.1\c8d96f6fd2bcc179c312da33ee670a71188cc60d\httpclient-4.4.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c8d96f6fd2bcc179c312da33ee670a71188cc60d">
-        <dex dex="C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\pre-dexed\debug\httpclient-4.4.1.1-e9a62ced98d6c0348f10a97fe2acd5ce1712a2b2.jar" />
-    </item>
-    <item
         jar="C:\Users\ch4p0\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -30,6 +23,13 @@
         <dex dex="C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\pre-dexed\debug\classes-4f4abf96f9cc7a155292c890a1f04a2edc2de190.jar" />
     </item>
     <item
+        jar="C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\pre-dexed\debug\classes-f9067d98ae942120516364f4613139579f1b1544.jar" />
+    </item>
+    <item
         jar="C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\libs\internal_impl-21.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -37,11 +37,11 @@
         <dex dex="C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-b1c7697985923d73ef94d19d7729520bd5f37513.jar" />
     </item>
     <item
-        jar="C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\classes.jar"
+        jar="C:\Users\ch4p0\.gradle\caches\modules-2\files-2.1\cz.msebera.android\httpclient\4.4.1.1\c8d96f6fd2bcc179c312da33ee670a71188cc60d\httpclient-4.4.1.1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
-        <dex dex="C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\pre-dexed\debug\classes-f9067d98ae942120516364f4613139579f1b1544.jar" />
+        sha1="c8d96f6fd2bcc179c312da33ee670a71188cc60d">
+        <dex dex="C:\Users\ch4p0\AndroidStudioProjects\mobile_oil\app\build\intermediates\pre-dexed\debug\httpclient-4.4.1.1-e9a62ced98d6c0348f10a97fe2acd5ce1712a2b2.jar" />
     </item>
 
 </items>

@@ -69,6 +69,8 @@ public class PostoCombustivelDetalhes extends FragmentActivity implements Adapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posto_combustivel_detalhes);
 
+        Toast.makeText(getApplicationContext(), "Clique em cima do valor para adicionar um novo preço para esse posto.", Toast.LENGTH_LONG).show();
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
