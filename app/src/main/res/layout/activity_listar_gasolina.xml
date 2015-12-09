@@ -10,7 +10,7 @@
         android:text="Listar Gasolina" />
 
     <ListView
-        android:id="@+id/listaPostos"
+        android:id="@+id/listaPostosGasolina"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

@@ -29,7 +29,6 @@ import java.util.List;
 
 import br.com.fjn.mobileoil.PostoCombustivelDetalhes;
 import br.com.fjn.mobileoil.R;
-import br.com.fjn.mobileoil.adapters.ListViewAdapterCombustivel;
 import br.com.fjn.mobileoil.models.PostosCombustivel;
 import br.com.fjn.mobileoil.utils.JSONLoader;
 import br.com.fjn.mobileoil.utils.LatitudeLongitude;
@@ -39,10 +38,11 @@ import br.com.fjn.mobileoil.utils.LatitudeLongitude;
  * Created by unobre on 17/08/2015.
  */
 public class FragmentListarGasolina extends Fragment implements AdapterView.OnItemClickListener, LocationListener {
+
     private ListView mListView;
     private List<PostosCombustivel> list;
     private ListViewAdapterCombustivel adapterCombustivel;
-    private final String TAG = "MO_FRAG_ALCOOL";
+    private final String TAG = "MO_FRAG_GASOLINA";
     //private static String url = "http://192.168.0.102/testes/json/modelo_json_here_places.json";
     private String url = "http://places.cit.api.here.com/places/v1/discover/explore?app_id=hG4gnJyrmlbNgGscL7Ki&app_code=h3XG36Nr4RgQOjymUTblJQ&tf=plain&size=25&pretty=true$tf=plain&cat=petrol-station&at=";
     private LocationManager locationManager;
@@ -51,8 +51,9 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.activity_listar_gasolina, container, false);
-        mListView = (ListView) view.findViewById(R.id.listaPostos);
+        mListView = (ListView) view.findViewById(R.id.listaPostosGasolina);
 
         //Populando meu listView
         list = new ArrayList<>();
@@ -70,7 +71,6 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
         return view;
     }
 
-
     // Método para tratar os evendos dos clicks nos itens da lista
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -79,14 +79,20 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
 
         // obtem o objeto do item clicado
         PostosCombustivel posto = list.get(position);
-        it.putExtra("postoId", posto.getIdPosto());
+        Toast.makeText(getActivity().getBaseContext(), "id do posto: "+posto.getIdPosto(), Toast.LENGTH_SHORT).show();
+
+        it.putExtra("idposto", posto.getIdPosto());
+        it.putExtra("idcombustivel", "1");
+        it.putExtra("postoValorCombustivel", posto.getValorCombustivel());
         it.putExtra("postoNome", posto.getNomePosto());
         //it.putExtra("postoEndereco", posto.getEndereco());
         //it.putExtra("postDataAtualizacao", posto.getDataAtualizacao());
-        it.putExtra("postoValorCombustivel", posto.getValorCombustivel());
         //it.putExtra("postoDistancia", posto.getDistanciaPosto());
-        it.putExtra("postoTipoCombustivel", "Alcool");
+        //it.putExtra("combustivelId", "4");
         it.putExtra("postoLatLog", posto.getLatLog());
+
+        Log.e(TAG, posto.toString());
+
         startActivity(it);
     }
 
