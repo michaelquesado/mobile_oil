@@ -223,7 +223,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
                     if (!list.contains(p)) {
                         list.add(p);
                     }
-                    
+
                 }
 
             } catch (JSONException e) {

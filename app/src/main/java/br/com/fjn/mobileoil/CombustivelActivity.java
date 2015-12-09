@@ -115,6 +115,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
             tab = mActionBar.newTab().setText("d " + combustivel.getNome()).setTabListener(tabListener);
             mActionBar.addTab(tab);
         }
+        viewPagerAdapter.notifyDataSetChanged();
         Log.i(TAG, "CRIAR ABAS - ABAS RE-ADICIONADAS");
     }
 
