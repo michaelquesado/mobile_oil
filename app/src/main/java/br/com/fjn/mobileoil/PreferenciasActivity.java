@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
@@ -133,9 +134,13 @@ public class PreferenciasActivity extends Activity implements View.OnClickListen
         /*TelaConfigDAO telaConfigDAO = new TelaConfigDAO(this);
         telaConfigDAO.ocultarTela("preferencias_inicial", false);
         telaConfigDAO.close();*/
+        if(!mPreferenciaAlcool.isChecked() && !mPreferenciaDiesel.isChecked() && !mPreferenciaGasolina.isChecked()){
+            Toast.makeText(getApplicationContext(), "Escolha pelo menos um tipo de combustível para continuar.", Toast.LENGTH_LONG  ).show();
+        }else{
+            Intent openActivityCombustivel = new Intent(this, CombustivelActivity.class);
+            startActivity(openActivityCombustivel);
+        }
 
-        Intent openActivityCombustivel = new Intent(this, CombustivelActivity.class);
-        startActivity(openActivityCombustivel);
 
     }
 
