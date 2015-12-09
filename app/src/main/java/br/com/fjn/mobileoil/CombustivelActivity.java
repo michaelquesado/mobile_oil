@@ -36,6 +36,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
     public static List<Combustivel> listaCombustiveis;
     private PreferenciasDAO prefDAO;
     private TabListener tabListener;
+    private FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
 
         // Activate Fragment Manager
-        FragmentManager fm = getSupportFragmentManager();
+        fm = getSupportFragmentManager();
 
         // Criando recurso para deslizar nas abas.
         ViewPagerListener = new ViewPager.SimpleOnPageChangeListener() {
@@ -115,7 +116,25 @@ public class CombustivelActivity extends SherlockFragmentActivity {
             tab = mActionBar.newTab().setText("d " + combustivel.getNome()).setTabListener(tabListener);
             mActionBar.addTab(tab);
         }
+
+        // Activate Fragment Manager
+        fm = getSupportFragmentManager();
+        ViewPagerListener = new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                listaCombustiveis = prefDAO.getPreferencias();
+                mActionBar.setSelectedNavigationItem(position);
+                String str = "Mostrar " + listaCombustiveis.get(position).getNome();
+                Toast.makeText(getBaseContext(), "ViewPagerListener: " + position + "\n" + str, Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        mPager.setOnPageChangeListener(ViewPagerListener);
+        viewPagerAdapter = new ViewPagerAdapter(fm);
+        mPager.setAdapter(viewPagerAdapter);
         viewPagerAdapter.notifyDataSetChanged();
+
         Log.i(TAG, "CRIAR ABAS - ABAS RE-ADICIONADAS");
     }
 

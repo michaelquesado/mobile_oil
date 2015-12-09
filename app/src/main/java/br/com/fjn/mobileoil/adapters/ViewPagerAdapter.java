@@ -20,6 +20,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        PAGE_COUNT = CombustivelActivity.listaCombustiveis.size();
         Log.i("UELIO_VIEWPA", "Position: " + position);
 
         if (CombustivelActivity.listaCombustiveis.get(position).getNome().equals("Alcool")) {
@@ -34,6 +35,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
     }
 
     @Override
