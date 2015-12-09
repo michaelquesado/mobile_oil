@@ -79,7 +79,7 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
 
         // obtem o objeto do item clicado
         PostosCombustivel posto = list.get(position);
-        Toast.makeText(getActivity().getBaseContext(), "id do posto: "+posto.getIdPosto(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity().getBaseContext(), "id do posto: " + posto.getIdPosto(), Toast.LENGTH_SHORT).show();
 
         it.putExtra("idposto", posto.getIdPosto());
         it.putExtra("idcombustivel", "4");
@@ -99,7 +99,7 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
 
     @Override
     public void onResume() {
-        Log.i(TAG, "onResume");
+        Log.i("FRAGMENT_LISTAR", "onResume alcool");
         super.onResume();
 
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -112,8 +112,8 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
 
     @Override
     public void onPause() {
+        Log.i("FRAGMENT_LISTAR", "onPause alcool");
         super.onPause();
-        Log.i(TAG, "onPause");
         locationManager.removeUpdates(this);
     }
 
@@ -199,30 +199,30 @@ public class FragmentListarAlcool extends Fragment implements AdapterView.OnItem
                 for (int i = 0; i < totalItens; i++) {
 
                     JSONObject jsonObjectPosto = jsonArray.getJSONObject(i);
-                    if (jsonObjectPosto.getString("combustivel").equals("Etanol")) {
-                        String postoId = jsonObjectPosto.getString("id");
-                        String postoNome = jsonObjectPosto.getString("nome");
-                        String postoEndereco = jsonObjectPosto.getString("combustivel");
-                        String latitude = jsonObjectPosto.getString("latitude");
-                        String longitude = jsonObjectPosto.getString("longitude");
-                        String postoDataAtualizacao = "Ontem";
-                        String postoValorCombustivel = jsonObjectPosto.getString("valor");
-                        Log.i("json", postoValorCombustivel);
-                        //String postoDistancia = FormatarDistancia.getDistanciaFormatada(jsonObjectPosto.getString("distance"));
 
-                        PostosCombustivel p = new PostosCombustivel();
-                        p.setIdPosto(postoId);
-                        p.setNomePosto(postoNome);
-                        p.setEndereco(postoEndereco);
-                        p.setDataAtualizacao(postoDataAtualizacao);
-                        p.setValorCombustivel(postoValorCombustivel);
-                        //p.setDistanciaPosto(postoDistancia);
-                        p.setLatLog(latitude + "," + longitude);
+                    String postoId = jsonObjectPosto.getString("id");
+                    String postoNome = jsonObjectPosto.getString("nome");
+                    String postoEndereco = jsonObjectPosto.getString("combustivel");
+                    String latitude = jsonObjectPosto.getString("latitude");
+                    String longitude = jsonObjectPosto.getString("longitude");
+                    String postoDataAtualizacao = "Ontem";
+                    String postoValorCombustivel = jsonObjectPosto.getString("valor");
+                    Log.i("json", postoValorCombustivel);
+                    //String postoDistancia = FormatarDistancia.getDistanciaFormatada(jsonObjectPosto.getString("distance"));
 
-                        if (!list.contains(p)) {
-                            list.add(p);
-                        }
+                    PostosCombustivel p = new PostosCombustivel();
+                    p.setIdPosto(postoId);
+                    p.setNomePosto(postoNome);
+                    p.setEndereco(postoEndereco);
+                    p.setDataAtualizacao(postoDataAtualizacao);
+                    p.setValorCombustivel(postoValorCombustivel);
+                    //p.setDistanciaPosto(postoDistancia);
+                    p.setLatLog(latitude + "," + longitude);
+
+                    if (!list.contains(p)) {
+                        list.add(p);
                     }
+
                 }
 
             } catch (JSONException e) {

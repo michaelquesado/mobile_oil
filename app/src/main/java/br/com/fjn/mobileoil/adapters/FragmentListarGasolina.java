@@ -42,7 +42,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
     private ListView mListView;
     private List<PostosCombustivel> list;
     private ListViewAdapterCombustivel adapterCombustivel;
-    private final String TAG = "MO_FRAG_GASOLINA";
+    private final String TAG = "FRAG_GASOLINA";
     //private static String url = "http://192.168.0.102/testes/json/modelo_json_here_places.json";
     private String url = "http://places.cit.api.here.com/places/v1/discover/explore?app_id=hG4gnJyrmlbNgGscL7Ki&app_code=h3XG36Nr4RgQOjymUTblJQ&tf=plain&size=25&pretty=true$tf=plain&cat=petrol-station&at=";
     private LocationManager locationManager;
@@ -79,7 +79,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
 
         // obtem o objeto do item clicado
         PostosCombustivel posto = list.get(position);
-        Toast.makeText(getActivity().getBaseContext(), "id do posto: "+posto.getIdPosto(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity().getBaseContext(), "id do posto: " + posto.getIdPosto(), Toast.LENGTH_SHORT).show();
 
         it.putExtra("idposto", posto.getIdPosto());
         it.putExtra("idcombustivel", "1");
@@ -99,7 +99,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
 
     @Override
     public void onResume() {
-        Log.i(TAG, "onResume");
+        Log.i("FRAGMENT_LISTAR", "onResume alcool");
         super.onResume();
 
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -113,7 +113,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
     @Override
     public void onPause() {
         super.onPause();
-        Log.i(TAG, "onPause");
+        Log.i("FRAGMENT_LISTAR", "onPause gasolina");
         locationManager.removeUpdates(this);
     }
 
@@ -122,7 +122,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
         Log.i(TAG, "onLocationChange");
         latlog = location.getLatitude() + "," + location.getLongitude();
         LatitudeLongitude.setLatitudeLongitude(latlog);
-        Log.i(TAG, "onLocationChange :: " + LatitudeLongitude.getLatitudeLongitude());
+        // Log.i(TAG, "onLocationChange :: " + LatitudeLongitude.getLatitudeLongitude());
     }
 
     @Override
@@ -186,6 +186,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
         // Metodo executado na Thread principal.
         @Override
         protected void onPostExecute(String result) {
+            Log.i("FRAGMENT_LISTAR", "resultado json: " + result);
             try {
 
                 JSONArray jsonArray = new JSONArray(result);
@@ -199,37 +200,39 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
                 for (int i = 0; i < totalItens; i++) {
 
                     JSONObject jsonObjectPosto = jsonArray.getJSONObject(i);
-                    if (jsonObjectPosto.getString("combustivel").equals("Etanol")) {
-                        String postoId = jsonObjectPosto.getString("id");
-                        String postoNome = jsonObjectPosto.getString("nome");
-                        String postoEndereco = jsonObjectPosto.getString("combustivel");
-                        String latitude = jsonObjectPosto.getString("latitude");
-                        String longitude = jsonObjectPosto.getString("longitude");
-                        String postoDataAtualizacao = "Ontem";
-                        String postoValorCombustivel = jsonObjectPosto.getString("valor");
-                        Log.i("json", postoValorCombustivel);
-                        //String postoDistancia = FormatarDistancia.getDistanciaFormatada(jsonObjectPosto.getString("distance"));
 
-                        PostosCombustivel p = new PostosCombustivel();
-                        p.setIdPosto(postoId);
-                        p.setNomePosto(postoNome);
-                        p.setEndereco(postoEndereco);
-                        p.setDataAtualizacao(postoDataAtualizacao);
-                        p.setValorCombustivel(postoValorCombustivel);
-                        //p.setDistanciaPosto(postoDistancia);
-                        p.setLatLog(latitude + "," + longitude);
+                    String postoId = jsonObjectPosto.getString("id");
+                    String postoNome = jsonObjectPosto.getString("nome");
+                    String postoEndereco = jsonObjectPosto.getString("combustivel");
+                    String latitude = jsonObjectPosto.getString("latitude");
+                    String longitude = jsonObjectPosto.getString("longitude");
+                    String postoDataAtualizacao = "Ontem";
+                    String postoValorCombustivel = jsonObjectPosto.getString("valor");
+                    Log.i("json", postoValorCombustivel);
+                    //String postoDistancia = FormatarDistancia.getDistanciaFormatada(jsonObjectPosto.getString("distance"));
 
-                        if (!list.contains(p)) {
-                            list.add(p);
-                        }
+                    PostosCombustivel p = new PostosCombustivel();
+                    p.setIdPosto(postoId);
+                    p.setNomePosto(postoNome);
+                    p.setEndereco(postoEndereco);
+                    p.setDataAtualizacao(postoDataAtualizacao);
+                    p.setValorCombustivel(postoValorCombustivel);
+                    //p.setDistanciaPosto(postoDistancia);
+                    p.setLatLog(latitude + "," + longitude);
+
+                    if (!list.contains(p)) {
+                        list.add(p);
                     }
+                    
                 }
 
             } catch (JSONException e) {
-                Log.e("FRAG_LIST_ALCOOL", "jsonexception :: " + e.getMessage());
+                Log.e("FRAG_LIST_GASOLINA", "jsonexception :: " + e.getMessage());
                 e.printStackTrace();
             }
 
+            Log.i("FRAG_GASOLINA", "total de itens: " + list.size());
+            Log.i("FRAG_GASOLINA", "setando adapter");
             adapterCombustivel.setPostosCombustivelList(list);
             mListView.setAdapter(adapterCombustivel);
 
