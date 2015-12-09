@@ -93,6 +93,7 @@ public class PerfilDoUsuario extends Activity implements View.OnClickListener, G
             mGoogleApiClient.connect();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 

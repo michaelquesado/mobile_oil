@@ -133,5 +133,6 @@ public class LoginGoogle extends Activity implements GoogleApiClient.ConnectionC
         }.start();
         Intent intent = new Intent(this, PreferenciasActivity.class);
         startActivity(intent);
+        finish();
     }
 }

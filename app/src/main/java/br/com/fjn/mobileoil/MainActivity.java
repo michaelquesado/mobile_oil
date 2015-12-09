@@ -89,6 +89,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Loca
                 Intent EntrarSemCadastro = new Intent(this, CombustivelActivity.class);
                 startActivity(EntrarSemCadastro);
             }
+            finish();
         } else {
             Toast.makeText(this, "Só um momento, estamos obtendo sua localização!", Toast.LENGTH_SHORT).show();
         }
