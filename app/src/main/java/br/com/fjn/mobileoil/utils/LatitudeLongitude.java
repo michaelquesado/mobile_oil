@@ -8,7 +8,7 @@ import android.content.Context;
 public class LatitudeLongitude {
 
     private static final String TAG = "MO_LATITUDE_CLASS";
-    private static String latitudeLongitude = "-7.27342209,-39.31794548";
+    private static String latitudeLongitude = null;
 
     private Context context;
 
@@ -21,7 +21,7 @@ public class LatitudeLongitude {
     }
 
     public static void setLatitudeLongitude(String latitudeLongitude) {
-        //LatitudeLongitude.latitudeLongitude = latitudeLongitude;
-        LatitudeLongitude.latitudeLongitude = "-7.27342209,-39.31794548";
+        LatitudeLongitude.latitudeLongitude = latitudeLongitude;
+        //LatitudeLongitude.latitudeLongitude = "-7.27342209,-39.31794548";
     }
 }
