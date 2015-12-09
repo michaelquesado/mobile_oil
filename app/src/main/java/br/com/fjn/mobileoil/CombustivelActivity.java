@@ -30,7 +30,7 @@ public class CombustivelActivity extends SherlockFragmentActivity {
     private ViewPager mPager;
     private ViewPagerAdapter viewPagerAdapter;
     private SimpleOnPageChangeListener ViewPagerListener;
-    private Tab tab, tab1, tab2, tab3;
+    private Tab tab;
     private LocationManager locationManager;
     private final String TAG = "POSICAO_ACT_COMBUSTIVEL";
     public static List<Combustivel> listaCombustiveis;
@@ -84,6 +84,8 @@ public class CombustivelActivity extends SherlockFragmentActivity {
             public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
                 // Pass the position on tab click to ViewPager
                 mPager.setCurrentItem(tab.getPosition());
+                Log.e("tab", "posicao: " + tab.getPosition());
+                Log.e("tab", "tamanho do array: " + listaCombustiveis.size());
             }
 
             @Override
@@ -103,34 +105,22 @@ public class CombustivelActivity extends SherlockFragmentActivity {
     }
 
     private void criarAbas() {
-        // Remove todas as abas antes de continuar
-        mActionBar.removeAllTabs();
+
         Log.i(TAG, "CRIAR ABAS - ABAS REMOVIDAS");
 
         // atualiza a lista de combustiveis
         listaCombustiveis = prefDAO.getPreferencias();
         Log.i(TAG, "CRIAR ABAS - LISTA DE COMBUSTIVEIS ATUALIZADAS");
 
+        mActionBar.removeAllTabs();
         // percorre a lista de combustiveis selecionadas
         for (Combustivel combustivel : listaCombustiveis) {
             tab = mActionBar.newTab().setText("d " + combustivel.getNome()).setTabListener(tabListener);
+            Log.i(TAG, "TAB " + combustivel.getNome());
             mActionBar.addTab(tab);
         }
 
-        // Activate Fragment Manager
-        fm = getSupportFragmentManager();
-        ViewPagerListener = new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                listaCombustiveis = prefDAO.getPreferencias();
-                mActionBar.setSelectedNavigationItem(position);
-                String str = "Mostrar " + listaCombustiveis.get(position).getNome();
-                Toast.makeText(getBaseContext(), "ViewPagerListener: " + position + "\n" + str, Toast.LENGTH_SHORT).show();
-            }
-        };
 
-        mPager.setOnPageChangeListener(ViewPagerListener);
         viewPagerAdapter = new ViewPagerAdapter(fm);
         mPager.setAdapter(viewPagerAdapter);
         viewPagerAdapter.notifyDataSetChanged();

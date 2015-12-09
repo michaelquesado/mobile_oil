@@ -82,7 +82,11 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
         Toast.makeText(getActivity().getBaseContext(), "id do posto: " + posto.getIdPosto(), Toast.LENGTH_SHORT).show();
 
         it.putExtra("idposto", posto.getIdPosto());
-        it.putExtra("idcombustivel", "1");
+        if (posto.getTipoCombustivel().equals("Gasolina")) {
+            it.putExtra("idcombustivel", "1");
+        } else {
+            it.putExtra("idcombustivel", "2");
+        }
         it.putExtra("postoValorCombustivel", posto.getValorCombustivel());
         it.putExtra("postoNome", posto.getNomePosto());
         //it.putExtra("postoEndereco", posto.getEndereco());
@@ -208,6 +212,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
                     String longitude = jsonObjectPosto.getString("longitude");
                     String postoDataAtualizacao = "Ontem";
                     String postoValorCombustivel = jsonObjectPosto.getString("valor");
+                    String postoTipoCombustivel = jsonObjectPosto.getString("combustivel");
                     Log.i("json", postoValorCombustivel);
                     //String postoDistancia = FormatarDistancia.getDistanciaFormatada(jsonObjectPosto.getString("distance"));
 
@@ -217,6 +222,7 @@ public class FragmentListarGasolina extends Fragment implements AdapterView.OnIt
                     p.setEndereco(postoEndereco);
                     p.setDataAtualizacao(postoDataAtualizacao);
                     p.setValorCombustivel(postoValorCombustivel);
+                    p.setTipoCombustivel(postoTipoCombustivel);
                     //p.setDistanciaPosto(postoDistancia);
                     p.setLatLog(latitude + "," + longitude);
 

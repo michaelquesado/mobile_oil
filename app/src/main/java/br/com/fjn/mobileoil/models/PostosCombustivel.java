@@ -12,6 +12,7 @@ public class PostosCombustivel {
     private String valorCombustivel;
     private String distanciaPosto;
     private String latLog;
+    private String tipoCombustivel;
 
     public PostosCombustivel() {
     }
@@ -80,6 +81,14 @@ public class PostosCombustivel {
         this.latLog = latLog;
     }
 
+    public String getTipoCombustivel() {
+        return tipoCombustivel;
+    }
+
+    public void setTipoCombustivel(String tipoCombustivel) {
+        this.tipoCombustivel = tipoCombustivel;
+    }
+
     @Override
     public String toString() {
         return "PostosCombustivel{" +
@@ -91,6 +100,7 @@ public class PostosCombustivel {
                 ", valorCombustivel='" + valorCombustivel + '\'' +
                 ", distanciaPosto='" + distanciaPosto + '\'' +
                 ", latLog='" + latLog + '\'' +
+                ", tipoCombustivel='" + tipoCombustivel + '\'' +
                 '}';
     }
 }
